@@ -9,8 +9,6 @@
 import UIKit
 
 class ViewController: UIViewController {
-
-    @IBOutlet weak var daysStackView: UIStackView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,9 +18,24 @@ class ViewController: UIViewController {
         navigationController?.navigationBar.isTranslucent = true
     }
 
-    @IBAction func addNewScreenButton(_ sender: UIButton) {
-        
+
+    //MARK: - Main Board
+    @IBOutlet weak var daysStackView: UIStackView!
+    
+    @IBAction func addTrackerScreenPerformButtonClicked(_ sender: UIButton) {
     }
+    
+    
+    //MARK: - Trackers Board
+    @IBOutlet weak var trackersTableView: UITableView!
+    @IBOutlet weak var addNewTrackerButtonClicked: UIBarButtonItem!
+    
+    // MARK: - Adding new tracker Swipping pages
+    
+    @IBAction func pagination(_ sender: UIPageControl) {
+    }
+    
+
     
 
 }

@@ -14,6 +14,7 @@
 		7548684621091FAC00627971 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7548684521091FAC00627971 /* Assets.xcassets */; };
 		7548684921091FAC00627971 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7548684721091FAC00627971 /* LaunchScreen.storyboard */; };
 		754868522109599000627971 /* Lobster-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 754868512109599000627971 /* Lobster-Regular.ttf */; };
+		75486858210A5D0200627971 /* SwipingPages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75486857210A5D0200627971 /* SwipingPages.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		7548684821091FAC00627971 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7548684A21091FAC00627971 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		754868512109599000627971 /* Lobster-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lobster-Regular.ttf"; sourceTree = "<group>"; };
+		75486857210A5D0200627971 /* SwipingPages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipingPages.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 			children = (
 				7548683B21091FAB00627971 /* AppDelegate.swift */,
 				7548683D21091FAB00627971 /* ViewController.swift */,
+				75486857210A5D0200627971 /* SwipingPages.swift */,
 				7548683F21091FAB00627971 /* Main.storyboard */,
 				7548684721091FAC00627971 /* LaunchScreen.storyboard */,
 				7548684521091FAC00627971 /* Assets.xcassets */,
@@ -152,6 +155,7 @@
 			files = (
 				7548683E21091FAB00627971 /* ViewController.swift in Sources */,
 				7548684421091FAB00627971 /* Emoji_Tracker.xcdatamodeld in Sources */,
+				75486858210A5D0200627971 /* SwipingPages.swift in Sources */,
 				7548683C21091FAB00627971 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
