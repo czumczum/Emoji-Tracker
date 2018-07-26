@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Lobster-Regular.ttf">
+            <string>Lobster-Regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="HBd-w2-6w5">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                            </imageView>
+                            <view userInteractionEnabled="NO" contentMode="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="Np5-h0-Bim">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="337"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Emoji Tracker" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="29" translatesAutoresizingMaskIntoConstraints="NO" id="szv-c7-C76">
+                                        <rect key="frame" x="0.0" y="192" width="414" height="75"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="szv-c7-C76" secondAttribute="height" multiplier="138:25" id="jpr-hF-ZxV"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Lobster-Regular" family="Lobster" pointSize="57"/>
+                                        <color key="textColor" red="0.2901960784" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="😁😍😂📈🗓" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="61" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9dx-t1-I5J">
+                                        <rect key="frame" x="0.0" y="267" width="414" height="70"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="60"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" red="0.0" green="0.56904578210000001" blue="0.57461684940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Np5-h0-Bim" secondAttribute="height" multiplier="414:337" id="7Mn-yJ-hVV"/>
+                                    <constraint firstAttribute="trailing" secondItem="9dx-t1-I5J" secondAttribute="trailing" id="V8Y-W7-xst"/>
+                                    <constraint firstItem="9dx-t1-I5J" firstAttribute="leading" secondItem="Np5-h0-Bim" secondAttribute="leading" id="a7G-3h-kyr"/>
+                                    <constraint firstAttribute="bottom" secondItem="9dx-t1-I5J" secondAttribute="bottom" id="bKD-lW-RTs"/>
+                                    <constraint firstAttribute="trailing" secondItem="szv-c7-C76" secondAttribute="trailing" id="rhi-4L-Kep"/>
+                                    <constraint firstItem="9dx-t1-I5J" firstAttribute="top" secondItem="szv-c7-C76" secondAttribute="bottom" id="shR-o1-syv"/>
+                                    <constraint firstItem="szv-c7-C76" firstAttribute="leading" secondItem="Np5-h0-Bim" secondAttribute="leading" id="zC3-pL-QII"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Np5-h0-Bim" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="A0E-Wt-nis"/>
+                            <constraint firstItem="HBd-w2-6w5" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="AAV-El-X5B"/>
+                            <constraint firstItem="Np5-h0-Bim" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Cy1-Xj-c5d"/>
+                            <constraint firstItem="HBd-w2-6w5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="NjP-pI-JGa"/>
+                            <constraint firstItem="Np5-h0-Bim" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="No5-Jp-KjN"/>
+                            <constraint firstItem="Np5-h0-Bim" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="O1n-CG-fTR"/>
+                            <constraint firstItem="Np5-h0-Bim" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="R7U-22-5cN"/>
+                            <constraint firstItem="Np5-h0-Bim" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="XCA-2f-A6u"/>
+                            <constraint firstItem="Np5-h0-Bim" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="fK3-Dl-g2v"/>
+                            <constraint firstItem="HBd-w2-6w5" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="ieB-3X-cHi"/>
+                            <constraint firstItem="Np5-h0-Bim" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="sn6-nC-AHC"/>
+                            <constraint firstItem="HBd-w2-6w5" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="v8n-RF-EgL"/>
+                            <constraint firstItem="Np5-h0-Bim" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="vUM-wG-Fgy"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="50.625" y="373.75"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="bg" width="375" height="667"/>
+    </resources>
+</document>
