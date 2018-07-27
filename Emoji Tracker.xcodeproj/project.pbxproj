@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		753A2A94210BDCE200EE9982 /* AddNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753A2A93210BDCE200EE9982 /* AddNewViewController.swift */; };
+		753A2A96210BDF3F00EE9982 /* TrackersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753A2A95210BDF3F00EE9982 /* TrackersViewController.swift */; };
 		7548683C21091FAB00627971 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7548683B21091FAB00627971 /* AppDelegate.swift */; };
 		7548683E21091FAB00627971 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7548683D21091FAB00627971 /* ViewController.swift */; };
 		7548684121091FAB00627971 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7548683F21091FAB00627971 /* Main.storyboard */; };
@@ -19,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		753A2A93210BDCE200EE9982 /* AddNewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewViewController.swift; sourceTree = "<group>"; };
+		753A2A95210BDF3F00EE9982 /* TrackersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackersViewController.swift; sourceTree = "<group>"; };
 		7548683821091FAB00627971 /* Emoji Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Emoji Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7548683B21091FAB00627971 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7548683D21091FAB00627971 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -71,6 +75,8 @@
 			isa = PBXGroup;
 			children = (
 				7548683B21091FAB00627971 /* AppDelegate.swift */,
+				753A2A93210BDCE200EE9982 /* AddNewViewController.swift */,
+				753A2A95210BDF3F00EE9982 /* TrackersViewController.swift */,
 				7548683D21091FAB00627971 /* ViewController.swift */,
 				75486857210A5D0200627971 /* SwipingPages.swift */,
 				7548683F21091FAB00627971 /* Main.storyboard */,
@@ -166,8 +172,10 @@
 			files = (
 				7548683E21091FAB00627971 /* ViewController.swift in Sources */,
 				7548684421091FAB00627971 /* Emoji_Tracker.xcdatamodeld in Sources */,
+				753A2A96210BDF3F00EE9982 /* TrackersViewController.swift in Sources */,
 				75B354CA210B6C6E00233922 /* Tracker.swift in Sources */,
 				75486858210A5D0200627971 /* SwipingPages.swift in Sources */,
+				753A2A94210BDCE200EE9982 /* AddNewViewController.swift in Sources */,
 				7548683C21091FAB00627971 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -208,10 +208,10 @@
             </objects>
             <point key="canvasLocation" x="5532" y="26.53673163418291"/>
         </scene>
-        <!--View Controller-->
+        <!--Trackers View Controller-->
         <scene sceneID="cwj-kN-I3a">
             <objects>
-                <viewController id="H22-xE-afG" customClass="ViewController" customModule="Emoji_Tracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="H22-xE-afG" customClass="TrackersViewController" customModule="Emoji_Tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Baa-ou-OCL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -290,10 +290,10 @@
             </objects>
             <point key="canvasLocation" x="6465" y="53"/>
         </scene>
-        <!--View Controller-->
+        <!--Add New View Controller-->
         <scene sceneID="58F-N9-cbd">
             <objects>
-                <viewController id="0cd-5g-eGj" customClass="ViewController" customModule="Emoji_Tracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="0cd-5g-eGj" customClass="AddNewViewController" customModule="Emoji_Tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="b46-Fa-vWS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
