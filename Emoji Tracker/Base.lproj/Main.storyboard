@@ -250,6 +250,9 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Y1u-w4-tps">
                                 <rect key="frame" x="0.0" y="170" width="375" height="497"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="H22-xE-afG" id="K3e-Fv-JJr"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -299,20 +302,20 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="djD-sD-yzK">
-                                <rect key="frame" x="0.0" y="35" width="375" height="61"/>
+                                <rect key="frame" x="0.0" y="35" width="375" height="50"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qRF-LI-9i9">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="61"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cKE-MF-9Jq">
-                                                <rect key="frame" x="10" y="0.0" width="83" height="61"/>
+                                                <rect key="frame" x="10" y="0.0" width="83" height="50"/>
                                                 <state key="normal" image="back-button"/>
                                                 <connections>
                                                     <action selector="dismissNewItemButtonClicked:" destination="0cd-5g-eGj" eventType="touchUpInside" id="vyn-ix-iqx"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Twu-q8-oSr">
-                                                <rect key="frame" x="330" y="0.0" width="35" height="61"/>
+                                                <rect key="frame" x="330" y="0.0" width="35" height="50"/>
                                                 <state key="normal" image="plus-button"/>
                                                 <connections>
                                                     <action selector="addNewTrackerButtonClicked:" destination="0cd-5g-eGj" eventType="touchUpInside" id="RBh-Bx-cL9"/>
@@ -332,80 +335,113 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="q2H-Mo-eN2">
-                                <rect key="frame" x="0.0" y="184" width="375" height="296"/>
+                                <rect key="frame" x="0.0" y="200" width="375" height="267"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What do you want to trck?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gkV-Xm-rKC">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="37"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gkV-Xm-rKC">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="33.5"/>
                                         <color key="backgroundColor" white="1" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="20"/>
-                                        <color key="textColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <attributedString key="attributedText">
+                                            <fragment content="What do you want to track?">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <font key="NSFont" size="20" name="Charter-Roman"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" placeholder="New Tracker" textAlignment="center" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="raK-rp-Ghv">
-                                        <rect key="frame" x="0.0" y="37" width="375" height="37"/>
+                                        <rect key="frame" x="0.0" y="33.5" width="375" height="33.5"/>
                                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="20"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" keyboardType="twitter" keyboardAppearance="light" enablesReturnKeyAutomatically="YES"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" keyboardType="twitter" keyboardAppearance="light"/>
                                     </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What kind of tracker?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G8l-TD-4Yx">
-                                        <rect key="frame" x="0.0" y="74" width="375" height="37"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G8l-TD-4Yx">
+                                        <rect key="frame" x="0.0" y="67" width="375" height="33"/>
                                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="20"/>
-                                        <color key="textColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <attributedString key="attributedText">
+                                            <fragment content="What kind of tracker?">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <font key="NSFont" size="20" name="Charter-Roman"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iXG-dB-87D">
-                                        <rect key="frame" x="0.0" y="111" width="375" height="37"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iXG-dB-87D">
+                                        <rect key="frame" x="0.0" y="100" width="375" height="33.5"/>
                                         <color key="backgroundColor" white="1" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="20"/>
-                                        <state key="normal" title="Input">
-                                            <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal">
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="Input">
+                                                    <attributes>
+                                                        <color key="NSColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <font key="NSFont" size="20" name="Charter-Roman"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
                                         </state>
                                         <state key="selected">
-                                            <color key="titleColor" red="0.58072251080000004" green="0.066734083" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <attributedString key="attributedTitle"/>
                                         </state>
                                         <connections>
                                             <action selector="newTrackerTypeInputClicked:" destination="0cd-5g-eGj" eventType="touchUpInside" id="MjK-fi-CaT"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wBe-Y6-ceN">
-                                        <rect key="frame" x="0.0" y="148" width="375" height="37"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wBe-Y6-ceN">
+                                        <rect key="frame" x="0.0" y="133.5" width="375" height="33.5"/>
                                         <color key="backgroundColor" white="1" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="20"/>
-                                        <state key="normal" title="Pick 5">
-                                            <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <state key="selected" title="Pick 5">
-                                            <color key="titleColor" red="0.58072251080000004" green="0.066734083" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal">
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="Pick 5">
+                                                    <attributes>
+                                                        <color key="NSColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <font key="NSFont" size="20" name="Charter-Roman"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
                                         </state>
                                         <connections>
                                             <action selector="newTrackerTypePick5Clicked:" destination="0cd-5g-eGj" eventType="touchUpInside" id="xTO-ut-n9x"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1KH-b3-u4U">
-                                        <rect key="frame" x="0.0" y="185" width="375" height="37"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1KH-b3-u4U">
+                                        <rect key="frame" x="0.0" y="167" width="375" height="33.5"/>
                                         <color key="backgroundColor" white="1" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="20"/>
-                                        <state key="normal" title="Slider">
-                                            <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <state key="selected">
-                                            <color key="titleColor" red="0.58072251080000004" green="0.066734083" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal">
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="Slider">
+                                                    <attributes>
+                                                        <color key="NSColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <font key="NSFont" size="20" name="Charter-Roman"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
                                         </state>
                                         <connections>
                                             <action selector="newTrackerTypeSliderClicked:" destination="0cd-5g-eGj" eventType="touchUpInside" id="3Nh-bM-lYj"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick a few emojis" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gws-al-b8L">
-                                        <rect key="frame" x="0.0" y="222" width="375" height="37"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gws-al-b8L">
+                                        <rect key="frame" x="0.0" y="200.5" width="375" height="33"/>
                                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="20"/>
-                                        <color key="textColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <attributedString key="attributedText">
+                                            <fragment content="Pick a few emojis">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <font key="NSFont" size="20" name="Charter-Roman"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="😁😍😂" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="799-3t-Gc8">
-                                        <rect key="frame" x="0.0" y="259" width="375" height="37"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Pick 5" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="799-3t-Gc8">
+                                        <rect key="frame" x="0.0" y="233.5" width="375" height="33.5"/>
                                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="20"/>
@@ -416,28 +452,21 @@
                                     <constraint firstItem="iXG-dB-87D" firstAttribute="top" secondItem="G8l-TD-4Yx" secondAttribute="bottom" id="0v6-Zu-o9Y"/>
                                     <constraint firstItem="raK-rp-Ghv" firstAttribute="top" secondItem="gkV-Xm-rKC" secondAttribute="bottom" id="3s1-a7-ko4"/>
                                     <constraint firstItem="G8l-TD-4Yx" firstAttribute="top" secondItem="raK-rp-Ghv" secondAttribute="bottom" id="AAu-cn-ZDw"/>
-                                    <constraint firstItem="gkV-Xm-rKC" firstAttribute="top" secondItem="q2H-Mo-eN2" secondAttribute="top" id="CG1-B5-gkd"/>
-                                    <constraint firstItem="raK-rp-Ghv" firstAttribute="leading" secondItem="q2H-Mo-eN2" secondAttribute="leading" id="FgH-EN-f6L"/>
-                                    <constraint firstAttribute="trailing" secondItem="gkV-Xm-rKC" secondAttribute="trailing" id="Kof-L2-FuT"/>
-                                    <constraint firstItem="gkV-Xm-rKC" firstAttribute="leading" secondItem="q2H-Mo-eN2" secondAttribute="leading" id="Owr-yy-gcM"/>
-                                    <constraint firstAttribute="trailing" secondItem="raK-rp-Ghv" secondAttribute="trailing" id="gf0-UW-9tW"/>
-                                    <constraint firstItem="G8l-TD-4Yx" firstAttribute="leading" secondItem="q2H-Mo-eN2" secondAttribute="leading" id="kNH-SZ-cOT"/>
-                                    <constraint firstAttribute="trailing" secondItem="G8l-TD-4Yx" secondAttribute="trailing" id="l9K-oj-jSm"/>
                                     <constraint firstItem="raK-rp-Ghv" firstAttribute="top" secondItem="gkV-Xm-rKC" secondAttribute="bottom" id="m5X-cV-Be0"/>
                                     <constraint firstItem="G8l-TD-4Yx" firstAttribute="top" secondItem="raK-rp-Ghv" secondAttribute="bottom" id="oAY-pF-r1R"/>
                                 </constraints>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7GR-G4-QWZ">
-                                <rect key="frame" x="0.0" y="96" width="375" height="88"/>
+                                <rect key="frame" x="0.0" y="85" width="375" height="100"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="|" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2qg-Fn-gSN">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="|" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2qg-Fn-gSN">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                         <fontDescription key="fontDescription" name="Lobster-Regular" family="Lobster" pointSize="35"/>
                                         <color key="textColor" red="0.2901960784" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CLt-4O-AjJ">
-                                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CLt-4O-AjJ">
+                                        <rect key="frame" x="0.0" y="44" width="375" height="56"/>
                                         <fontDescription key="fontDescription" name="Lobster-Regular" family="Lobster" pointSize="35"/>
                                         <color key="textColor" red="0.2901960784" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -445,36 +474,39 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="2qg-Fn-gSN" firstAttribute="leading" secondItem="7GR-G4-QWZ" secondAttribute="leading" id="2ig-fs-TQ8"/>
-                                    <constraint firstAttribute="bottom" secondItem="CLt-4O-AjJ" secondAttribute="bottom" id="5hs-ft-dbd"/>
-                                    <constraint firstItem="2qg-Fn-gSN" firstAttribute="top" secondItem="7GR-G4-QWZ" secondAttribute="top" id="6g7-cJ-m8d"/>
+                                    <constraint firstAttribute="trailing" secondItem="CLt-4O-AjJ" secondAttribute="trailing" id="CRb-VF-JcE"/>
                                     <constraint firstItem="CLt-4O-AjJ" firstAttribute="top" secondItem="2qg-Fn-gSN" secondAttribute="bottom" id="Dwp-iC-RF0"/>
                                     <constraint firstItem="CLt-4O-AjJ" firstAttribute="top" secondItem="2qg-Fn-gSN" secondAttribute="bottom" id="H4r-RG-L4p"/>
-                                    <constraint firstAttribute="trailing" secondItem="CLt-4O-AjJ" secondAttribute="trailing" id="Zx6-Sb-WKr"/>
+                                    <constraint firstItem="2qg-Fn-gSN" firstAttribute="top" secondItem="7GR-G4-QWZ" secondAttribute="top" id="ICI-BC-tH1"/>
+                                    <constraint firstAttribute="trailing" secondItem="2qg-Fn-gSN" secondAttribute="trailing" id="Lja-KI-82h"/>
+                                    <constraint firstAttribute="width" secondItem="7GR-G4-QWZ" secondAttribute="height" multiplier="15:4" id="OYd-E2-Vpk"/>
+                                    <constraint firstItem="2qg-Fn-gSN" firstAttribute="leading" secondItem="7GR-G4-QWZ" secondAttribute="leading" id="aVl-fV-j4O"/>
+                                    <constraint firstItem="CLt-4O-AjJ" firstAttribute="leading" secondItem="7GR-G4-QWZ" secondAttribute="leading" id="dpv-5L-IMc"/>
                                     <constraint firstItem="CLt-4O-AjJ" firstAttribute="top" secondItem="2qg-Fn-gSN" secondAttribute="bottom" id="iR7-x2-xVw"/>
-                                    <constraint firstItem="CLt-4O-AjJ" firstAttribute="leading" secondItem="7GR-G4-QWZ" secondAttribute="leading" id="jg1-fa-Ta9"/>
+                                    <constraint firstItem="CLt-4O-AjJ" firstAttribute="top" secondItem="2qg-Fn-gSN" secondAttribute="bottom" id="ojp-G3-gp3"/>
+                                    <constraint firstAttribute="bottom" secondItem="CLt-4O-AjJ" secondAttribute="bottom" id="pcP-dl-c9p"/>
                                     <constraint firstItem="CLt-4O-AjJ" firstAttribute="top" secondItem="2qg-Fn-gSN" secondAttribute="bottom" id="t2i-xC-YKC"/>
-                                    <constraint firstAttribute="trailing" secondItem="2qg-Fn-gSN" secondAttribute="trailing" id="zBr-by-27X"/>
+                                    <constraint firstItem="CLt-4O-AjJ" firstAttribute="top" secondItem="2qg-Fn-gSN" secondAttribute="bottom" id="xnq-3F-Njh"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="q2H-Mo-eN2" firstAttribute="centerY" secondItem="b46-Fa-vWS" secondAttribute="centerY" id="3du-RB-apx"/>
+                            <constraint firstItem="q2H-Mo-eN2" firstAttribute="top" secondItem="7GR-G4-QWZ" secondAttribute="bottom" constant="15" id="Er5-tj-kxV"/>
+                            <constraint firstItem="G6E-NE-RqC" firstAttribute="trailing" secondItem="q2H-Mo-eN2" secondAttribute="trailing" id="FUY-xg-snY"/>
                             <constraint firstItem="Gza-WI-DSW" firstAttribute="top" secondItem="b46-Fa-vWS" secondAttribute="top" id="GXo-pU-RMl"/>
-                            <constraint firstItem="q2H-Mo-eN2" firstAttribute="leading" secondItem="G6E-NE-RqC" secondAttribute="leading" id="Gd9-Gq-aHB"/>
+                            <constraint firstItem="7GR-G4-QWZ" firstAttribute="leading" secondItem="G6E-NE-RqC" secondAttribute="leading" id="Hqp-ug-Ph3"/>
                             <constraint firstItem="G6E-NE-RqC" firstAttribute="bottom" secondItem="Gza-WI-DSW" secondAttribute="bottom" id="OKX-aT-jAV"/>
-                            <constraint firstItem="7GR-G4-QWZ" firstAttribute="leading" secondItem="G6E-NE-RqC" secondAttribute="leading" id="OQp-0G-zQh"/>
                             <constraint firstItem="djD-sD-yzK" firstAttribute="leading" secondItem="G6E-NE-RqC" secondAttribute="leading" id="TVj-aW-G2d"/>
                             <constraint firstItem="djD-sD-yzK" firstAttribute="trailing" secondItem="G6E-NE-RqC" secondAttribute="trailing" id="XbC-cI-0sP"/>
-                            <constraint firstItem="q2H-Mo-eN2" firstAttribute="trailing" secondItem="G6E-NE-RqC" secondAttribute="trailing" id="aJT-Uz-zBY"/>
-                            <constraint firstAttribute="trailing" secondItem="7GR-G4-QWZ" secondAttribute="trailing" id="aS3-Aa-kYO"/>
-                            <constraint firstItem="G6E-NE-RqC" firstAttribute="trailing" secondItem="q2H-Mo-eN2" secondAttribute="trailing" id="bgd-rZ-oW7"/>
+                            <constraint firstItem="7GR-G4-QWZ" firstAttribute="trailing" secondItem="G6E-NE-RqC" secondAttribute="trailing" id="ZQO-cm-7U7"/>
+                            <constraint firstItem="7GR-G4-QWZ" firstAttribute="top" secondItem="djD-sD-yzK" secondAttribute="bottom" id="cDB-tm-Tjr"/>
                             <constraint firstItem="djD-sD-yzK" firstAttribute="top" secondItem="G6E-NE-RqC" secondAttribute="top" constant="15" id="djU-o8-o3N"/>
-                            <constraint firstItem="q2H-Mo-eN2" firstAttribute="top" secondItem="7GR-G4-QWZ" secondAttribute="bottom" id="hXH-Yi-H3H"/>
-                            <constraint firstItem="q2H-Mo-eN2" firstAttribute="leading" secondItem="G6E-NE-RqC" secondAttribute="leading" id="pFZ-67-kAU"/>
+                            <constraint firstItem="q2H-Mo-eN2" firstAttribute="leading" secondItem="G6E-NE-RqC" secondAttribute="leading" id="its-Yl-9xr"/>
+                            <constraint firstItem="q2H-Mo-eN2" firstAttribute="centerX" secondItem="b46-Fa-vWS" secondAttribute="centerX" id="r28-nE-HfX"/>
                             <constraint firstItem="G6E-NE-RqC" firstAttribute="trailing" secondItem="Gza-WI-DSW" secondAttribute="trailing" id="tCt-Bq-Esp"/>
                             <constraint firstItem="Gza-WI-DSW" firstAttribute="leading" secondItem="G6E-NE-RqC" secondAttribute="leading" id="x5f-z0-mor"/>
-                            <constraint firstItem="7GR-G4-QWZ" firstAttribute="top" secondItem="djD-sD-yzK" secondAttribute="bottom" id="xTz-ut-aOj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="G6E-NE-RqC"/>
                     </view>
@@ -484,6 +516,7 @@
                         <outlet property="newTitleLabel" destination="2qg-Fn-gSN" id="Cw4-d1-nKX"/>
                         <outlet property="newTrackerEmojis" destination="799-3t-Gc8" id="Cbm-Kl-nfz"/>
                         <outlet property="newTrackerName" destination="raK-rp-Ghv" id="oAV-ll-ysI"/>
+                        <outlet property="newTrackerStackview" destination="q2H-Mo-eN2" id="iz2-BI-WZG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="psK-9i-Dbr" userLabel="First Responder" sceneMemberID="firstResponder"/>
