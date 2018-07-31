@@ -7,13 +7,24 @@
 //
 
 import UIKit
+import RealmSwift
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    var trackerList : [Tracker] = []
+    let realm = try! Realm()
+    let realmMethods = RealmMethods()
+    
+    var trackerList: Results<Tracker>?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Trackers list
+        trackersTableView?.delegate = self
+        trackersTableView?.dataSource = self
+//        configureTableView()
+        
+        trackerList = realmMethods.loadTrackers()
         
     }
     
@@ -24,14 +35,43 @@ class ViewController: UIViewController {
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isTranslucent = true
         
+        trackersTableView?.reloadData()
+        
     }
 
 
     //MARK: - Main Board
+    //MARK: Days StackView
     @IBOutlet weak var daysStackView: UIStackView!
     
-    @IBAction func addTrackerScreenPerformButtonClicked(_ sender: UIButton) {
+    //MARK: Trackers TableView
+    @IBOutlet var trackersTableView: UITableView!
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return trackerList?.count ?? 0
     }
+    
+    //MARK: TableView DataSource Methods
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.row % 2 == 0 {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "trackCell", for: indexPath)
+        
+        cell.textLabel?.text = trackerList?[indexPath.row].name
+        cell.detailTextLabel?.text = trackerList?[indexPath.row].emojis
+        
+        return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "trackCell2", for: indexPath)
+            
+            cell.textLabel?.text = trackerList?[indexPath.row].name
+//            cell.detailTextLabel?.text = trackerList?[indexPath.row].emojis
+            
+            return cell
+        }
+    }
+    
+    
     
     //MARK: - Stats Swipping pages
     

@@ -42,17 +42,14 @@ class TrackersViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var addNewTrackerButtonClicked: UIBarButtonItem!
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(trackerList?.count)
         return trackerList?.count ?? 0
     }
     
     //MARK: TableView DataSource Methods
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("table view is comming")
         
-        //        let cell = tableView.dequeueReusableCell(withIdentifier: "customcell", for: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "trackCell", for: indexPath)
         
-        let cell = UITableViewCell()
         cell.textLabel?.text = trackerList?[indexPath.row].name
         cell.detailTextLabel?.text = trackerList?[indexPath.row].emojis
         

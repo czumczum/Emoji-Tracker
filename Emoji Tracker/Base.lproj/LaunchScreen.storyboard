@@ -10,11 +10,6 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="Lobster-Regular.ttf">
-            <string>Lobster-Regular</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="EHf-IW-A2E">
@@ -30,32 +25,15 @@
                             <view userInteractionEnabled="NO" contentMode="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="Np5-h0-Bim">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="337"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Emoji Tracker" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="29" translatesAutoresizingMaskIntoConstraints="NO" id="szv-c7-C76">
-                                        <rect key="frame" x="0.0" y="192" width="414" height="75"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="szv-c7-C76" secondAttribute="height" multiplier="138:25" id="jpr-hF-ZxV"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Lobster-Regular" family="Lobster" pointSize="57"/>
-                                        <color key="textColor" red="0.2901960784" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="😁😍😂📈🗓" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="61" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9dx-t1-I5J">
-                                        <rect key="frame" x="0.0" y="267" width="414" height="70"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="60"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Emoji Tracker 😄😂😍" translatesAutoresizingMaskIntoConstraints="NO" id="9jy-IB-g0A">
+                                        <rect key="frame" x="0.0" y="156" width="414" height="181"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" red="0.0" green="0.56904578210000001" blue="0.57461684940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Np5-h0-Bim" secondAttribute="height" multiplier="414:337" id="7Mn-yJ-hVV"/>
-                                    <constraint firstAttribute="trailing" secondItem="9dx-t1-I5J" secondAttribute="trailing" id="V8Y-W7-xst"/>
-                                    <constraint firstItem="9dx-t1-I5J" firstAttribute="leading" secondItem="Np5-h0-Bim" secondAttribute="leading" id="a7G-3h-kyr"/>
-                                    <constraint firstAttribute="bottom" secondItem="9dx-t1-I5J" secondAttribute="bottom" id="bKD-lW-RTs"/>
-                                    <constraint firstAttribute="trailing" secondItem="szv-c7-C76" secondAttribute="trailing" id="rhi-4L-Kep"/>
-                                    <constraint firstItem="9dx-t1-I5J" firstAttribute="top" secondItem="szv-c7-C76" secondAttribute="bottom" id="shR-o1-syv"/>
-                                    <constraint firstItem="szv-c7-C76" firstAttribute="leading" secondItem="Np5-h0-Bim" secondAttribute="leading" id="zC3-pL-QII"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -80,10 +58,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="50.625" y="373.75"/>
+            <point key="canvasLocation" x="49.275362318840585" y="373.36956521739131"/>
         </scene>
     </scenes>
     <resources>
+        <image name="Emoji Tracker 😄😂😍" width="342" height="123"/>
         <image name="bg" width="375" height="667"/>
     </resources>
 </document>
