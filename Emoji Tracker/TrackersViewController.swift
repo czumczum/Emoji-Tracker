@@ -7,10 +7,14 @@
 //
 
 import UIKit
+import RealmSwift
 
 class TrackersViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    var trackerList : [Trackers] = []
+    let realm = try! Realm()
+    let realmMethods = RealmMethods()
+    
+    var trackerList: Results<Tracker>?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,10 +24,7 @@ class TrackersViewController: UIViewController, UITableViewDelegate, UITableView
         trackersTableView?.dataSource = self
         configureTableView()
         
-        let firstTracker = Trackers()
-        firstTracker.name = "My dog"
-        firstTracker.emojis = "😂🙂😍🤓😱"
-        trackerList.append(firstTracker)
+        trackerList = realmMethods.loadTrackers()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -41,8 +42,8 @@ class TrackersViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var addNewTrackerButtonClicked: UIBarButtonItem!
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(trackerList.count)
-        return trackerList.count
+        print(trackerList?.count)
+        return trackerList?.count ?? 0
     }
     
     //MARK: TableView DataSource Methods
@@ -52,8 +53,8 @@ class TrackersViewController: UIViewController, UITableViewDelegate, UITableView
         //        let cell = tableView.dequeueReusableCell(withIdentifier: "customcell", for: indexPath) as! UITableViewCell
         
         let cell = UITableViewCell()
-        cell.textLabel?.text = trackerList[indexPath.row].name
-        cell.detailTextLabel?.text = trackerList[indexPath.row].emojis
+        cell.textLabel?.text = trackerList?[indexPath.row].name
+        cell.detailTextLabel?.text = trackerList?[indexPath.row].emojis
         
         return cell
     }

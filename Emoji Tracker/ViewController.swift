@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var trackerList : [Trackers] = []
+    var trackerList : [Tracker] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()

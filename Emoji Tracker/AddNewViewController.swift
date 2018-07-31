@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import RealmSwift
 
 class AddNewViewController: UIViewController, UITextFieldDelegate {
+        //Create new tracker Page
     
-    var trackerList : [Trackers] = []
+    let realm = try! Realm()
+    let realmMethods = RealmMethods()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,8 +24,6 @@ class AddNewViewController: UIViewController, UITextFieldDelegate {
         newTrackerEmojis?.delegate = self
     
     }
-    
-    //MARK: - Create new tracker Page
     
     var newTrackerType : String = ""
     
@@ -87,13 +88,11 @@ class AddNewViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var addNewTrackerButton: UIButton!
     @IBAction func addNewTrackerButtonClicked(_ sender: UIButton) {
         
-        let tracker = Trackers()
+        let tracker = Tracker()
         tracker.name = newTrackerName.text!
         tracker.emojis = newTrackerEmojis.text!
         
-        trackerList.append(tracker)
-        print(trackerList.count)
-        
+        realmMethods.saveToRealm(with: tracker)
         self.dismiss(animated: true)
     }
     

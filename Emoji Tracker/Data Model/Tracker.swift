@@ -7,10 +7,14 @@
 //
 
 import Foundation
+import RealmSwift
 
-class Trackers {
-    var name : String = ""
-    var emojis : String = ""
-    var category : String = ""
-    var archived : Bool = false
+class Tracker: Object {
+    @objc dynamic var name : String = ""
+    @objc dynamic var emojis : String = ""
+    @objc dynamic var archived : Bool = false
+    
+    //TODO: Most frequently used emoji
+    
+    var category = LinkingObjects(fromType: Category.self, property: "tracker")
 }
