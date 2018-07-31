@@ -10,14 +10,10 @@ import Foundation
 import RealmSwift
 
 class DayDate: Object {
-    @objc dynamic var date : String = ""
+    @objc dynamic var date : Date = Date()
     
     var emoji = List<Emoji>()
     var tracker = List<Tracker>()
     
-    //TODO: Emoji:Tracker pair
-    
-//    @objc dynamic var date : String = ""
-//    @objc dynamic var emoji : String = ""
-//    @objc dynamic var tracker : String = ""
+    //TODO: Emoji:Tracker
 }

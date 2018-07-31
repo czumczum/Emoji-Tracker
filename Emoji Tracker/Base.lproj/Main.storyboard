@@ -34,13 +34,13 @@
                                         <rect key="frame" x="0.0" y="0.0" width="81" height="193"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" text="November, 15th" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BO9-sn-Wkw">
-                                                <rect key="frame" x="0.0" y="109" width="81" height="69"/>
+                                                <rect key="frame" x="0.0" y="109.5" width="81" height="68.5"/>
                                                 <fontDescription key="fontDescription" name="Lobster-Regular" family="Lobster" pointSize="15"/>
                                                 <color key="textColor" red="0.2901960784" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="😝🤓🧐☹️💋😇😝" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eoh-iU-F7A">
-                                                <rect key="frame" x="0.0" y="84" width="81" height="25"/>
+                                                <rect key="frame" x="0.0" y="84.5" width="81" height="25"/>
                                                 <fontDescription key="fontDescription" name="Lobster-Regular" family="Lobster" pointSize="10"/>
                                                 <color key="textColor" red="0.2901960784" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -115,13 +115,13 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="😝🤓🧐☹️💋😇😝" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ux0-tf-DI5">
-                                                <rect key="frame" x="0.0" y="84" width="81" height="25"/>
+                                                <rect key="frame" x="0.0" y="84.5" width="81" height="25"/>
                                                 <fontDescription key="fontDescription" name="Lobster-Regular" family="Lobster" pointSize="10"/>
                                                 <color key="textColor" red="0.2901960784" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="left" horizontalHuggingPriority="251" text="December, 15th" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0NH-qA-Wpd">
-                                                <rect key="frame" x="0.0" y="109" width="81" height="69"/>
+                                                <rect key="frame" x="0.0" y="109.5" width="81" height="68.5"/>
                                                 <fontDescription key="fontDescription" name="Lobster-Regular" family="Lobster" pointSize="15"/>
                                                 <color key="textColor" red="0.2901960784" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -351,12 +351,15 @@
                                         </attributedString>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" placeholder="New Tracker" textAlignment="center" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="raK-rp-Ghv">
+                                    <textField opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" placeholder="New Tracker" textAlignment="center" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="raK-rp-Ghv">
                                         <rect key="frame" x="0.0" y="33.5" width="375" height="33.5"/>
                                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="20"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" keyboardType="twitter" keyboardAppearance="light"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" keyboardAppearance="light" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="0cd-5g-eGj" id="oJt-P9-KAZ"/>
+                                        </connections>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G8l-TD-4Yx">
                                         <rect key="frame" x="0.0" y="67" width="375" height="33"/>
@@ -443,9 +446,13 @@
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Pick 5" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="799-3t-Gc8">
                                         <rect key="frame" x="0.0" y="233.5" width="375" height="33.5"/>
                                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="movable"/>
                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="20"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="alphabet" keyboardAppearance="light"/>
+                                        <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="0cd-5g-eGj" id="1kv-c2-NsI"/>
+                                        </connections>
                                     </textField>
                                 </subviews>
                                 <constraints>

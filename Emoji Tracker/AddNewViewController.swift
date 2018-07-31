@@ -38,10 +38,16 @@ class AddNewViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var newTrackerName: UITextField!
     @IBOutlet var newTrackerEmojis: UITextField! //TODO: Add max 5 symbol limit to the newTrackerEmojis
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        moveTextField(textField, moveDistance: 100, up: true)
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        moveTextField(textField, moveDistance: 100, up: false)
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        activateAddNewTrackerButton()
-        updatenewTrackerLabels()
-        textField.endEditing(true)
+        endEditingTextFields()
         return true
     }
     
@@ -50,6 +56,28 @@ class AddNewViewController: UIViewController, UITextFieldDelegate {
         newEmojisLabel.text = newTrackerEmojis.text ?? " "
     }
     
+    // Move the text field to fit upon the keyboard
+    func moveTextField(_ textField: UITextField, moveDistance: Int, up: Bool) {
+        if textField.accessibilityIdentifier == "movable" {
+            let moveDuration = 0.3
+            let movement: CGFloat = CGFloat(up ? -moveDistance : moveDistance)
+            
+            UIView.beginAnimations("animateTextField", context: nil)
+            UIView.setAnimationBeginsFromCurrentState(true)
+            UIView.setAnimationDuration(moveDuration)
+            self.view.frame = self.view.frame.offsetBy(dx: 0, dy: movement)
+            UIView.commitAnimations()
+        }
+    }
+    
+    func endEditingTextFields() {
+        updatenewTrackerLabels()
+        activateAddNewTrackerButton()
+        newTrackerName.endEditing(true)
+        newTrackerEmojis.endEditing(true)
+    }
+    
+    
     ///////////////////////////////////////////
     
     //MARK: Radio buttons
@@ -57,18 +85,18 @@ class AddNewViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var newTrackerStackview: UIStackView!
     @IBAction func newTrackerTypeInputClicked(_ sender: UIButton) {
         newTrackerType = "input"
-        activateAddNewTrackerButton()
         makeButtonSelected(with: sender)
+        endEditingTextFields()
     }
     @IBAction func newTrackerTypePick5Clicked(_ sender: UIButton) {
         newTrackerType = "pick5"
-        activateAddNewTrackerButton()
         makeButtonSelected(with: sender)
+        endEditingTextFields()
     }
     @IBAction func newTrackerTypeSliderClicked(_ sender: UIButton) {
         newTrackerType = "slider"
-        activateAddNewTrackerButton()
         makeButtonSelected(with: sender)
+        endEditingTextFields()
     }
     
     func makeButtonSelected(with sender: UIButton) {
