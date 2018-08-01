@@ -26,6 +26,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         trackerList = realmMethods.loadTrackers()
         
+        //adding custom cells' layout
+        trackersTableView.register(UINib(nibName: "SliderCell", bundle: nil), forCellReuseIdentifier: "sliderCell")
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -53,22 +56,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     //MARK: TableView DataSource Methods
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row % 2 == 0 {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "trackCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "sliderCell", for: indexPath) as! TrackDetailCell
         
-        cell.textLabel?.text = trackerList?[indexPath.row].name
-        cell.detailTextLabel?.text = trackerList?[indexPath.row].emojis
+        cell.trackerNameLabel?.text = trackerList?[indexPath.row].name
+        cell.emojiLabel?.text = trackerList?[indexPath.row].emojis
         
         return cell
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "trackCell2", for: indexPath)
-            
-            cell.textLabel?.text = trackerList?[indexPath.row].name
-//            cell.detailTextLabel?.text = trackerList?[indexPath.row].emojis
-            
-            return cell
-        }
     }
     
     

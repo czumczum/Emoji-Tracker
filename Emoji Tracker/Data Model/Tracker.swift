@@ -13,6 +13,7 @@ class Tracker: Object {
     @objc dynamic var name : String = ""
     @objc dynamic var emojis : String = ""
     @objc dynamic var archived : Bool = false
+    @objc dynamic var type : String = ""
     
     //TODO: Most frequently used emoji
     

@@ -25,15 +25,17 @@
                             <view userInteractionEnabled="NO" contentMode="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="Np5-h0-Bim">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="337"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Emoji Tracker 😄😂😍" translatesAutoresizingMaskIntoConstraints="NO" id="9jy-IB-g0A">
-                                        <rect key="frame" x="0.0" y="156" width="414" height="181"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Emoji Tracker 😄😂😍" translatesAutoresizingMaskIntoConstraints="NO" id="9jy-IB-g0A">
+                                        <rect key="frame" x="0.0" y="214" width="414" height="123"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" red="0.0" green="0.56904578210000001" blue="0.57461684940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Np5-h0-Bim" secondAttribute="height" multiplier="414:337" id="7Mn-yJ-hVV"/>
+                                    <constraint firstItem="9jy-IB-g0A" firstAttribute="leading" secondItem="Np5-h0-Bim" secondAttribute="leading" id="8DR-qu-Wt2"/>
+                                    <constraint firstAttribute="bottom" secondItem="9jy-IB-g0A" secondAttribute="bottom" id="iYh-yd-yCk"/>
+                                    <constraint firstAttribute="trailing" secondItem="9jy-IB-g0A" secondAttribute="trailing" id="y8I-yZ-SyI"/>
                                 </constraints>
                             </view>
                         </subviews>

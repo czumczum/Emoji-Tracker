@@ -17,6 +17,9 @@
 		7548684921091FAC00627971 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7548684721091FAC00627971 /* LaunchScreen.storyboard */; };
 		754868522109599000627971 /* Lobster-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 754868512109599000627971 /* Lobster-Regular.ttf */; };
 		75486858210A5D0200627971 /* SwipingPages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75486857210A5D0200627971 /* SwipingPages.swift */; };
+		7578064E211224AA0041AC23 /* DetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7578064D211224AA0041AC23 /* DetailCell.xib */; };
+		75780650211224CD0041AC23 /* TrackDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7578064F211224CD0041AC23 /* TrackDetailCell.swift */; };
+		75780652211224E00041AC23 /* SliderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75780651211224DF0041AC23 /* SliderCell.xib */; };
 		75AFE0072110A2C9000816CE /* Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AFE0062110A2C9000816CE /* Emoji.swift */; };
 		75AFE0092110A3DF000816CE /* DayDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AFE0082110A3DF000816CE /* DayDate.swift */; };
 		75AFE00B2110A71D000816CE /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AFE00A2110A71D000816CE /* Category.swift */; };
@@ -37,6 +40,9 @@
 		7548684A21091FAC00627971 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		754868512109599000627971 /* Lobster-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lobster-Regular.ttf"; sourceTree = "<group>"; };
 		75486857210A5D0200627971 /* SwipingPages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipingPages.swift; sourceTree = "<group>"; };
+		7578064D211224AA0041AC23 /* DetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailCell.xib; sourceTree = "<group>"; };
+		7578064F211224CD0041AC23 /* TrackDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackDetailCell.swift; sourceTree = "<group>"; };
+		75780651211224DF0041AC23 /* SliderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SliderCell.xib; sourceTree = "<group>"; };
 		75AFE0062110A2C9000816CE /* Emoji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emoji.swift; sourceTree = "<group>"; };
 		75AFE0082110A3DF000816CE /* DayDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayDate.swift; sourceTree = "<group>"; };
 		75AFE00A2110A71D000816CE /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
@@ -102,6 +108,7 @@
 			children = (
 				7548683B21091FAB00627971 /* AppDelegate.swift */,
 				753A2A93210BDCE200EE9982 /* AddNewViewController.swift */,
+				7578064C211223D10041AC23 /* CustomCell */,
 				753A2A95210BDF3F00EE9982 /* TrackersViewController.swift */,
 				7548683D21091FAB00627971 /* ViewController.swift */,
 				75486857210A5D0200627971 /* SwipingPages.swift */,
@@ -121,6 +128,16 @@
 				754868512109599000627971 /* Lobster-Regular.ttf */,
 			);
 			path = fonts;
+			sourceTree = "<group>";
+		};
+		7578064C211223D10041AC23 /* CustomCell */ = {
+			isa = PBXGroup;
+			children = (
+				7578064F211224CD0041AC23 /* TrackDetailCell.swift */,
+				75780651211224DF0041AC23 /* SliderCell.xib */,
+				7578064D211224AA0041AC23 /* DetailCell.xib */,
+			);
+			path = CustomCell;
 			sourceTree = "<group>";
 		};
 		D441D34E8BD92005627CEFC4 /* Frameworks */ = {
@@ -191,10 +208,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75780652211224E00041AC23 /* SliderCell.xib in Resources */,
 				7548684921091FAC00627971 /* LaunchScreen.storyboard in Resources */,
 				754868522109599000627971 /* Lobster-Regular.ttf in Resources */,
 				7548684621091FAC00627971 /* Assets.xcassets in Resources */,
 				7548684121091FAB00627971 /* Main.storyboard in Resources */,
+				7578064E211224AA0041AC23 /* DetailCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,6 +273,7 @@
 				75B354CA210B6C6E00233922 /* Tracker.swift in Sources */,
 				75486858210A5D0200627971 /* SwipingPages.swift in Sources */,
 				753A2A94210BDCE200EE9982 /* AddNewViewController.swift in Sources */,
+				75780650211224CD0041AC23 /* TrackDetailCell.swift in Sources */,
 				75AFE0092110A3DF000816CE /* DayDate.swift in Sources */,
 				7548683C21091FAB00627971 /* AppDelegate.swift in Sources */,
 			);
