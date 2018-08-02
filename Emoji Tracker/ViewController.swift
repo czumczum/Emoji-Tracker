@@ -28,6 +28,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         //adding custom cells' layout
         trackersTableView.register(UINib(nibName: "SliderCell", bundle: nil), forCellReuseIdentifier: "sliderCell")
+        trackersTableView.register(UINib(nibName: "Pick5Cell", bundle: nil), forCellReuseIdentifier: "pick5Cell")
+//        trackersTableView.register(UINib(nibName: "LabelCell", bundle: nil), forCellReuseIdentifier: "labelCell")
         
     }
     
@@ -50,6 +52,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     //MARK: Trackers TableView
     @IBOutlet var trackersTableView: UITableView!
     
+    let numberOfCellsPerRow: CGFloat = 2
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return trackerList?.count ?? 0
     }
@@ -57,12 +61,24 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     //MARK: TableView DataSource Methods
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        if trackerList?[indexPath.row].type == "slider" {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "sliderCell", for: indexPath) as! TrackDetailCell
         
-        cell.trackerNameLabel?.text = trackerList?[indexPath.row].name
+        cell.titleLabel?.text = trackerList?[indexPath.row].name
         cell.emojiLabel?.text = trackerList?[indexPath.row].emojis
         
         return cell
+        } else {
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "pick5Cell", for: indexPath) as! TrackDetailCell
+            
+            cell.trackerNameLabel2.text = trackerList?[indexPath.row].name
+            cell.emojiLabel2?.text = trackerList?[indexPath.row].emojis
+            
+            return cell
+            
+        }
     }
     
     

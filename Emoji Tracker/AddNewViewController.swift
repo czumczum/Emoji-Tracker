@@ -119,6 +119,7 @@ class AddNewViewController: UIViewController, UITextFieldDelegate {
         let tracker = Tracker()
         tracker.name = newTrackerName.text!
         tracker.emojis = newTrackerEmojis.text!
+        tracker.type = newTrackerType
         
         realmMethods.saveToRealm(with: tracker)
         self.dismiss(animated: true)
