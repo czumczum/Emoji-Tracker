@@ -63,18 +63,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         if trackerList?[indexPath.row].type == "slider" {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "sliderCell", for: indexPath) as! TrackDetailCell
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "pick5Cell", for: indexPath) as! Pick5Cell
+
         cell.titleLabel?.text = trackerList?[indexPath.row].name
         cell.emojiLabel?.text = trackerList?[indexPath.row].emojis
         
         return cell
         } else {
             
-            let cell = tableView.dequeueReusableCell(withIdentifier: "pick5Cell", for: indexPath) as! TrackDetailCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "pick5Cell", for: indexPath) as! Pick5Cell
             
-            cell.trackerNameLabel2.text = trackerList?[indexPath.row].name
-            cell.emojiLabel2?.text = trackerList?[indexPath.row].emojis
+            cell.titleLabel?.text = trackerList?[indexPath.row].name
+            cell.emojiLabel?.text = trackerList?[indexPath.row].emojis
             
             return cell
             
