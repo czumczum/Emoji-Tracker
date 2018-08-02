@@ -33,6 +33,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         trackersTableView?.register(UINib(nibName: "Pick5Cell", bundle: nil), forCellReuseIdentifier: "pick5Cell")
         trackersTableView.register(UINib(nibName: "InputCell", bundle: nil), forCellReuseIdentifier: "inputCell")
         
+        NotificationCenter.default.addObserver(self, selector: #selector(MainViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(MainViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -53,13 +57,25 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet var todayEmojiLabel: UILabel!
     
     
-    //MARK: Add today's date to calendar
-    
-    
-    //MARK: - Table View
+ 
     //MARK: Days StackView
     @IBOutlet weak var daysStackView: UIStackView!
+       //MARK: Add today's date to calendar
     
+    //MARK: - Table View
+    
+    //MARK: Scroll the view for keyboard
+    @objc func keyboardWillShow(_ notification:Notification) {
+        
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            trackersTableView.contentInset = UIEdgeInsetsMake(0, 0, keyboardSize.height, 0)
+        }
+    }
+    @objc func keyboardWillHide(_ notification:Notification) {
+        
+            trackersTableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
+    }
+
     //MARK: Trackers TableView
     @IBOutlet var trackersTableView: UITableView!
     
