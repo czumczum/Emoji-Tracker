@@ -4,7 +4,6 @@ import UIKit
 
 class SliderCell: UITableViewCell {
     
-    //MARK: - Pick5Cell
     
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var emojiLabel: UILabel!

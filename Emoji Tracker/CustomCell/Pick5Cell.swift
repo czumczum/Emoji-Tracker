@@ -4,8 +4,6 @@ import UIKit
 
 class Pick5Cell: UITableViewCell {
     
-    //MARK: - Pick5Cell
-    
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var emojiLabel: UILabel!
   

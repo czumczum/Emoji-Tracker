@@ -16,10 +16,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--View Controller-->
+        <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="mainBoard" id="BYZ-38-t0r" customClass="ViewController" customModule="Emoji_Tracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="mainBoard" id="BYZ-38-t0r" customClass="MainViewController" customModule="Emoji_Tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" restorationIdentifier="general" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -27,7 +27,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="soV-Eo-y0N">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleAspectFill" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="KxA-Ku-rRO">
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="KxA-Ku-rRO">
                                 <rect key="frame" x="0.0" y="64" width="375" height="193"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Jy-Y8-svm">
@@ -200,6 +200,9 @@
                     </navigationItem>
                     <connections>
                         <outlet property="daysStackView" destination="KxA-Ku-rRO" id="tWT-20-1dA"/>
+                        <outlet property="todayDateLabel" destination="5Bm-gQ-ff6" id="J6p-Sa-fbJ"/>
+                        <outlet property="todayDayLabel" destination="VC1-iI-dvf" id="6mg-j2-XuC"/>
+                        <outlet property="todayEmojiLabel" destination="KRb-07-Gmk" id="m9c-7F-pVP"/>
                         <outlet property="trackersTableView" destination="xzI-1Z-AYy" id="wiU-Ih-LtM"/>
                     </connections>
                 </viewController>
@@ -576,10 +579,10 @@
             </objects>
             <point key="canvasLocation" x="5531" y="-709"/>
         </scene>
-        <!--View Controller-->
+        <!--Stats View Controller-->
         <scene sceneID="62z-v4-6Fs">
             <objects>
-                <viewController storyboardIdentifier="newTracker1" id="JTn-47-53Z" customClass="ViewController" customModule="Emoji_Tracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="newTracker1" id="JTn-47-53Z" customClass="StatsViewController" customModule="Emoji_Tracker" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="awg-q9-DOK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -666,10 +669,10 @@
             </objects>
             <point key="canvasLocation" x="4880.625" y="-1385"/>
         </scene>
-        <!--View Controller-->
+        <!--Stats View Controller-->
         <scene sceneID="KW2-Uh-2vX">
             <objects>
-                <viewController storyboardIdentifier="newTracker2" id="wsk-6r-6bC" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="newTracker2" id="wsk-6r-6bC" customClass="StatsViewController" customModule="Emoji_Tracker" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jlM-2O-Yca">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -702,10 +705,10 @@
             </objects>
             <point key="canvasLocation" x="5569" y="-1385"/>
         </scene>
-        <!--View Controller-->
+        <!--Stats View Controller-->
         <scene sceneID="gbA-Z6-7sJ">
             <objects>
-                <viewController storyboardIdentifier="newTracker3" id="TVF-57-GQ1" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="newTracker3" id="TVF-57-GQ1" customClass="StatsViewController" customModule="Emoji_Tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="izt-S1-Czk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     let realm = try! Realm()
     let realmMethods = RealmMethods()
@@ -19,6 +19,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print("date",Date(),"date")
+        
         //Trackers list
         trackersTableView?.delegate = self
         trackersTableView?.dataSource = self
@@ -27,9 +29,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         trackerList = realmMethods.loadTrackers()
         
         //adding custom cells' layout
-        trackersTableView.register(UINib(nibName: "SliderCell", bundle: nil), forCellReuseIdentifier: "sliderCell")
-        trackersTableView.register(UINib(nibName: "Pick5Cell", bundle: nil), forCellReuseIdentifier: "pick5Cell")
-//        trackersTableView.register(UINib(nibName: "LabelCell", bundle: nil), forCellReuseIdentifier: "labelCell")
+        trackersTableView?.register(UINib(nibName: "SliderCell", bundle: nil), forCellReuseIdentifier: "sliderCell")
+        trackersTableView?.register(UINib(nibName: "Pick5Cell", bundle: nil), forCellReuseIdentifier: "pick5Cell")
+        trackersTableView.register(UINib(nibName: "InputCell", bundle: nil), forCellReuseIdentifier: "inputCell")
         
     }
     
@@ -43,9 +45,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         trackersTableView?.reloadData()
         
     }
+    
+    //MARK: - Days StackView
 
-
-    //MARK: - Main Board
+    @IBOutlet var todayDateLabel: UILabel!
+    @IBOutlet var todayDayLabel: UILabel!
+    @IBOutlet var todayEmojiLabel: UILabel!
+    
+    
+    //MARK: Add today's date to calendar
+    
+    
+    //MARK: - Table View
     //MARK: Days StackView
     @IBOutlet weak var daysStackView: UIStackView!
     
@@ -61,16 +72,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     //MARK: TableView DataSource Methods
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if trackerList?[indexPath.row].type == "slider" {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "pick5Cell", for: indexPath) as! Pick5Cell
-
-        cell.titleLabel?.text = trackerList?[indexPath.row].name
-        cell.emojiLabel?.text = trackerList?[indexPath.row].emojis
-        
-        return cell
-        } else {
-            
+        switch trackerList?[indexPath.row].type {
+        case "slider":
+                let cell = tableView.dequeueReusableCell(withIdentifier: "sliderCell", for: indexPath) as! SliderCell
+                
+                cell.titleLabel?.text = trackerList?[indexPath.row].name
+                cell.emojiLabel?.text = trackerList?[indexPath.row].emojis
+                
+                return cell
+        case "pick5":
             let cell = tableView.dequeueReusableCell(withIdentifier: "pick5Cell", for: indexPath) as! Pick5Cell
             
             cell.titleLabel?.text = trackerList?[indexPath.row].name
@@ -78,15 +88,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
             return cell
             
+        default:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "inputCell", for: indexPath) as! InputCell
+            
+            cell.titleLabel?.text = trackerList?[indexPath.row].name
+            cell.emojiLabel?.text = trackerList?[indexPath.row].emojis
+            
+            return cell
         }
-    }
-    
-    
-    
-    //MARK: - Stats Swipping pages
-    
-    @IBAction func dismissStatsButtonClicked(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
     }
 
 }
