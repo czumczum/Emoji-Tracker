@@ -14,72 +14,66 @@
         <tableViewCell contentMode="scaleAspectFit" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" shouldIndentWhileEditing="NO" reuseIdentifier="pick5Cell" rowHeight="133" id="9hv-3d-eEy" customClass="Pick5Cell" customModule="Emoji_Tracker" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="350" height="114"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9hv-3d-eEy" id="2SS-CF-kBl" customClass="TrackDetailCell" customModule="Emoji_Tracker" customModuleProvider="target">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9hv-3d-eEy" id="2SS-CF-kBl">
                 <rect key="frame" x="0.0" y="0.0" width="350" height="113.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Vdq-4y-wtS">
-                        <rect key="frame" x="0.0" y="0.0" width="411" height="114"/>
+                        <rect key="frame" x="10" y="0.0" width="330" height="114"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="pvN-G8-Rgi">
-                                <rect key="frame" x="0.0" y="0.0" width="411" height="57"/>
+                                <rect key="frame" x="0.0" y="0.0" width="330" height="57"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WHn-NV-ETC">
-                                        <rect key="frame" x="171" y="0.0" width="120" height="57"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="120" id="LF9-yS-DeF"/>
-                                        </constraints>
+                                        <rect key="frame" x="0.0" y="0.0" width="165" height="57"/>
                                         <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="20"/>
                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iJb-kM-VMb">
-                                        <rect key="frame" x="291" y="0.0" width="120" height="57"/>
+                                        <rect key="frame" x="165" y="0.0" width="165" height="57"/>
                                         <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="20"/>
                                         <color key="textColor" red="0.2901960784" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="WHn-NV-ETC" firstAttribute="leading" secondItem="pvN-G8-Rgi" secondAttribute="leading" constant="10" id="EbH-u6-wxm"/>
-                                </constraints>
                             </stackView>
                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="qgd-41-9qt" userLabel="BottomView">
-                                <rect key="frame" x="0.0" y="57" width="411" height="57"/>
+                                <rect key="frame" x="0.0" y="57" width="330" height="57"/>
                                 <subviews>
                                     <stackView verifyAmbiguity="ignoreSizes" opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="411" placeholderIntrinsicHeight="34.5" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="hn5-C3-hO2">
-                                        <rect key="frame" x="0.0" y="0.0" width="411" height="57"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="330" height="57"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="syN-Gy-NqN">
-                                                <rect key="frame" x="0.0" y="0.0" width="82" height="57"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="66" height="57"/>
                                                 <state key="normal" title="1"/>
                                                 <connections>
                                                     <action selector="button1:" destination="9hv-3d-eEy" eventType="touchUpInside" id="pAA-xK-g92"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nA5-Na-vfz">
-                                                <rect key="frame" x="82" y="0.0" width="82.5" height="57"/>
+                                                <rect key="frame" x="66" y="0.0" width="66" height="57"/>
                                                 <state key="normal" title="1"/>
                                                 <connections>
                                                     <action selector="button2:" destination="9hv-3d-eEy" eventType="touchUpInside" id="RmU-Cx-ZcR"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lNG-wZ-bZK">
-                                                <rect key="frame" x="164.5" y="0.0" width="82" height="57"/>
+                                                <rect key="frame" x="132" y="0.0" width="66" height="57"/>
                                                 <state key="normal" title="2"/>
                                                 <connections>
                                                     <action selector="button3:" destination="9hv-3d-eEy" eventType="touchUpInside" id="aGH-oG-bBO"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rbh-qS-wpR">
-                                                <rect key="frame" x="246.5" y="0.0" width="82.5" height="57"/>
+                                                <rect key="frame" x="198" y="0.0" width="66" height="57"/>
                                                 <state key="normal" title="3"/>
                                                 <connections>
                                                     <action selector="button4:" destination="9hv-3d-eEy" eventType="touchUpInside" id="Tac-X8-Wwf"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gGE-4a-fKl">
-                                                <rect key="frame" x="329" y="0.0" width="82" height="57"/>
+                                                <rect key="frame" x="264" y="0.0" width="66" height="57"/>
                                                 <state key="normal" title="4"/>
                                                 <connections>
                                                     <action selector="button5:" destination="9hv-3d-eEy" eventType="touchUpInside" id="D4Z-dj-dX0"/>
@@ -103,8 +97,8 @@
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="Vdq-4y-wtS" secondAttribute="bottom" id="6QW-1p-CEU"/>
                     <constraint firstItem="Vdq-4y-wtS" firstAttribute="top" secondItem="2SS-CF-kBl" secondAttribute="top" id="FsP-rj-QQD"/>
-                    <constraint firstAttribute="trailing" secondItem="Vdq-4y-wtS" secondAttribute="trailing" id="pYQ-oa-VVe"/>
-                    <constraint firstItem="Vdq-4y-wtS" firstAttribute="leading" secondItem="2SS-CF-kBl" secondAttribute="leading" id="upk-Ht-cAY"/>
+                    <constraint firstAttribute="trailing" secondItem="Vdq-4y-wtS" secondAttribute="trailing" constant="10" id="pYQ-oa-VVe"/>
+                    <constraint firstItem="Vdq-4y-wtS" firstAttribute="leading" secondItem="2SS-CF-kBl" secondAttribute="leading" constant="10" id="upk-Ht-cAY"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

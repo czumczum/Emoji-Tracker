@@ -14,24 +14,24 @@
         <tableViewCell contentMode="scaleAspectFit" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" shouldIndentWhileEditing="NO" reuseIdentifier="inputCell" rowHeight="133" id="9hv-3d-eEy" customClass="InputCell" customModule="Emoji_Tracker" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="350" height="114"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9hv-3d-eEy" id="2SS-CF-kBl" customClass="InputCell" customModule="Emoji_Tracker" customModuleProvider="target">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9hv-3d-eEy" id="2SS-CF-kBl">
                 <rect key="frame" x="0.0" y="0.0" width="350" height="113.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Vdq-4y-wtS">
-                        <rect key="frame" x="10" y="0.0" width="340" height="114"/>
+                        <rect key="frame" x="10" y="0.0" width="330" height="114"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="pvN-G8-Rgi">
-                                <rect key="frame" x="0.0" y="0.0" width="340" height="57"/>
+                                <rect key="frame" x="0.0" y="0.0" width="330" height="57"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WHn-NV-ETC">
-                                        <rect key="frame" x="0.0" y="16.5" width="167.5" height="24.5"/>
+                                        <rect key="frame" x="0.0" y="16.5" width="162.5" height="24.5"/>
                                         <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="20"/>
                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iJb-kM-VMb">
-                                        <rect key="frame" x="172.5" y="16.5" width="167.5" height="24.5"/>
+                                        <rect key="frame" x="167.5" y="16.5" width="162.5" height="24.5"/>
                                         <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="20"/>
                                         <color key="textColor" red="0.2901960784" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -39,10 +39,10 @@
                                 </subviews>
                             </stackView>
                             <view contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="qgd-41-9qt" userLabel="BottomView">
-                                <rect key="frame" x="0.0" y="57" width="340" height="57"/>
+                                <rect key="frame" x="0.0" y="57" width="330" height="57"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Enter an emoji" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wnJ-x7-x8M">
-                                        <rect key="frame" x="70.5" y="10" width="200" height="37"/>
+                                        <rect key="frame" x="65.5" y="10" width="200" height="37"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="9bb-ZU-ljf"/>
@@ -72,7 +72,7 @@
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="Vdq-4y-wtS" secondAttribute="bottom" id="6QW-1p-CEU"/>
                     <constraint firstItem="Vdq-4y-wtS" firstAttribute="top" secondItem="2SS-CF-kBl" secondAttribute="top" id="FsP-rj-QQD"/>
-                    <constraint firstAttribute="trailing" secondItem="Vdq-4y-wtS" secondAttribute="trailing" id="pYQ-oa-VVe"/>
+                    <constraint firstAttribute="trailing" secondItem="Vdq-4y-wtS" secondAttribute="trailing" constant="10" id="pYQ-oa-VVe"/>
                     <constraint firstItem="Vdq-4y-wtS" firstAttribute="leading" secondItem="2SS-CF-kBl" secondAttribute="leading" constant="10" id="upk-Ht-cAY"/>
                 </constraints>
             </tableViewCellContentView>
