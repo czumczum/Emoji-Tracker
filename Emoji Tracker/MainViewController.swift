@@ -19,8 +19,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("date",Date(),"date")
-        
         //Trackers list
         trackersTableView?.delegate = self
         trackersTableView?.dataSource = self
@@ -32,11 +30,14 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         trackersTableView?.register(UINib(nibName: "SliderCell", bundle: nil), forCellReuseIdentifier: "sliderCell")
         trackersTableView?.register(UINib(nibName: "Pick5Cell", bundle: nil), forCellReuseIdentifier: "pick5Cell")
         trackersTableView.register(UINib(nibName: "InputCell", bundle: nil), forCellReuseIdentifier: "inputCell")
-        
+       
+        //Keyboard scrolling
         NotificationCenter.default.addObserver(self, selector: #selector(MainViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(MainViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
+        //Get the current Date
+        updateDates()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -60,7 +61,20 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
  
     //MARK: Days StackView
     @IBOutlet weak var daysStackView: UIStackView!
-       //MARK: Add today's date to calendar
+    
+    //MARK: Add today's date to calendar
+    func updateDates() {
+        let currentDate = Date().toLocalTime()
+        let calendar = Calendar.init(identifier: .gregorian)
+        let components = calendar.dateComponents([.year, .day], from: currentDate)
+        
+        todayDateLabel.text = "\(currentDate.getMonth() ?? ""), \(components.day ?? 0)th"
+        todayDayLabel.text = currentDate.dayOfTheWeek() ?? ""
+        
+        print(calendar.getTomorrowDate())
+        
+    }
+    
     
     //MARK: - Table View
     
