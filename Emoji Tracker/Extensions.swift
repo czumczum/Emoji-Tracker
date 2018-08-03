@@ -11,20 +11,20 @@ import UIKit
 
 extension Calendar {
     
-    func getYesterdayDate() -> Date? {
+    func getYesterdayDate(with date : Date = Date()) -> Date? {
         let yesterday = Calendar.current.date(
             byAdding: .hour,
             value: -24,
-            to: Date().toLocalTime())
+            to: date.toLocalTime())
         
         return yesterday
     }
     
-    func getTomorrowDate() -> Date? {
+    func getTomorrowDate(with date : Date = Date()) -> Date? {
         let tomorrow = Calendar.current.date(
             byAdding: .hour,
             value: 24,
-            to: Date().toLocalTime())
+            to: date.toLocalTime())
         
         return tomorrow
     }
@@ -49,7 +49,6 @@ extension Date {
     func getMonth() -> String? {
         let dateFormatter = DateFormatter().getFormattedDate()
         dateFormatter.dateFormat = "LLLL"
-        print(dateFormatter.string(from: self as Date))
         return dateFormatter.string(from: self as Date)
     }
     
@@ -59,13 +58,30 @@ extension Date {
         return components.day
     }
     
+    func startOfTheDay() -> Date? {
+        let dateFormatter = DateFormatter().getFormattedDate()
+        dateFormatter.timeStyle = .none
+        dateFormatter.dateStyle = .short
+        let stringDate = dateFormatter.string(from: self)
+        return dateFormatter.date(from: stringDate)
+    }
+    
+    func endOfTheDay() -> Date? {
+        let dateFormatter = DateFormatter().getFormattedDate()
+        dateFormatter.timeStyle = .none
+        dateFormatter.dateStyle = .short
+        let calendar = Calendar.init(identifier: .gregorian)
+        let endDaydate = calendar.getTomorrowDate(with: self)
+        let stringDate = dateFormatter.string(from: endDaydate ?? self)
+        return dateFormatter.date(from: stringDate)
+    }
+    
 }
 
 extension DateFormatter {
     func getFormattedDate() -> DateFormatter {
         let dateFormatter = DateFormatter()
-        let timeZone = TimeZone.current.abbreviation()
-        dateFormatter.timeZone = TimeZone(abbreviation: timeZone ?? "UTC")
+        dateFormatter.timeZone = TimeZone.current
         return dateFormatter
     }
 }

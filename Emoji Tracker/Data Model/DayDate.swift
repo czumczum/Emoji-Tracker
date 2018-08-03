@@ -10,10 +10,11 @@ import Foundation
 import RealmSwift
 
 class DayDate: Object {
+    
+    //Stored in local time
     @objc dynamic var date : Date = Date()
-    
-    var emoji = List<Emoji>()
-    var tracker = List<Tracker>()
-    
-    //TODO: Emoji:Tracker
+
+    var emoji = LinkingObjects(fromType: Emoji.self, property: "date")
+    var tracker = LinkingObjects(fromType: Tracker.self, property: "date")
+
 }

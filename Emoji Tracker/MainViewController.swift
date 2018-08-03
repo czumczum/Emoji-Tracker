@@ -13,8 +13,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     let realm = try! Realm()
     let realmMethods = RealmMethods()
-    
     var trackerList: Results<Tracker>?
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +38,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         //Get the current Date
         updateDates()
+        updateEmojis()
+    
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -69,8 +71,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var daysStackView: UIStackView!
     
     //MARK: Add today's date to calendar
-    func updateDates() {
-        let currentDate = Date().toLocalTime()
+    func updateDates(date currentDate: Date = Date().toLocalTime()) {
         let calendar = Calendar.init(identifier: .gregorian)
         let yesterday = calendar.getYesterdayDate()
         let tomorrow = calendar.getTomorrowDate()
@@ -84,8 +85,34 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         tomorrowDateLabel.text = "\(tomorrow?.getMonth() ?? ""), \(tomorrow?.getDayDate() ?? 0)th"
         tomorrowDayLabel.text = tomorrow?.dayOfTheWeek() ?? ""
         
+        //TODO: delete after development
+        print(currentDate)
+        print(yesterday as Any)
+        print(tomorrow as Any)
     }
     
+    //MARK: DayDate filtered to only current day
+    func getFilteredDays(date now : Date = Date().toLocalTime()) -> Results<DayDate>? {
+        let daysList = realm.objects(DayDate.self)
+        if let start = now.startOfTheDay(), let end = now.endOfTheDay() {
+            let predicate: NSPredicate = NSPredicate(format: "date BETWEEN {%@, %@}", start as CVarArg, end as CVarArg)
+            return daysList.filter(predicate)
+            
+        }
+        return daysList
+    }
+    
+    //MARK: Add current emojis to calendar
+    func updateEmojis(date currentDate : Date = Date().toLocalTime()) {
+        if let currentDayDate = getFilteredDays(date: currentDate) {
+            var emojiList = [String]()
+            for dayDate in currentDayDate {
+                emojiList.append("\(dayDate.emoji)")
+            }
+            print(emojiList)
+        }
+    }
+
     
     //MARK: - Table View
     
@@ -137,6 +164,12 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             return cell
         }
+    }
+    
+    //MARK: Saving the DayData from trackers & user's answers
+    func saveNewDayDate() {
+        let dayDate = DayDate()
+//        dayDate.date =
     }
 
 }

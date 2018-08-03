@@ -15,6 +15,8 @@ class Tracker: Object {
     @objc dynamic var archived : Bool = false
     @objc dynamic var type : String = ""
     
+    var date = List<DayDate>()
+    
     //TODO: Most frequently used emoji
     
     var category = LinkingObjects(fromType: Category.self, property: "tracker")
