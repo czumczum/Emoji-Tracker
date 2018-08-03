@@ -14,6 +14,7 @@ class Tracker: Object {
     @objc dynamic var emojis : String = ""
     @objc dynamic var archived : Bool = false
     @objc dynamic var type : String = ""
+    @objc dynamic var trackerId = primaryKey()
     
     var date = List<DayDate>()
     

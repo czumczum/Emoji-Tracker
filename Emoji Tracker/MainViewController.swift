@@ -104,12 +104,32 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     //MARK: Add current emojis to calendar
     func updateEmojis(date currentDate : Date = Date().toLocalTime()) {
+        //today
         if let currentDayDate = getFilteredDays(date: currentDate) {
-            var emojiList = [String]()
+            var emojiList = ""
             for dayDate in currentDayDate {
-                emojiList.append("\(dayDate.emoji)")
+                emojiList += "\(dayDate.emoji)"
             }
-            print(emojiList)
+            todayEmojiLabel.text = emojiList
+        }
+        
+        let calendar = Calendar(identifier: .gregorian)
+        // tomorrow
+        if let tomorrowDayDate = getFilteredDays(date: calendar.getTomorrowDate()!) {
+            var emojiList = ""
+            for dayDate in tomorrowDayDate {
+                emojiList += "\(dayDate.emoji)"
+            }
+            tomorrowEmojiLabel.text = emojiList
+        }
+        
+        //yesterday
+        if let yesterdayDayDate = getFilteredDays(date: calendar.getYesterdayDate()!) {
+            var emojiList = ""
+            for dayDate in yesterdayDayDate {
+                emojiList += "\(dayDate.emoji)"
+            }
+            yesterdayEmojiLabel.text = emojiList
         }
     }
 
@@ -167,9 +187,18 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     //MARK: Saving the DayData from trackers & user's answers
-    func saveNewDayDate() {
+    
+    func saveNewDayDate(date currentDate: Date = Date(), emoji : String, tracker : String) {
+        
         let dayDate = DayDate()
-//        dayDate.date =
+        dayDate.date = currentDate
+        addOrUpdateEmoji(emoji: emoji, date: currentDate)
+//        realmMethods.saveToRealm(with: dayDate)
+    }
+    
+    func addOrUpdateEmoji(emoji : String, date : Date) {
+         let emojiObject = realm.objects(Emoji.self).filter(NSPredicate(format: "symbol CONTAINS[cd] %@", emoji ))
+            print(emojiObject)
     }
 
 }

@@ -12,6 +12,7 @@ import RealmSwift
 class Emoji: Object {
     @objc dynamic var symbol : String = ""
     @objc dynamic var frequency : Int = 0
+    @objc dynamic var emojiId = primaryKey()
     
     //TODO: Day when the emoji is used the most
     
