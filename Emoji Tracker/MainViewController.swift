@@ -57,8 +57,14 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet var todayDayLabel: UILabel!
     @IBOutlet var todayEmojiLabel: UILabel!
     
+    @IBOutlet var yesterdayEmojiLabel: UILabel!
+    @IBOutlet var yesterdayDateLabel: UILabel!
+    @IBOutlet var yesterdayDayLabel: UILabel!
     
- 
+    @IBOutlet var tomorrowEmojiLabel: UILabel!
+    @IBOutlet var tomorrowDateLabel: UILabel!
+    @IBOutlet var tomorrowDayLabel: UILabel!
+    
     //MARK: Days StackView
     @IBOutlet weak var daysStackView: UIStackView!
     
@@ -66,12 +72,17 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     func updateDates() {
         let currentDate = Date().toLocalTime()
         let calendar = Calendar.init(identifier: .gregorian)
-        let components = calendar.dateComponents([.year, .day], from: currentDate)
+        let yesterday = calendar.getYesterdayDate()
+        let tomorrow = calendar.getTomorrowDate()
         
-        todayDateLabel.text = "\(currentDate.getMonth() ?? ""), \(components.day ?? 0)th"
+        todayDateLabel.text = "\(currentDate.getMonth() ?? ""), \(currentDate.getDayDate() ?? 0)th"
         todayDayLabel.text = currentDate.dayOfTheWeek() ?? ""
         
-        print(calendar.getTomorrowDate())
+        yesterdayDateLabel.text = "\(yesterday?.getMonth() ?? ""), \(yesterday?.getDayDate() ?? 0)th"
+        yesterdayDayLabel.text = yesterday?.dayOfTheWeek() ?? ""
+        
+        tomorrowDateLabel.text = "\(tomorrow?.getMonth() ?? ""), \(tomorrow?.getDayDate() ?? 0)th"
+        tomorrowDayLabel.text = tomorrow?.dayOfTheWeek() ?? ""
         
     }
     

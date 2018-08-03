@@ -203,7 +203,13 @@
                         <outlet property="todayDateLabel" destination="5Bm-gQ-ff6" id="J6p-Sa-fbJ"/>
                         <outlet property="todayDayLabel" destination="VC1-iI-dvf" id="6mg-j2-XuC"/>
                         <outlet property="todayEmojiLabel" destination="KRb-07-Gmk" id="m9c-7F-pVP"/>
+                        <outlet property="tomorrowDateLabel" destination="0NH-qA-Wpd" id="3l9-3P-3cu"/>
+                        <outlet property="tomorrowDayLabel" destination="hTB-Vx-1Ng" id="iF8-yF-U1a"/>
+                        <outlet property="tomorrowEmojiLabel" destination="Ux0-tf-DI5" id="QfH-jV-0r0"/>
                         <outlet property="trackersTableView" destination="xzI-1Z-AYy" id="wiU-Ih-LtM"/>
+                        <outlet property="yesterdayDateLabel" destination="BO9-sn-Wkw" id="yPU-nT-Kz4"/>
+                        <outlet property="yesterdayDayLabel" destination="aEA-7f-Jfn" id="Ov0-Oz-5fG"/>
+                        <outlet property="yesterdayEmojiLabel" destination="eoh-iU-F7A" id="1Sg-At-U4D"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
