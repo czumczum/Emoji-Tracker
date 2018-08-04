@@ -8,6 +8,8 @@
 
 import UIKit
 
+let currentDateObj = CurrentDate()
+
 class CurrentDate {
     var now = Date().toLocalTime()
     
