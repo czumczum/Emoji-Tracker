@@ -11,21 +11,23 @@ import UIKit
 
 extension Calendar {
     
-    func getYesterdayDate(with date : Date = Date()) -> Date? {
-        let yesterday = Calendar.current.date(
+    func getYesterdayDate(with date : Date = CurrentDate().now) -> Date {
+        guard let yesterday = Calendar.current.date(
             byAdding: .hour,
             value: -24,
-            to: date.toLocalTime())
-        
+            to: date.toLocalTime()) else {
+                fatalError("Cannot get yesterday's date")
+        }
         return yesterday
     }
     
-    func getTomorrowDate(with date : Date = Date()) -> Date? {
-        let tomorrow = Calendar.current.date(
+    func getTomorrowDate(with date : Date = CurrentDate().now) -> Date {
+        guard let tomorrow = Calendar.current.date(
             byAdding: .hour,
             value: 24,
-            to: date.toLocalTime())
-        
+            to: date.toLocalTime()) else {
+                fatalError("Cannot get tomorrow's date")
+        }
         return tomorrow
     }
     

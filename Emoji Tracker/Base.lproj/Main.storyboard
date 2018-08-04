@@ -33,7 +33,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Jy-Y8-svm">
                                         <rect key="frame" x="0.0" y="0.0" width="79.5" height="193"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" text="November, 15th" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BO9-sn-Wkw">
+                                            <label opaque="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" text="November, 15th" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BO9-sn-Wkw">
                                                 <rect key="frame" x="0.0" y="78" width="79.5" height="37.5"/>
                                                 <fontDescription key="fontDescription" name="Lobster-Regular" family="Lobster" pointSize="15"/>
                                                 <color key="textColor" red="0.2901960784" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -52,6 +52,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
+                                        <color key="backgroundColor" red="0.58072251080000004" green="0.066734083" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="aEA-7f-Jfn" secondAttribute="trailing" id="1El-Dv-VZw"/>
                                             <constraint firstItem="BO9-sn-Wkw" firstAttribute="centerY" secondItem="3Jy-Y8-svm" secondAttribute="centerY" id="4fX-gs-Ges"/>
@@ -136,7 +137,9 @@
                                     </view>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="3Jy-Y8-svm" secondAttribute="bottom" id="Rcv-4v-QiP"/>
                                     <constraint firstAttribute="width" secondItem="KxA-Ku-rRO" secondAttribute="height" multiplier="375:193" id="qC7-u7-vmI"/>
+                                    <constraint firstItem="3Jy-Y8-svm" firstAttribute="top" secondItem="KxA-Ku-rRO" secondAttribute="top" id="rd1-bt-MqK"/>
                                 </constraints>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xzI-1Z-AYy">
@@ -183,6 +186,7 @@
                         <outlet property="todayDateLabel" destination="5Bm-gQ-ff6" id="J6p-Sa-fbJ"/>
                         <outlet property="todayDayLabel" destination="VC1-iI-dvf" id="6mg-j2-XuC"/>
                         <outlet property="todayEmojiLabel" destination="KRb-07-Gmk" id="m9c-7F-pVP"/>
+                        <outlet property="todayPanel" destination="LIS-Lb-mWe" id="ogM-dh-YV3"/>
                         <outlet property="tomorrowDateLabel" destination="0NH-qA-Wpd" id="3l9-3P-3cu"/>
                         <outlet property="tomorrowDayLabel" destination="hTB-Vx-1Ng" id="iF8-yF-U1a"/>
                         <outlet property="tomorrowEmojiLabel" destination="Ux0-tf-DI5" id="QfH-jV-0r0"/>
@@ -190,6 +194,7 @@
                         <outlet property="yesterdayDateLabel" destination="BO9-sn-Wkw" id="yPU-nT-Kz4"/>
                         <outlet property="yesterdayDayLabel" destination="aEA-7f-Jfn" id="Ov0-Oz-5fG"/>
                         <outlet property="yesterdayEmojiLabel" destination="eoh-iU-F7A" id="1Sg-At-U4D"/>
+                        <outlet property="yesterdayPanel" destination="3Jy-Y8-svm" id="MX7-Yk-sjg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

@@ -14,6 +14,22 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     let realm = try! Realm()
     let realmMethods = RealmMethods()
     var trackerList: Results<Tracker>?
+    
+    //MARK: - Days StackView
+    
+    @IBOutlet var todayDateLabel: UILabel!
+    @IBOutlet var todayDayLabel: UILabel!
+    @IBOutlet var todayEmojiLabel: UILabel!
+    
+    @IBOutlet var yesterdayEmojiLabel: UILabel!
+    @IBOutlet var yesterdayDateLabel: UILabel!
+    @IBOutlet var yesterdayDayLabel: UILabel!
+    @IBOutlet var yesterdayPanel: UIView!
+    
+    @IBOutlet var tomorrowEmojiLabel: UILabel!
+    @IBOutlet var tomorrowDateLabel: UILabel!
+    @IBOutlet var tomorrowDayLabel: UILabel!
+    @IBOutlet var todayPanel: UIView!
 
     
     override func viewDidLoad() {
@@ -22,7 +38,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         //Trackers list
         trackersTableView?.delegate = self
         trackersTableView?.dataSource = self
-//        configureTableView()
         
         trackerList = realmMethods.loadTrackers()
         
@@ -39,6 +54,13 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         //Get the current Date
         updateDates()
         updateEmojis()
+        
+        //tapGesture
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.stackViewTapped(_:)))
+        tapGesture.delegate = self as? UIGestureRecognizerDelegate
+        yesterdayPanel.isUserInteractionEnabled = true
+        yesterdayPanel.addGestureRecognizer(tapGesture)
+        
     
     }
     
@@ -51,27 +73,20 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         trackersTableView?.reloadData()
         
+        
+    }
+    
+    //tableViewTapped method for custom Gesture
+    @objc func stackViewTapped(_ sender: UITapGestureRecognizer) {
+        print("tapped")
+        print(self)
     }
     
     //MARK: - Days StackView
-
-    @IBOutlet var todayDateLabel: UILabel!
-    @IBOutlet var todayDayLabel: UILabel!
-    @IBOutlet var todayEmojiLabel: UILabel!
-    
-    @IBOutlet var yesterdayEmojiLabel: UILabel!
-    @IBOutlet var yesterdayDateLabel: UILabel!
-    @IBOutlet var yesterdayDayLabel: UILabel!
-    
-    @IBOutlet var tomorrowEmojiLabel: UILabel!
-    @IBOutlet var tomorrowDateLabel: UILabel!
-    @IBOutlet var tomorrowDayLabel: UILabel!
-    
-    //MARK: Days StackView
     @IBOutlet weak var daysStackView: UIStackView!
     
     //MARK: Add today's date to calendar
-    func updateDates(date currentDate: Date = Date().toLocalTime()) {
+    func updateDates(date currentDate: Date = CurrentDate().now) {
         let calendar = Calendar.init(identifier: .gregorian)
         let yesterday = calendar.getYesterdayDate()
         let tomorrow = calendar.getTomorrowDate()
@@ -79,11 +94,11 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         todayDateLabel.text = "\(currentDate.getMonth() ?? ""), \(currentDate.getDayDate() ?? 0)th"
         todayDayLabel.text = currentDate.dayOfTheWeek() ?? ""
         
-        yesterdayDateLabel.text = "\(yesterday?.getMonth() ?? ""), \(yesterday?.getDayDate() ?? 0)th"
-        yesterdayDayLabel.text = yesterday?.dayOfTheWeek() ?? ""
+        yesterdayDateLabel.text = "\(yesterday.getMonth() ?? ""), \(yesterday.getDayDate() ?? 0)th"
+        yesterdayDayLabel.text = yesterday.dayOfTheWeek() ?? ""
         
-        tomorrowDateLabel.text = "\(tomorrow?.getMonth() ?? ""), \(tomorrow?.getDayDate() ?? 0)th"
-        tomorrowDayLabel.text = tomorrow?.dayOfTheWeek() ?? ""
+        tomorrowDateLabel.text = "\(tomorrow.getMonth() ?? ""), \(tomorrow.getDayDate() ?? 0)th"
+        tomorrowDayLabel.text = tomorrow.dayOfTheWeek() ?? ""
         
         //TODO: delete after development
         print(currentDate)
@@ -92,7 +107,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     //MARK: DayDate filtered to only current day
-    func getFilteredDays(date now : Date = Date().toLocalTime()) -> Results<DayDate>? {
+    func getFilteredDays(date now : Date = CurrentDate().now) -> Results<DayDate>? {
         let daysList = realm.objects(DayDate.self)
         if let start = now.startOfTheDay(), let end = now.endOfTheDay() {
             let predicate: NSPredicate = NSPredicate(format: "date BETWEEN {%@, %@}", start as CVarArg, end as CVarArg)
@@ -103,7 +118,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     //MARK: Add current emojis to calendar
-    func updateEmojis(date currentDate : Date = Date().toLocalTime()) {
+    func updateEmojis(date currentDate : Date = CurrentDate().now) {
         //today
         if let currentDayDate = getFilteredDays(date: currentDate) {
             var emojiList = ""
@@ -115,7 +130,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let calendar = Calendar(identifier: .gregorian)
         // tomorrow
-        if let tomorrowDayDate = getFilteredDays(date: calendar.getTomorrowDate()!) {
+        if let tomorrowDayDate = getFilteredDays(date: calendar.getTomorrowDate()) {
             var emojiList = ""
             for dayDate in tomorrowDayDate {
                 emojiList += "\(dayDate.emoji)"
@@ -124,7 +139,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         
         //yesterday
-        if let yesterdayDayDate = getFilteredDays(date: calendar.getYesterdayDate()!) {
+        if let yesterdayDayDate = getFilteredDays(date: calendar.getYesterdayDate()) {
             var emojiList = ""
             for dayDate in yesterdayDayDate {
                 emojiList += "\(dayDate.emoji)"
@@ -188,7 +203,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     //MARK: Saving the DayData from trackers & user's answers
     
-    func saveNewDayDate(date currentDate: Date = Date(), emoji : String, tracker : String) {
+    func saveNewDayDate(date currentDate: Date = CurrentDate().now, emoji : String, tracker : String) {
         
         let dayDate = DayDate()
         dayDate.date = currentDate
