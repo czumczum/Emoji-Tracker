@@ -12,11 +12,14 @@ import RealmSwift
 class Emoji: Object {
     @objc dynamic var symbol : String = ""
     @objc dynamic var frequency : Int = 0
-    @objc dynamic var emojiId = primaryKey()
+    @objc dynamic var emojiId = UUID().uuidString
     
     //TODO: Day when the emoji is used the most
     
-    var date = List<DayDate>()
-
+    var date = LinkingObjects(fromType: DayDate.self, property: "emoji")
+    
+    override static func primaryKey() -> String? {
+        return "emojiId"
+    }
 }
 

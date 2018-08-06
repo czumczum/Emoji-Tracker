@@ -46,37 +46,42 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="syN-Gy-NqN">
                                                 <rect key="frame" x="0.0" y="0.0" width="66" height="57"/>
+                                                <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="20"/>
                                                 <state key="normal" title="1"/>
                                                 <connections>
-                                                    <action selector="button1:" destination="9hv-3d-eEy" eventType="touchUpInside" id="pAA-xK-g92"/>
+                                                    <action selector="buttonClickedWithSender:" destination="9hv-3d-eEy" eventType="touchUpInside" id="WWt-8m-bPL"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nA5-Na-vfz">
                                                 <rect key="frame" x="66" y="0.0" width="66" height="57"/>
+                                                <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="20"/>
                                                 <state key="normal" title="1"/>
                                                 <connections>
-                                                    <action selector="button2:" destination="9hv-3d-eEy" eventType="touchUpInside" id="RmU-Cx-ZcR"/>
+                                                    <action selector="buttonClickedWithSender:" destination="9hv-3d-eEy" eventType="touchUpInside" id="nZ8-Z8-ZGS"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lNG-wZ-bZK">
                                                 <rect key="frame" x="132" y="0.0" width="66" height="57"/>
+                                                <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="20"/>
                                                 <state key="normal" title="2"/>
                                                 <connections>
-                                                    <action selector="button3:" destination="9hv-3d-eEy" eventType="touchUpInside" id="aGH-oG-bBO"/>
+                                                    <action selector="buttonClickedWithSender:" destination="9hv-3d-eEy" eventType="touchUpInside" id="GSC-TF-NKf"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rbh-qS-wpR">
                                                 <rect key="frame" x="198" y="0.0" width="66" height="57"/>
+                                                <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="20"/>
                                                 <state key="normal" title="3"/>
                                                 <connections>
-                                                    <action selector="button4:" destination="9hv-3d-eEy" eventType="touchUpInside" id="Tac-X8-Wwf"/>
+                                                    <action selector="buttonClickedWithSender:" destination="9hv-3d-eEy" eventType="touchUpInside" id="Tha-sh-PbC"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gGE-4a-fKl">
                                                 <rect key="frame" x="264" y="0.0" width="66" height="57"/>
+                                                <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="20"/>
                                                 <state key="normal" title="4"/>
                                                 <connections>
-                                                    <action selector="button5:" destination="9hv-3d-eEy" eventType="touchUpInside" id="D4Z-dj-dX0"/>
+                                                    <action selector="buttonClickedWithSender:" destination="9hv-3d-eEy" eventType="touchUpInside" id="7Nf-14-aqF"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -93,7 +98,7 @@
                         </subviews>
                     </stackView>
                 </subviews>
-                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <color key="backgroundColor" white="1" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="Vdq-4y-wtS" secondAttribute="bottom" id="6QW-1p-CEU"/>
                     <constraint firstItem="Vdq-4y-wtS" firstAttribute="top" secondItem="2SS-CF-kBl" secondAttribute="top" id="FsP-rj-QQD"/>
@@ -105,6 +110,11 @@
             <connections>
                 <outlet property="emojiLabel" destination="iJb-kM-VMb" id="RAn-94-bh5"/>
                 <outlet property="titleLabel" destination="WHn-NV-ETC" id="KRK-1U-tG9"/>
+                <outletCollection property="collectionOfButtons" destination="syN-Gy-NqN" collectionClass="NSMutableArray" id="qgo-P5-0e9"/>
+                <outletCollection property="collectionOfButtons" destination="nA5-Na-vfz" collectionClass="NSMutableArray" id="DwD-cy-tf7"/>
+                <outletCollection property="collectionOfButtons" destination="lNG-wZ-bZK" collectionClass="NSMutableArray" id="99k-uE-Slz"/>
+                <outletCollection property="collectionOfButtons" destination="rbh-qS-wpR" collectionClass="NSMutableArray" id="9yo-ef-BgH"/>
+                <outletCollection property="collectionOfButtons" destination="gGE-4a-fKl" collectionClass="NSMutableArray" id="SNW-SG-5sh"/>
             </connections>
             <point key="canvasLocation" x="444.5" y="421"/>
         </tableViewCell>

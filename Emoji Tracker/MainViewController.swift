@@ -132,11 +132,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         tomorrowDateLabel.text = "\(tomorrow.getMonth() ?? ""), \(tomorrow.getDayDate() ?? 0)th"
         tomorrowDayLabel.text = tomorrow.dayOfTheWeek() ?? ""
-        
-        //TODO: delete after development
-        print(currentDate)
-        print(yesterday as Any)
-        print(tomorrow as Any)
     }
     
     //MARK: DayDate filtered to only current day
@@ -156,9 +151,11 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         if let currentDayDate = getFilteredDays(date: currentDate) {
             var emojiList = ""
             for dayDate in currentDayDate {
-                emojiList += "\(dayDate.emoji)"
+                emojiList += "\(dayDate.emoji[0].symbol)"
+                print(dayDate.emoji[0].symbol)
             }
-            todayEmojiLabel.text = emojiList
+            todayEmojiLabel?.text = emojiList
+            print(todayEmojiLabel)
         }
         
         let calendar = Calendar(identifier: .gregorian)
@@ -168,7 +165,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             for dayDate in tomorrowDayDate {
                 emojiList += "\(dayDate.emoji)"
             }
-            tomorrowEmojiLabel.text = emojiList
+            tomorrowEmojiLabel?.text = emojiList
         }
         
         //yesterday
@@ -177,7 +174,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             for dayDate in yesterdayDayDate {
                 emojiList += "\(dayDate.emoji)"
             }
-            yesterdayEmojiLabel.text = emojiList
+            yesterdayEmojiLabel?.text = emojiList
         }
     }
 
@@ -219,8 +216,22 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         case "pick5":
             let cell = tableView.dequeueReusableCell(withIdentifier: "pick5Cell", for: indexPath) as! Pick5Cell
             
-            cell.titleLabel?.text = trackerList?[indexPath.row].name
-            cell.emojiLabel?.text = trackerList?[indexPath.row].emojis
+            if let emojis = trackerList?[indexPath.row].emojis, let buttons = cell.collectionOfButtons {
+                cell.titleLabel?.text = trackerList?[indexPath.row].name
+                cell.emojiLabel?.text = emojis
+                
+                for button in buttons {
+                    guard let index = buttons.index(of: button) else {
+                        fatalError("Index of buttons cannot be called")
+                    }
+                    
+                    if index < Array(emojis).count {
+                        button.setTitle("\(Array(emojis)[index])", for: [])
+                    } else {
+                        button.removeFromSuperview()
+                    }
+                }
+            }
             
             return cell
             
@@ -234,19 +245,49 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-    //MARK: Saving the DayData from trackers & user's answers
-    
-    func saveNewDayDate(date currentDate: Date = currentDateObj.now, emoji : String, tracker : String) {
+    //MARK: - Saving the DayData from trackers & user's answers
+
+    func createNewDayDate(emoji : String, tracker : String) {
         
         let dayDate = DayDate()
-        dayDate.date = currentDate
-        addOrUpdateEmoji(emoji: emoji, date: currentDate)
+        dayDate.date = currentDateObj.now
+        
+        addOrUpdateEmoji(emoji: emoji, date: dayDate)
 //        realmMethods.saveToRealm(with: dayDate)
+        print(tracker, emoji)
     }
     
-    func addOrUpdateEmoji(emoji : String, date : Date) {
-         let emojiObject = realm.objects(Emoji.self).filter(NSPredicate(format: "symbol CONTAINS[cd] %@", emoji ))
-            print(emojiObject)
+    func addOrUpdateEmoji(emoji : String, date : DayDate) {
+        let emojiObject = realm.objects(Emoji.self).filter(NSPredicate(format: "symbol CONTAINS[cd] %@", emoji ))
+        
+        if emojiObject.count == 0 {
+            
+            let newEmoji = Emoji()
+            newEmoji.symbol = emoji
+            newEmoji.frequency += 1
+            
+            //Saving DayDate into Emoji
+            newEmoji.date.append(date)
+            
+            realmMethods.saveToRealm(with: newEmoji)
+            
+        } else {
+            // Updating Emoji frequency
+            do {
+                try self.realm.write {
+                    emojiObject[0].frequency += 1
+                    emojiObject[0].date.append(date)
+                }
+            } catch {
+                print("Error updatin an item \(error)")
+            }
+        }
+        updateEmojis()
+        print(self.yesterdayEmojiLabel)
+    }
+    
+    func updateEmojiFrequency() {
+        
     }
 
 }
