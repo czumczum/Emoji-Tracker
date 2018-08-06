@@ -23,4 +23,8 @@ class CurrentDate {
         now = calendar.getTomorrowDate()
     }
     
+    func restoreTimeLine() {
+        now = Date().toLocalTime()
+    }
+    
 }

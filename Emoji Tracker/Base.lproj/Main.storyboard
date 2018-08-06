@@ -52,7 +52,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.58072251080000004" green="0.066734083" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="aEA-7f-Jfn" secondAttribute="trailing" id="1El-Dv-VZw"/>
                                             <constraint firstItem="BO9-sn-Wkw" firstAttribute="centerY" secondItem="3Jy-Y8-svm" secondAttribute="centerY" id="4fX-gs-Ges"/>
@@ -101,7 +101,7 @@
                                             <constraint firstItem="KRb-07-Gmk" firstAttribute="top" secondItem="VC1-iI-dvf" secondAttribute="bottom" id="yh1-pC-FTq"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LIS-Lb-mWe">
+                                    <view tag="1" contentMode="scaleToFill" restorationIdentifier="yesterday" translatesAutoresizingMaskIntoConstraints="NO" id="LIS-Lb-mWe">
                                         <rect key="frame" x="295.5" y="0.0" width="79.5" height="193"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sunday" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hTB-Vx-1Ng">
@@ -123,6 +123,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="hTB-Vx-1Ng" firstAttribute="leading" secondItem="LIS-Lb-mWe" secondAttribute="leading" id="AsR-Oe-XIA"/>
                                             <constraint firstItem="0NH-qA-Wpd" firstAttribute="leading" secondItem="LIS-Lb-mWe" secondAttribute="leading" id="JQb-zm-DUm"/>
@@ -138,6 +139,8 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="3Jy-Y8-svm" secondAttribute="bottom" id="Rcv-4v-QiP"/>
+                                    <constraint firstAttribute="bottom" secondItem="LIS-Lb-mWe" secondAttribute="bottom" id="bKe-eY-R9i"/>
+                                    <constraint firstItem="LIS-Lb-mWe" firstAttribute="top" secondItem="KxA-Ku-rRO" secondAttribute="top" id="ka5-TG-xbG"/>
                                     <constraint firstAttribute="width" secondItem="KxA-Ku-rRO" secondAttribute="height" multiplier="375:193" id="qC7-u7-vmI"/>
                                     <constraint firstItem="3Jy-Y8-svm" firstAttribute="top" secondItem="KxA-Ku-rRO" secondAttribute="top" id="rd1-bt-MqK"/>
                                 </constraints>
@@ -174,22 +177,29 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="Itg-0E-D0v">
+                        <barButtonItem key="leftBarButtonItem" enabled="NO" title="Back to Today" id="XkP-Ma-FVo">
+                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="backToTodayButtonClicked:" destination="BYZ-38-t0r" id="FLy-Px-hrl"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Stats" id="jxO-dh-XZf">
-                            <color key="tintColor" red="0.2901960784" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="tintColor" name="keyboardFocusIndicatorColor" catalog="System" colorSpace="catalog"/>
                             <connections>
                                 <segue destination="YPF-n2-eb0" kind="presentation" id="Br5-4D-i7q"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="backToTodayButton" destination="XkP-Ma-FVo" id="szI-Gz-EXV"/>
                         <outlet property="daysStackView" destination="KxA-Ku-rRO" id="tWT-20-1dA"/>
                         <outlet property="todayDateLabel" destination="5Bm-gQ-ff6" id="J6p-Sa-fbJ"/>
                         <outlet property="todayDayLabel" destination="VC1-iI-dvf" id="6mg-j2-XuC"/>
                         <outlet property="todayEmojiLabel" destination="KRb-07-Gmk" id="m9c-7F-pVP"/>
-                        <outlet property="todayPanel" destination="LIS-Lb-mWe" id="ogM-dh-YV3"/>
                         <outlet property="tomorrowDateLabel" destination="0NH-qA-Wpd" id="3l9-3P-3cu"/>
                         <outlet property="tomorrowDayLabel" destination="hTB-Vx-1Ng" id="iF8-yF-U1a"/>
                         <outlet property="tomorrowEmojiLabel" destination="Ux0-tf-DI5" id="QfH-jV-0r0"/>
+                        <outlet property="tomorrowPanel" destination="LIS-Lb-mWe" id="Lo3-po-evT"/>
                         <outlet property="trackersTableView" destination="xzI-1Z-AYy" id="wiU-Ih-LtM"/>
                         <outlet property="yesterdayDateLabel" destination="BO9-sn-Wkw" id="yPU-nT-Kz4"/>
                         <outlet property="yesterdayDayLabel" destination="aEA-7f-Jfn" id="Ov0-Oz-5fG"/>

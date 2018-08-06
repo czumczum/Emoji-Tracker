@@ -16,7 +16,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     var trackerList: Results<Tracker>?
     
     //MARK: - Days StackView
-    
     @IBOutlet var todayDateLabel: UILabel!
     @IBOutlet var todayDayLabel: UILabel!
     @IBOutlet var todayEmojiLabel: UILabel!
@@ -29,8 +28,16 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet var tomorrowEmojiLabel: UILabel!
     @IBOutlet var tomorrowDateLabel: UILabel!
     @IBOutlet var tomorrowDayLabel: UILabel!
-    @IBOutlet var todayPanel: UIView!
-
+    @IBOutlet var tomorrowPanel: UIView!
+    
+    //MARK: Navigation items
+    @IBOutlet var backToTodayButton: UIBarButtonItem!
+    @IBAction func backToTodayButtonClicked(_ sender: UIBarButtonItem) {
+        currentDateObj.restoreTimeLine()
+        updateDates()
+        updateEmojis()
+        enableBackButton(hidden: true)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,11 +63,15 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         updateEmojis()
         
         //tapGesture
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.stackViewTapped(_:)))
-        tapGesture.delegate = self as? UIGestureRecognizerDelegate
+        let tapGestureBack = UITapGestureRecognizer(target: self, action: #selector(self.stackViewTapped(_:)))
+        tapGestureBack.delegate = self as? UIGestureRecognizerDelegate
         yesterdayPanel.isUserInteractionEnabled = true
-        yesterdayPanel.addGestureRecognizer(tapGesture)
+        yesterdayPanel.addGestureRecognizer(tapGestureBack)
         
+        let tapGestureForth = UITapGestureRecognizer(target: self, action: #selector(self.stackViewTapped(_:)))
+        tapGestureForth.delegate = self as? UIGestureRecognizerDelegate
+        tomorrowPanel.isUserInteractionEnabled = true
+        tomorrowPanel.addGestureRecognizer(tapGestureForth)
     
     }
     
@@ -71,20 +82,41 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isTranslucent = true
         
+        
+        //Trackers' table view methods
         trackersTableView?.reloadData()
         
         
     }
     
-    //tableViewTapped method for custom Gesture
-    @objc func stackViewTapped(_ sender: UITapGestureRecognizer) {
-        currentDateObj.turnBackTime()
-        updateDates()
-        updateEmojis()
+    //MARK: - Navigation controller "Back to today" button
+    func enableBackButton(hidden : Bool) {
+        if hidden {
+            backToTodayButton.isEnabled = false
+            backToTodayButton.tintColor = UIColor(displayP3Red: 0, green: 0, blue: 0, alpha: 0)
+        } else {
+            backToTodayButton.isEnabled = true
+            backToTodayButton.tintColor = UIColor(displayP3Red: 0.290196, green: 0.564706, blue: 0.886275, alpha: 1)
+        }
     }
     
     //MARK: - Days StackView
     @IBOutlet weak var daysStackView: UIStackView!
+    
+    //MARK: Method for custom Gesture
+    @objc func stackViewTapped(_ sender: UITapGestureRecognizer) {
+        if let tag = sender.view?.tag {
+            switch tag {
+            case 1:
+                currentDateObj.backToTheFuture()
+            default:
+                currentDateObj.turnBackTime()
+            }
+            updateDates()
+            updateEmojis()
+            enableBackButton(hidden: false)
+        }
+    }
     
     //MARK: Add today's date to calendar
     func updateDates(date currentDate: Date = currentDateObj.now) {
