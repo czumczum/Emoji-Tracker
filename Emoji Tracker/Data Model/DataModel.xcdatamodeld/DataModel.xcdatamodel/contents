@@ -6,23 +6,23 @@
     </entity>
     <entity name="DayDate" representedClassName="DayDate" syncable="YES" codeGenerationType="class">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <relationship name="emoji" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Emoji" inverseName="date" inverseEntity="Emoji" syncable="YES"/>
+        <relationship name="emoji" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Emoji" inverseName="dateArray" inverseEntity="Emoji" syncable="YES"/>
         <relationship name="tracker" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Tracker" inverseName="date" inverseEntity="Tracker" syncable="YES"/>
     </entity>
     <entity name="Emoji" representedClassName="Emoji" parentEntity="DayDate" syncable="YES" codeGenerationType="class">
         <attribute name="emojiId" optional="YES" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="frequency" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="symbol" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="date" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DayDate" inverseName="emoji" inverseEntity="DayDate" syncable="YES"/>
+        <relationship name="dateArray" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DayDate" inverseName="emoji" inverseEntity="DayDate" syncable="YES"/>
     </entity>
     <entity name="Tracker" representedClassName="Tracker" parentEntity="Category" syncable="YES" codeGenerationType="class">
         <attribute name="archived" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="emojis" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="trackerId" optional="YES" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="tracker" inverseEntity="Category" syncable="YES"/>
-        <relationship name="date" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DayDate" inverseName="tracker" inverseEntity="DayDate" syncable="YES"/>
+        <relationship name="date" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="DayDate" inverseName="tracker" inverseEntity="DayDate" syncable="YES"/>
     </entity>
     <elements>
         <element name="Category" positionX="-324" positionY="-30" width="128" height="73"/>

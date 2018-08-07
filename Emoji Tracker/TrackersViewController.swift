@@ -11,10 +11,7 @@ import CoreData
 
 class TrackersViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let realm = try! Realm()
-    let realmMethods = RealmMethods()
-    
-    var trackerList: Results<Tracker>?
+    var trackerList = [Tracker]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +21,7 @@ class TrackersViewController: UIViewController, UITableViewDelegate, UITableView
         trackersTableView?.dataSource = self
         configureTableView()
         
-        trackerList = realmMethods.loadTrackers()
+//        trackerList = realmMethods.loadTrackers()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -42,7 +39,7 @@ class TrackersViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var addNewTrackerButtonClicked: UIBarButtonItem!
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return trackerList?.count ?? 0
+        return trackerList.count
     }
     
     //MARK: TableView DataSource Methods
@@ -50,8 +47,8 @@ class TrackersViewController: UIViewController, UITableViewDelegate, UITableView
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "trackCell", for: indexPath)
         
-        cell.textLabel?.text = trackerList?[indexPath.row].name
-        cell.detailTextLabel?.text = trackerList?[indexPath.row].emojis
+        cell.textLabel?.text = trackerList[indexPath.row].name
+        cell.detailTextLabel?.text = trackerList[indexPath.row].emojis
         
         return cell
     }

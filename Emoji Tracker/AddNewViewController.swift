@@ -12,11 +12,13 @@ import CoreData
 class AddNewViewController: UIViewController, UITextFieldDelegate {
         //Create new tracker Page
     
-    let realm = try! Realm()
-    let realmMethods = RealmMethods()
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var trackerArray = [Tracker]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        loadTrackers()
         
         //Add new tracker
         addNewTrackerButton?.isHidden = true
@@ -25,7 +27,22 @@ class AddNewViewController: UIViewController, UITextFieldDelegate {
     
     }
     
-    var newTrackerType : String = ""
+    //MARK: CoreData methods
+    func loadTrackers(with request: NSFetchRequest<Tracker> = Tracker.fetchRequest(), with predicate: NSPredicate? = nil) {
+        do {
+            trackerArray = try context.fetch(request)
+        } catch {
+            print("Error fetching data \(error)")
+        }
+    }
+    
+    func saveContext() {
+        do {
+            try context.save()
+        } catch {
+            print("Error saving context, \(error)!")
+        }
+    }
     
     @IBAction func dismissNewItemButtonClicked(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
@@ -82,6 +99,7 @@ class AddNewViewController: UIViewController, UITextFieldDelegate {
     
     //MARK: Radio buttons
     
+    var newTrackerType : String = ""
     @IBOutlet var newTrackerStackview: UIStackView!
     @IBAction func newTrackerTypeInputClicked(_ sender: UIButton) {
         newTrackerType = "input"
@@ -116,12 +134,15 @@ class AddNewViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var addNewTrackerButton: UIButton!
     @IBAction func addNewTrackerButtonClicked(_ sender: UIButton) {
         
-        let tracker = Tracker()
-        tracker.name = newTrackerName.text!
+        let tracker = Tracker(context: context)
+        tracker.title = newTrackerName.text!
         tracker.emojis = newTrackerEmojis.text!
         tracker.type = newTrackerType
         
-        realmMethods.saveToRealm(with: tracker)
+        trackerArray.append(tracker)
+        
+        saveContext()
+
         self.dismiss(animated: true)
     }
     

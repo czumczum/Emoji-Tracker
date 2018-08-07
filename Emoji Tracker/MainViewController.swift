@@ -11,9 +11,7 @@ import CoreData
 
 class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let realm = try! Realm()
-    let realmMethods = RealmMethods()
-    var trackerList: Results<Tracker>?
+    var trackerList = [Tracker]()
     
     //MARK: - Days StackView
     @IBOutlet var todayDateLabel: UILabel!
@@ -46,7 +44,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         trackersTableView?.delegate = self
         trackersTableView?.dataSource = self
         
-        trackerList = realmMethods.loadTrackers()
+//        trackerList = realmMethods.loadTrackers()
         
         //adding custom cells' layout
         trackersTableView?.register(UINib(nibName: "SliderCell", bundle: nil), forCellReuseIdentifier: "sliderCell")
@@ -135,11 +133,12 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     //MARK: DayDate filtered to only current day
-    func getFilteredDays(date now : Date = currentDateObj.now) -> Results<DayDate>? {
-        let daysList = realm.objects(DayDate.self)
+    func getFilteredDays(date now : Date = currentDateObj.now) -> [DayDate] {
+        let daysList = [DayDate]()
         if let start = now.startOfTheDay(), let end = now.endOfTheDay() {
             let predicate: NSPredicate = NSPredicate(format: "date BETWEEN {%@, %@}", start as CVarArg, end as CVarArg)
-            return daysList.filter(predicate)
+//            return daysList.filter(predicate)
+            return daysList
             
         }
         return daysList
@@ -148,34 +147,34 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     //MARK: Add current emojis to calendar
     func updateEmojis(date currentDate : Date = currentDateObj.now) {
         //today
-        if let currentDayDate = getFilteredDays(date: currentDate) {
-            var emojiList = ""
-            for dayDate in currentDayDate {
-                emojiList += "\(dayDate.emoji[0].symbol)"
-                print(dayDate.emoji[0].symbol)
-            }
-            todayEmojiLabel?.text = emojiList
-            print(todayEmojiLabel)
-        }
+//        if let currentDayDate = getFilteredDays(date: currentDate) {
+//            var emojiList = ""
+//            for dayDate in currentDayDate {
+//                emojiList += "\(dayDate.emoji[0].symbol)"
+//                print(dayDate.emoji[0].symbol)
+//            }
+//            todayEmojiLabel?.text = emojiList
+//            print(todayEmojiLabel)
+//        }
         
         let calendar = Calendar(identifier: .gregorian)
         // tomorrow
-        if let tomorrowDayDate = getFilteredDays(date: calendar.getTomorrowDate()) {
-            var emojiList = ""
-            for dayDate in tomorrowDayDate {
-                emojiList += "\(dayDate.emoji)"
-            }
-            tomorrowEmojiLabel?.text = emojiList
-        }
+//        if let tomorrowDayDate = getFilteredDays(date: calendar.getTomorrowDate()) {
+//            var emojiList = ""
+//            for dayDate in tomorrowDayDate {
+//                emojiList += "\(dayDate.emoji)"
+//            }
+//            tomorrowEmojiLabel?.text = emojiList
+//        }
         
         //yesterday
-        if let yesterdayDayDate = getFilteredDays(date: calendar.getYesterdayDate()) {
-            var emojiList = ""
-            for dayDate in yesterdayDayDate {
-                emojiList += "\(dayDate.emoji)"
-            }
-            yesterdayEmojiLabel?.text = emojiList
-        }
+//        if let yesterdayDayDate = getFilteredDays(date: calendar.getYesterdayDate()) {
+//            var emojiList = ""
+//            for dayDate in yesterdayDayDate {
+//                emojiList += "\(dayDate.emoji)"
+//            }
+//            yesterdayEmojiLabel?.text = emojiList
+//        }
     }
 
     
@@ -199,25 +198,25 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     let numberOfCellsPerRow: CGFloat = 2
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return trackerList?.count ?? 0
+        return trackerList.count
     }
     
     //MARK: TableView DataSource Methods
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        switch trackerList?[indexPath.row].type {
+        switch trackerList[indexPath.row].type {
         case "slider":
                 let cell = tableView.dequeueReusableCell(withIdentifier: "sliderCell", for: indexPath) as! SliderCell
                 
-                cell.titleLabel?.text = trackerList?[indexPath.row].name
-                cell.emojiLabel?.text = trackerList?[indexPath.row].emojis
+                cell.titleLabel?.text = trackerList[indexPath.row].name
+                cell.emojiLabel?.text = trackerList[indexPath.row].emojis
                 
                 return cell
         case "pick5":
             let cell = tableView.dequeueReusableCell(withIdentifier: "pick5Cell", for: indexPath) as! Pick5Cell
             
-            if let emojis = trackerList?[indexPath.row].emojis, let buttons = cell.collectionOfButtons {
-                cell.titleLabel?.text = trackerList?[indexPath.row].name
+            if let emojis = trackerList[indexPath.row].emojis, let buttons = cell.collectionOfButtons {
+                cell.titleLabel?.text = trackerList[indexPath.row].name
                 cell.emojiLabel?.text = emojis
                 
                 for button in buttons {
@@ -238,8 +237,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "inputCell", for: indexPath) as! InputCell
             
-            cell.titleLabel?.text = trackerList?[indexPath.row].name
-            cell.emojiLabel?.text = trackerList?[indexPath.row].emojis
+            cell.titleLabel?.text = trackerList[indexPath.row].name
+            cell.emojiLabel?.text = trackerList[indexPath.row].emojis
             
             return cell
         }
@@ -258,31 +257,31 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func addOrUpdateEmoji(emoji : String, date : DayDate) {
-        let emojiObject = realm.objects(Emoji.self).filter(NSPredicate(format: "symbol CONTAINS[cd] %@", emoji ))
+//        let emojiObject = realm.objects(Emoji.self).filter(NSPredicate(format: "symbol CONTAINS[cd] %@", emoji ))
         
-        if emojiObject.count == 0 {
-            
-            let newEmoji = Emoji()
-            newEmoji.symbol = emoji
-            newEmoji.frequency += 1
-            
-            //Saving DayDate into Emoji
-            newEmoji.date.append(date)
-            
-            realmMethods.saveToRealm(with: newEmoji)
-            
-        } else {
-            // Updating Emoji frequency
-            do {
-                try self.realm.write {
-                    emojiObject[0].frequency += 1
-                    emojiObject[0].date.append(date)
-                }
-            } catch {
-                print("Error updatin an item \(error)")
-            }
-        }
-        updateEmojis()
+//        if emojiObject.count == 0 {
+//
+//            let newEmoji = Emoji()
+//            newEmoji.symbol = emoji
+//            newEmoji.frequency += 1
+//
+//            //Saving DayDate into Emoji
+////            newEmoji.date.append(date)
+//            
+////            realmMethods.saveToRealm(with: newEmoji)
+//
+//        } else {
+//            // Updating Emoji frequency
+//            do {
+////                try self.realm.write {
+////                    emojiObject[0].frequency += 1
+////                    emojiObject[0].date.append(date)
+//                }
+//            } catch {
+//                print("Error updatin an item \(error)")
+//            }
+//        }
+//        updateEmojis()
         print(self.yesterdayEmojiLabel)
     }
     

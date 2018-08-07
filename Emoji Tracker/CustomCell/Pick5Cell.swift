@@ -22,7 +22,6 @@ class Pick5Cell: UITableViewCell {
             
             emojiLabel.text = sender.titleLabel?.text
             delegate?.createNewDayDate(emoji: emoji, tracker: tracker)
-            print(mainController)
         }
     }
     
