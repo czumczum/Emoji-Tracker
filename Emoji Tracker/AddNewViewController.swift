@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import RealmSwift
+import CoreData
 
 class AddNewViewController: UIViewController, UITextFieldDelegate {
         //Create new tracker Page

@@ -11,7 +11,6 @@ import RealmSwift
 
 class Category: Object {
     @objc dynamic var name : String = ""
-    @objc dynamic var archived : Bool = false
     
     var tracker = List<Tracker>()
 }

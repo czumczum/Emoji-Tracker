@@ -21,16 +21,12 @@
 		75780650211224CD0041AC23 /* Pick5Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7578064F211224CD0041AC23 /* Pick5Cell.swift */; };
 		75918CBE21137E7D003702DB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75918CBD21137E7D003702DB /* Extensions.swift */; };
 		75918CC021152558003702DB /* CurrentDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75918CBF21152558003702DB /* CurrentDate.swift */; };
+		75918CC52119402C003702DB /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 75918CC32119402C003702DB /* DataModel.xcdatamodeld */; };
 		759925592113407100B29C50 /* SliderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 759925582113407100B29C50 /* SliderCell.xib */; };
 		7599255B211341BC00B29C50 /* SliderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7599255A211341BC00B29C50 /* SliderCell.swift */; };
 		7599255D21135D0C00B29C50 /* InputCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7599255C21135D0B00B29C50 /* InputCell.xib */; };
 		7599255F21135D2700B29C50 /* InputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7599255E21135D2700B29C50 /* InputCell.swift */; };
 		75992561211362D300B29C50 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75992560211362D300B29C50 /* StatsViewController.swift */; };
-		75AFE0072110A2C9000816CE /* Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AFE0062110A2C9000816CE /* Emoji.swift */; };
-		75AFE0092110A3DF000816CE /* DayDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AFE0082110A3DF000816CE /* DayDate.swift */; };
-		75AFE00B2110A71D000816CE /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AFE00A2110A71D000816CE /* Category.swift */; };
-		75AFE00D2110AC83000816CE /* RealmMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AFE00C2110AC83000816CE /* RealmMethods.swift */; };
-		75B354CA210B6C6E00233922 /* Tracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B354C9210B6C6E00233922 /* Tracker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,16 +46,12 @@
 		7578064F211224CD0041AC23 /* Pick5Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pick5Cell.swift; sourceTree = "<group>"; };
 		75918CBD21137E7D003702DB /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		75918CBF21152558003702DB /* CurrentDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentDate.swift; sourceTree = "<group>"; };
+		75918CC42119402C003702DB /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		759925582113407100B29C50 /* SliderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SliderCell.xib; sourceTree = "<group>"; };
 		7599255A211341BC00B29C50 /* SliderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderCell.swift; sourceTree = "<group>"; };
 		7599255C21135D0B00B29C50 /* InputCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InputCell.xib; sourceTree = "<group>"; };
 		7599255E21135D2700B29C50 /* InputCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputCell.swift; sourceTree = "<group>"; };
 		75992560211362D300B29C50 /* StatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
-		75AFE0062110A2C9000816CE /* Emoji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emoji.swift; sourceTree = "<group>"; };
-		75AFE0082110A3DF000816CE /* DayDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayDate.swift; sourceTree = "<group>"; };
-		75AFE00A2110A71D000816CE /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
-		75AFE00C2110AC83000816CE /* RealmMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmMethods.swift; sourceTree = "<group>"; };
-		75B354C9210B6C6E00233922 /* Tracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tracker.swift; sourceTree = "<group>"; };
 		7B669ECEFC30CEF45DE5A0F2 /* Pods-Emoji Tracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Emoji Tracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-Emoji Tracker/Pods-Emoji Tracker.release.xcconfig"; sourceTree = "<group>"; };
 		E0320D86320A7E77EC0DC93F /* Pods_Emoji_Tracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Emoji_Tracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -88,10 +80,7 @@
 		753A2A90210B732E00EE9982 /* Data Model */ = {
 			isa = PBXGroup;
 			children = (
-				75AFE00A2110A71D000816CE /* Category.swift */,
-				75B354C9210B6C6E00233922 /* Tracker.swift */,
-				75AFE0062110A2C9000816CE /* Emoji.swift */,
-				75AFE0082110A3DF000816CE /* DayDate.swift */,
+				75918CC32119402C003702DB /* DataModel.xcdatamodeld */,
 			);
 			path = "Data Model";
 			sourceTree = "<group>";
@@ -124,7 +113,6 @@
 				75486857210A5D0200627971 /* SwipingPages.swift */,
 				75992560211362D300B29C50 /* StatsViewController.swift */,
 				75918CBD21137E7D003702DB /* Extensions.swift */,
-				75AFE00C2110AC83000816CE /* RealmMethods.swift */,
 				75918CBF21152558003702DB /* CurrentDate.swift */,
 				7578064C211223D10041AC23 /* CustomCell */,
 				7548683F21091FAB00627971 /* Main.storyboard */,
@@ -285,17 +273,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				7548683E21091FAB00627971 /* MainViewController.swift in Sources */,
-				75AFE00B2110A71D000816CE /* Category.swift in Sources */,
-				75AFE0072110A2C9000816CE /* Emoji.swift in Sources */,
 				753A2A96210BDF3F00EE9982 /* TrackersViewController.swift in Sources */,
+				75918CC52119402C003702DB /* DataModel.xcdatamodeld in Sources */,
 				75992561211362D300B29C50 /* StatsViewController.swift in Sources */,
-				75AFE00D2110AC83000816CE /* RealmMethods.swift in Sources */,
 				7599255F21135D2700B29C50 /* InputCell.swift in Sources */,
-				75B354CA210B6C6E00233922 /* Tracker.swift in Sources */,
 				75486858210A5D0200627971 /* SwipingPages.swift in Sources */,
 				753A2A94210BDCE200EE9982 /* AddNewViewController.swift in Sources */,
 				75780650211224CD0041AC23 /* Pick5Cell.swift in Sources */,
-				75AFE0092110A3DF000816CE /* DayDate.swift in Sources */,
 				7599255B211341BC00B29C50 /* SliderCell.swift in Sources */,
 				75918CC021152558003702DB /* CurrentDate.swift in Sources */,
 				7548683C21091FAB00627971 /* AppDelegate.swift in Sources */,
@@ -499,6 +483,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		75918CC32119402C003702DB /* DataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				75918CC42119402C003702DB /* DataModel.xcdatamodel */,
+			);
+			currentVersion = 75918CC42119402C003702DB /* DataModel.xcdatamodel */;
+			path = DataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 7548683021091FAB00627971 /* Project object */;
 }
