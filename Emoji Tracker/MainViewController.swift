@@ -9,9 +9,7 @@
 import UIKit
 import CoreData
 
-class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
-    var trackerList = [Tracker]()
+class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, clickDelegate {
     
     //MARK: - Days StackView
     @IBOutlet var todayDateLabel: UILabel!
@@ -27,6 +25,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet var tomorrowDateLabel: UILabel!
     @IBOutlet var tomorrowDayLabel: UILabel!
     @IBOutlet var tomorrowPanel: UIView!
+    
+    @IBOutlet var mainView: UIView!
     
     //MARK: Navigation items
     @IBOutlet var backToTodayButton: UIBarButtonItem!
@@ -44,7 +44,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         trackersTableView?.delegate = self
         trackersTableView?.dataSource = self
         
-//        trackerList = realmMethods.loadTrackers()
+        coredata.loadTrackers()
         
         //adding custom cells' layout
         trackersTableView?.register(UINib(nibName: "SliderCell", bundle: nil), forCellReuseIdentifier: "sliderCell")
@@ -52,11 +52,11 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         trackersTableView.register(UINib(nibName: "InputCell", bundle: nil), forCellReuseIdentifier: "inputCell")
        
         //Keyboard scrolling
-        NotificationCenter.default.addObserver(self, selector: #selector(MainViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(MainViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
-        //Get the current Date
+        //Get the current date's data
         updateDates()
         updateEmojis()
         
@@ -83,8 +83,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         //Trackers' table view methods
         trackersTableView?.reloadData()
-        
-        
     }
     
     //MARK: - Navigation controller "Back to today" button
@@ -133,29 +131,63 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     //MARK: DayDate filtered to only current day
+//    func getFilteredDays(date now : Date = currentDateObj.now) -> [DayDate] {
+//        let daysList = [DayDate]()
+//        if let start = now.startOfTheDay(), let end = now.endOfTheDay() {
+//            let predicate: NSPredicate = NSPredicate(format: "date BETWEEN {%@, %@}", start as CVarArg, end as CVarArg)
+//            return daysList.filter(predicate)
+//
+//        }
+//        return daysList
+//    }
+    
     func getFilteredDays(date now : Date = currentDateObj.now) -> [DayDate] {
-        let daysList = [DayDate]()
+        var dayList = [DayDate]()
+        
+        let request: NSFetchRequest<DayDate> = DayDate.fetchRequest()
+        
         if let start = now.startOfTheDay(), let end = now.endOfTheDay() {
             let predicate: NSPredicate = NSPredicate(format: "date BETWEEN {%@, %@}", start as CVarArg, end as CVarArg)
-//            return daysList.filter(predicate)
-            return daysList
-            
+            request.predicate = predicate
         }
-        return daysList
+        
+        do {
+            dayList = try context.fetch(request)
+        } catch {
+            print("Error fetching data \(error)")
+        }
+        return dayList
     }
     
     //MARK: Add current emojis to calendar
     func updateEmojis(date currentDate : Date = currentDateObj.now) {
-        //today
-//        if let currentDayDate = getFilteredDays(date: currentDate) {
-//            var emojiList = ""
-//            for dayDate in currentDayDate {
-//                emojiList += "\(dayDate.emoji[0].symbol)"
-//                print(dayDate.emoji[0].symbol)
-//            }
-//            todayEmojiLabel?.text = emojiList
-//            print(todayEmojiLabel)
-//        }
+//        today
+        let currentDayDate = getFilteredDays(date: currentDate)
+        var emojiList = [Emoji]()
+        var emojiString = ""
+        
+        if currentDayDate.count > 0 {
+            guard let today = currentDayDate[0].date else {
+                fatalError("currentDatDate object has no .date")
+                
+            }
+            let datePredicate = NSPredicate(format: "date.date MATCHES %@", today as CVarArg)
+            let request: NSFetchRequest<Emoji> = Emoji.fetchRequest()
+            request.predicate = datePredicate
+            
+            do {
+                emojiList = try context.fetch(request)
+            } catch {
+                print("Error fetching data \(error)")
+            }
+            
+        }
+        
+        for emoji in emojiList {
+            emojiString += emoji.symbol ?? ""
+        }
+        todayEmojiLabel?.text = emojiString
+        print(emojiList)
         
         let calendar = Calendar(identifier: .gregorian)
         // tomorrow
@@ -198,17 +230,18 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     let numberOfCellsPerRow: CGFloat = 2
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return trackerList.count
+        return coredata.trackerArray.count
     }
     
     //MARK: TableView DataSource Methods
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let trackerList = coredata.trackerArray
         
         switch trackerList[indexPath.row].type {
         case "slider":
                 let cell = tableView.dequeueReusableCell(withIdentifier: "sliderCell", for: indexPath) as! SliderCell
                 
-                cell.titleLabel?.text = trackerList[indexPath.row].name
+                cell.titleLabel?.text = trackerList[indexPath.row].title
                 cell.emojiLabel?.text = trackerList[indexPath.row].emojis
                 
                 return cell
@@ -216,8 +249,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             let cell = tableView.dequeueReusableCell(withIdentifier: "pick5Cell", for: indexPath) as! Pick5Cell
             
             if let emojis = trackerList[indexPath.row].emojis, let buttons = cell.collectionOfButtons {
-                cell.titleLabel?.text = trackerList[indexPath.row].name
+                cell.titleLabel?.text = trackerList[indexPath.row].title
                 cell.emojiLabel?.text = emojis
+                
+                cell.delegate = self
                 
                 for button in buttons {
                     guard let index = buttons.index(of: button) else {
@@ -237,7 +272,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "inputCell", for: indexPath) as! InputCell
             
-            cell.titleLabel?.text = trackerList[indexPath.row].name
+            cell.titleLabel?.text = trackerList[indexPath.row].title
             cell.emojiLabel?.text = trackerList[indexPath.row].emojis
             
             return cell
@@ -246,43 +281,49 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     //MARK: - Saving the DayData from trackers & user's answers
 
+    //MARK: Cell delegate mothods
     func createNewDayDate(emoji : String, tracker : String) {
         
-        let dayDate = DayDate()
-        dayDate.date = currentDateObj.now
+        let dayDateArray = getFilteredDays(date: currentDateObj.now)
         
-        addOrUpdateEmoji(emoji: emoji, date: dayDate)
-//        realmMethods.saveToRealm(with: dayDate)
+        if dayDateArray.count == 0 {
+            
+            let dayDate = DayDate(context: context)
+            dayDate.date = currentDateObj.now
+            
+            let emoji = addOrUpdateEmoji(emoji: emoji, date: dayDate)
+            dayDate.emoji = [emoji]
+            
+        } else {
+            let dayDate = dayDateArray[0]
+        }
+        
+        coredata.saveContext()
         print(tracker, emoji)
     }
     
-    func addOrUpdateEmoji(emoji : String, date : DayDate) {
-//        let emojiObject = realm.objects(Emoji.self).filter(NSPredicate(format: "symbol CONTAINS[cd] %@", emoji ))
+    func addOrUpdateEmoji(emoji : String, date : DayDate) -> Emoji {
+        let emojiArray = coredata.fetchEmoji(with: emoji)
         
-//        if emojiObject.count == 0 {
-//
-//            let newEmoji = Emoji()
-//            newEmoji.symbol = emoji
-//            newEmoji.frequency += 1
-//
-//            //Saving DayDate into Emoji
-////            newEmoji.date.append(date)
-//            
-////            realmMethods.saveToRealm(with: newEmoji)
-//
-//        } else {
-//            // Updating Emoji frequency
-//            do {
-////                try self.realm.write {
-////                    emojiObject[0].frequency += 1
-////                    emojiObject[0].date.append(date)
-//                }
-//            } catch {
-//                print("Error updatin an item \(error)")
-//            }
-//        }
-//        updateEmojis()
-        print(self.yesterdayEmojiLabel)
+        if emojiArray.count == 0 {
+
+            let newEmoji = Emoji(context: context)
+            newEmoji.symbol = emoji
+            newEmoji.frequency = 1
+            newEmoji.date = [date]
+            
+            return newEmoji
+            
+        } else {
+            // Updating Emoji frequency
+            emojiArray[0].frequency += 1
+            let datesArray = emojiArray[0].date
+            print(datesArray)
+            
+            return emojiArray[0]
+            
+            }
+
     }
     
     func updateEmojiFrequency() {

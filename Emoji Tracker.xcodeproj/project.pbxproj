@@ -113,10 +113,8 @@
 				753A2A95210BDF3F00EE9982 /* TrackersViewController.swift */,
 				7548683D21091FAB00627971 /* MainViewController.swift */,
 				75486857210A5D0200627971 /* SwipingPages.swift */,
-				75918CC62119F7FB003702DB /* CoreDataMethods.swift */,
 				75992560211362D300B29C50 /* StatsViewController.swift */,
-				75918CBD21137E7D003702DB /* Extensions.swift */,
-				75918CBF21152558003702DB /* CurrentDate.swift */,
+				75918CC82119FCCB003702DB /* Helpers */,
 				7578064C211223D10041AC23 /* CustomCell */,
 				7548683F21091FAB00627971 /* Main.storyboard */,
 				7548684721091FAC00627971 /* LaunchScreen.storyboard */,
@@ -147,6 +145,16 @@
 				759925582113407100B29C50 /* SliderCell.xib */,
 			);
 			path = CustomCell;
+			sourceTree = "<group>";
+		};
+		75918CC82119FCCB003702DB /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				75918CC62119F7FB003702DB /* CoreDataMethods.swift */,
+				75918CBF21152558003702DB /* CurrentDate.swift */,
+				75918CBD21137E7D003702DB /* Extensions.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		D441D34E8BD92005627CEFC4 /* Frameworks */ = {

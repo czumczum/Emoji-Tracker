@@ -5,29 +5,27 @@
         <relationship name="tracker" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Tracker" inverseName="category" inverseEntity="Tracker" syncable="YES"/>
     </entity>
     <entity name="DayDate" representedClassName="DayDate" syncable="YES" codeGenerationType="class">
-        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <relationship name="emoji" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Emoji" inverseName="dateArray" inverseEntity="Emoji" syncable="YES"/>
+        <attribute name="date" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="emoji" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Emoji" inverseName="date" inverseEntity="Emoji" syncable="YES"/>
         <relationship name="tracker" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Tracker" inverseName="date" inverseEntity="Tracker" syncable="YES"/>
     </entity>
-    <entity name="Emoji" representedClassName="Emoji" parentEntity="DayDate" syncable="YES" codeGenerationType="class">
-        <attribute name="emojiId" optional="YES" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
+    <entity name="Emoji" representedClassName="Emoji" syncable="YES" codeGenerationType="class">
         <attribute name="frequency" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="symbol" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="dateArray" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DayDate" inverseName="emoji" inverseEntity="DayDate" syncable="YES"/>
+        <attribute name="symbol" attributeType="String" syncable="YES"/>
+        <relationship name="date" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DayDate" inverseName="emoji" inverseEntity="DayDate" syncable="YES"/>
     </entity>
-    <entity name="Tracker" representedClassName="Tracker" parentEntity="Category" syncable="YES" codeGenerationType="class">
+    <entity name="Tracker" representedClassName="Tracker" syncable="YES" codeGenerationType="class">
         <attribute name="archived" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="emojis" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="trackerId" optional="YES" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" attributeType="String" syncable="YES"/>
+        <attribute name="type" attributeType="String" syncable="YES"/>
         <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="tracker" inverseEntity="Category" syncable="YES"/>
         <relationship name="date" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="DayDate" inverseName="tracker" inverseEntity="DayDate" syncable="YES"/>
     </entity>
     <elements>
         <element name="Category" positionX="-324" positionY="-30" width="128" height="73"/>
-        <element name="Tracker" positionX="7" positionY="225" width="128" height="148"/>
-        <element name="Emoji" positionX="106" positionY="18" width="128" height="103"/>
+        <element name="Tracker" positionX="7" positionY="225" width="128" height="133"/>
+        <element name="Emoji" positionX="106" positionY="18" width="128" height="88"/>
         <element name="DayDate" positionX="187" positionY="-153" width="128" height="88"/>
     </elements>
 </model>

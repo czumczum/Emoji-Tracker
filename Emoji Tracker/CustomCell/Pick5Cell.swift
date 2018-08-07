@@ -17,10 +17,11 @@ class Pick5Cell: UITableViewCell {
     
 
     @IBAction func buttonClicked( sender: UIButton) {
+        
+        emojiLabel.text = sender.titleLabel?.text
+        
         if let emoji = emojiLabel.text, let tracker = titleLabel.text {
-            // ADD protocol delegate, change to variables
-            
-            emojiLabel.text = sender.titleLabel?.text
+        
             delegate?.createNewDayDate(emoji: emoji, tracker: tracker)
         }
     }
