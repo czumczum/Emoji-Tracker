@@ -7,41 +7,20 @@
 //
 
 import UIKit
-import CoreData
 
 class AddNewViewController: UIViewController, UITextFieldDelegate {
         //Create new tracker Page
     
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    var trackerArray = [Tracker]()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadTrackers()
+        coredata.loadTrackers()
         
         //Add new tracker
         addNewTrackerButton?.isHidden = true
         newTrackerName?.delegate = self
         newTrackerEmojis?.delegate = self
     
-    }
-    
-    //MARK: CoreData methods
-    func loadTrackers(with request: NSFetchRequest<Tracker> = Tracker.fetchRequest(), with predicate: NSPredicate? = nil) {
-        do {
-            trackerArray = try context.fetch(request)
-        } catch {
-            print("Error fetching data \(error)")
-        }
-    }
-    
-    func saveContext() {
-        do {
-            try context.save()
-        } catch {
-            print("Error saving context, \(error)!")
-        }
     }
     
     @IBAction func dismissNewItemButtonClicked(_ sender: UIButton) {
@@ -139,9 +118,9 @@ class AddNewViewController: UIViewController, UITextFieldDelegate {
         tracker.emojis = newTrackerEmojis.text!
         tracker.type = newTrackerType
         
-        trackerArray.append(tracker)
+        coredata.trackerArray.append(tracker)
         
-        saveContext()
+        coredata.saveContext()
 
         self.dismiss(animated: true)
     }
