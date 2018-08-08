@@ -30,8 +30,7 @@ class MainViewController: UIViewController {
     @IBOutlet var backToTodayButton: UIBarButtonItem!
     @IBAction func backToTodayButtonClicked(_ sender: UIBarButtonItem) {
         currentDateObj.restoreTimeLine()
-        updateDates()
-        updateEmojis()
+        updateAllPanels()
         enableBackButton(hidden: true)
     }
     
@@ -56,8 +55,7 @@ class MainViewController: UIViewController {
         
         //Get the current date's data
         currentDateObj.setYesterdayAndTomorrow()
-        updateDates()
-        updateEmojis()
+        updateAllPanels()
         
         //tapGesture
         let tapGestureBack = UITapGestureRecognizer(target: self, action: #selector(self.stackViewTapped(_:)))
@@ -111,25 +109,38 @@ class MainViewController: UIViewController {
             default:
                 currentDateObj.turnBackTime()
             }
-            updateDates()
-            updateEmojis()
+            updateAllPanels()
             enableBackButton(hidden: false)
         }
     }
     
+    //MARK: Shortcut function
+    func updateAllPanels() {
+        //today
+        updateDates()
+        updateEmojis()
+        //yesterday
+        updateDates(date: currentDateObj.yesterday)
+        updateEmojis(date: currentDateObj.yesterday)
+        //tomorrow
+        updateEmojis(date: currentDateObj.tomorrow)
+        updateDates(date: currentDateObj.tomorrow)
+    }
+    
     //MARK: Add today's date to calendar
     func updateDates(date currentDate: Date = currentDateObj.now) {
-        let yesterday = currentDateObj.yesterday
-        let tomorrow = currentDateObj.tomorrow
-    
-        yesterdayDateLabel.text = "\(yesterday.getMonth() ?? ""), \(yesterday.getDayDate() ?? 0)th"
-        yesterdayDayLabel.text = yesterday.dayOfTheWeek() ?? ""
-        
-        todayDateLabel.text = "\(currentDate.getMonth() ?? ""), \(currentDate.getDayDate() ?? 0)th"
-        todayDayLabel.text = currentDate.dayOfTheWeek() ?? ""
-        
-        tomorrowDateLabel.text = "\(tomorrow.getMonth() ?? ""), \(tomorrow.getDayDate() ?? 0)th"
-        tomorrowDayLabel.text = tomorrow.dayOfTheWeek() ?? ""
+
+        switch currentDate {
+        case currentDateObj.yesterday:
+            yesterdayDateLabel.text = "\(currentDate.getMonth() ?? ""), \(currentDate.getDayDate() ?? 0)th"
+            yesterdayDayLabel.text = currentDate.dayOfTheWeek() ?? ""
+        case currentDateObj.now:
+            todayDateLabel.text = "\(currentDate.getMonth() ?? ""), \(currentDate.getDayDate() ?? 0)th"
+            todayDayLabel.text = currentDate.dayOfTheWeek() ?? ""
+        default:
+            tomorrowDateLabel.text = "\(currentDate.getMonth() ?? ""), \(currentDate.getDayDate() ?? 0)th"
+            tomorrowDayLabel.text = currentDate.dayOfTheWeek() ?? ""
+        }
         
         return
     }
@@ -180,27 +191,14 @@ class MainViewController: UIViewController {
         for emoji in emojiList {
             emojiString += emoji.symbol ?? ""
         }
-        todayEmojiLabel?.text = emojiString
-//        print(emojiString)
-        
-//        let calendar = Calendar(identifier: .gregorian)
-        // tomorrow
-//        if let tomorrowDayDate = getFilteredDays(date: calendar.getTomorrowDate()) {
-//            var emojiList = ""
-//            for dayDate in tomorrowDayDate {
-//                emojiList += "\(dayDate.emoji)"
-//            }
-//            tomorrowEmojiLabel?.text = emojiList
-//        }
-        
-        //yesterday
-//        if let yesterdayDayDate = getFilteredDays(date: calendar.getYesterdayDate()) {
-//            var emojiList = ""
-//            for dayDate in yesterdayDayDate {
-//                emojiList += "\(dayDate.emoji)"
-//            }
-//            yesterdayEmojiLabel?.text = emojiList
-//        }
+        switch currentDate {
+        case currentDateObj.now:
+            self.todayEmojiLabel?.text = emojiString
+        case currentDateObj.yesterday:
+            self.yesterdayEmojiLabel?.text = emojiString
+        default:
+            self.tomorrowEmojiLabel?.text = emojiString
+        }
     }
     
     func updateEmojiFrequency() {
