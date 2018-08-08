@@ -193,7 +193,6 @@
                     <connections>
                         <outlet property="backToTodayButton" destination="XkP-Ma-FVo" id="szI-Gz-EXV"/>
                         <outlet property="daysStackView" destination="KxA-Ku-rRO" id="tWT-20-1dA"/>
-                        <outlet property="mainView" destination="8bC-Xf-vdC" id="IVF-Dn-H0D"/>
                         <outlet property="todayDateLabel" destination="5Bm-gQ-ff6" id="J6p-Sa-fbJ"/>
                         <outlet property="todayDayLabel" destination="VC1-iI-dvf" id="6mg-j2-XuC"/>
                         <outlet property="todayEmojiLabel" destination="KRb-07-Gmk" id="m9c-7F-pVP"/>

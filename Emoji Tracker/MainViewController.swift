@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, clickDelegate {
+class MainViewController: UIViewController {
     
     //MARK: - Days StackView
     @IBOutlet var todayDateLabel: UILabel!
@@ -25,8 +25,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet var tomorrowDateLabel: UILabel!
     @IBOutlet var tomorrowDayLabel: UILabel!
     @IBOutlet var tomorrowPanel: UIView!
-    
-    @IBOutlet var mainView: UIView!
     
     //MARK: Navigation items
     @IBOutlet var backToTodayButton: UIBarButtonItem!
@@ -50,7 +48,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         trackersTableView?.register(UINib(nibName: "SliderCell", bundle: nil), forCellReuseIdentifier: "sliderCell")
         trackersTableView?.register(UINib(nibName: "Pick5Cell", bundle: nil), forCellReuseIdentifier: "pick5Cell")
         trackersTableView.register(UINib(nibName: "InputCell", bundle: nil), forCellReuseIdentifier: "inputCell")
-       
+        
         //Keyboard scrolling
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         
@@ -81,7 +79,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isTranslucent = true
         
-        
         //Trackers' table view methods
         trackersTableView?.reloadData()
     }
@@ -96,6 +93,11 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             backToTodayButton.tintColor = UIColor(displayP3Red: 0.290196, green: 0.564706, blue: 0.886275, alpha: 1)
         }
     }
+    
+    //MARK: - Trackers TableView
+    @IBOutlet var trackersTableView: UITableView!
+    
+    let numberOfCellsPerRow: CGFloat = 2
     
     //MARK: - Days StackView
     @IBOutlet weak var daysStackView: UIStackView!
@@ -117,7 +119,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     //MARK: Add today's date to calendar
     func updateDates(date currentDate: Date = currentDateObj.now) {
-        let calendar = Calendar.init(identifier: .gregorian)
         let yesterday = currentDateObj.yesterday
         let tomorrow = currentDateObj.tomorrow
     
@@ -130,8 +131,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         tomorrowDateLabel.text = "\(tomorrow.getMonth() ?? ""), \(tomorrow.getDayDate() ?? 0)th"
         tomorrowDayLabel.text = tomorrow.dayOfTheWeek() ?? ""
         
-        print(yesterday, currentDate, tomorrow)
-        return yesterdayDayLabel.setNeedsLayout()
+        return
     }
     
     //MARK: DayDate filtered to only current day
@@ -202,9 +202,16 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
 //            yesterdayEmojiLabel?.text = emojiList
 //        }
     }
-
     
-    //MARK: - Table View
+    func updateEmojiFrequency() {
+        
+    }
+
+}
+
+extension MainViewController: UITableViewDelegate, UITableViewDataSource {
+    
+     //MARK: - Table View
     
     //MARK: Scroll the view for keyboard
     @objc func keyboardWillShow(_ notification:Notification) {
@@ -215,13 +222,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     @objc func keyboardWillHide(_ notification:Notification) {
         
-            trackersTableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
+        trackersTableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
     }
-
-    //MARK: Trackers TableView
-    @IBOutlet var trackersTableView: UITableView!
-    
-    let numberOfCellsPerRow: CGFloat = 2
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return coredata.trackerArray.count
@@ -233,12 +235,12 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         switch trackerList[indexPath.row].type {
         case "slider":
-                let cell = tableView.dequeueReusableCell(withIdentifier: "sliderCell", for: indexPath) as! SliderCell
-                
-                cell.titleLabel?.text = trackerList[indexPath.row].title
-                cell.emojiLabel?.text = trackerList[indexPath.row].emojis
-                
-                return cell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "sliderCell", for: indexPath) as! SliderCell
+            
+            cell.titleLabel?.text = trackerList[indexPath.row].title
+            cell.emojiLabel?.text = trackerList[indexPath.row].emojis
+            
+            return cell
         case "pick5":
             let cell = tableView.dequeueReusableCell(withIdentifier: "pick5Cell", for: indexPath) as! Pick5Cell
             
@@ -273,8 +275,14 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-    //MARK: - Saving the DayData from trackers & user's answers
 
+    
+}
+
+extension MainViewController: clickDelegate {
+    
+    //MARK: - Saving the DayData from trackers & user's answers
+    
     //MARK: Cell delegate mothods
     func createNewDayDate(emoji : String, tracker : String) {
         
@@ -300,7 +308,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         let emojiArray = coredata.fetchEmoji(with: emoji)
         
         if emojiArray.count == 0 {
-
+            
             let newEmoji = Emoji(context: context)
             newEmoji.symbol = emoji
             newEmoji.frequency = 1
@@ -316,13 +324,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             return emojiArray[0]
             
-            }
-
-    }
-    
-    func updateEmojiFrequency() {
+        }
         
     }
-
+    
 }
 
