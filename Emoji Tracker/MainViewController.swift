@@ -57,6 +57,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
         //Get the current date's data
+        currentDateObj.setYesterdayAndTomorrow()
         updateDates()
         updateEmojis()
         
@@ -117,30 +118,23 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     //MARK: Add today's date to calendar
     func updateDates(date currentDate: Date = currentDateObj.now) {
         let calendar = Calendar.init(identifier: .gregorian)
-        let yesterday = calendar.getYesterdayDate()
-        let tomorrow = calendar.getTomorrowDate()
+        let yesterday = currentDateObj.yesterday
+        let tomorrow = currentDateObj.tomorrow
+    
+        yesterdayDateLabel.text = "\(yesterday.getMonth() ?? ""), \(yesterday.getDayDate() ?? 0)th"
+        yesterdayDayLabel.text = yesterday.dayOfTheWeek() ?? ""
         
         todayDateLabel.text = "\(currentDate.getMonth() ?? ""), \(currentDate.getDayDate() ?? 0)th"
         todayDayLabel.text = currentDate.dayOfTheWeek() ?? ""
         
-        yesterdayDateLabel.text = "\(yesterday.getMonth() ?? ""), \(yesterday.getDayDate() ?? 0)th"
-        yesterdayDayLabel.text = yesterday.dayOfTheWeek() ?? ""
-        
         tomorrowDateLabel.text = "\(tomorrow.getMonth() ?? ""), \(tomorrow.getDayDate() ?? 0)th"
         tomorrowDayLabel.text = tomorrow.dayOfTheWeek() ?? ""
+        
+        print(yesterday, currentDate, tomorrow)
+        return yesterdayDayLabel.setNeedsLayout()
     }
     
     //MARK: DayDate filtered to only current day
-//    func getFilteredDays(date now : Date = currentDateObj.now) -> [DayDate] {
-//        let daysList = [DayDate]()
-//        if let start = now.startOfTheDay(), let end = now.endOfTheDay() {
-//            let predicate: NSPredicate = NSPredicate(format: "date BETWEEN {%@, %@}", start as CVarArg, end as CVarArg)
-//            return daysList.filter(predicate)
-//
-//        }
-//        return daysList
-//    }
-    
     func getFilteredDays(date now : Date = currentDateObj.now) -> [DayDate] {
         var dayList = [DayDate]()
         
@@ -171,7 +165,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                 fatalError("currentDatDate object has no .date")
                 
             }
-            let datePredicate = NSPredicate(format: "date.date MATCHES %@", today as CVarArg)
+            let datePredicate = NSPredicate(format: "ANY date.date == %@", today as CVarArg)
             let request: NSFetchRequest<Emoji> = Emoji.fetchRequest()
             request.predicate = datePredicate
             
@@ -187,9 +181,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             emojiString += emoji.symbol ?? ""
         }
         todayEmojiLabel?.text = emojiString
-        print(emojiList)
+//        print(emojiString)
         
-        let calendar = Calendar(identifier: .gregorian)
+//        let calendar = Calendar(identifier: .gregorian)
         // tomorrow
 //        if let tomorrowDayDate = getFilteredDays(date: calendar.getTomorrowDate()) {
 //            var emojiList = ""
