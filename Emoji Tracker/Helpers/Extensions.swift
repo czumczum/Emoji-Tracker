@@ -15,7 +15,7 @@ extension Calendar {
         guard let yesterday = Calendar.current.date(
             byAdding: .hour,
             value: -24,
-            to: date.toLocalTime()) else {
+            to: date) else {
                 fatalError("Cannot get yesterday's date")
         }
         return yesterday
@@ -25,7 +25,7 @@ extension Calendar {
         guard let tomorrow = Calendar.current.date(
             byAdding: .hour,
             value: 24,
-            to: date.toLocalTime()) else {
+            to: date) else {
                 fatalError("Cannot get tomorrow's date")
         }
         return tomorrow
@@ -57,6 +57,8 @@ extension Date {
     func getDayDate() -> Int? {
         let calendar = Calendar.init(identifier: .gregorian)
         let components = calendar.dateComponents([.day], from: self)
+        print(self)
+        print(components)
         return components.day
     }
     

@@ -125,6 +125,8 @@ class MainViewController: UIViewController {
         //tomorrow
         updateEmojis(date: currentDateObj.tomorrow)
         updateDates(date: currentDateObj.tomorrow)
+        
+        return
     }
     
     //MARK: Add today's date to calendar
