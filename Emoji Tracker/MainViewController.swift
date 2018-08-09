@@ -284,24 +284,56 @@ extension MainViewController: clickDelegate {
     //MARK: - Saving the DayData from trackers & user's answers
     
     //MARK: Cell delegate mothods
+    func createNewRecord(emoji: String, tracker: String) {
+        
+        // fetch current DayDate
+        // fetch current Emoji
+        // fetch current Tracker
+        
+        // check if there's any DayDate
+        // if so ->
+            // check if there's such Tracker for today with setTrackerData
+            // Func will add current DayData into Tracker if necessary or do nothing if not
+            // as return will be a bool
+                // if false ->
+                    // fire addOrUpdateEmoji
+                    // add Tracker and Emoji into Date
+                // if true ->
+                    // fire undoSetEmoji & addOrUpdateEmoji for the new one
+                    // change Emoji for this Tracker in current DayDate
+        
+        // if not -> create method
+            // create new DayData
+            // fire setTrackerData -->> it will be always false
+            // fire addOrUpdate Emoji
+            // add Tracker & Emoji into new DayDate
+        
+        // save context
+    }
+    
     func createNewDayDate(emoji : String, tracker : String) {
         
         let dayDateArray = getFilteredDays(date: currentDateObj.now)
+        var dayDate : DayDate
         
         if dayDateArray.count == 0 {
-            
-            let dayDate = DayDate(context: context)
+            dayDate = DayDate(context: context)
             dayDate.date = currentDateObj.now
             
             let emoji = addOrUpdateEmoji(emoji: emoji, date: dayDate)
             dayDate.emoji = [emoji]
-            
         } else {
-            let dayDate = dayDateArray[0]
+            dayDate = dayDateArray[0]
+            let emoji = addOrUpdateEmoji(emoji: emoji, date: dayDate)
+            
+            if let emojiArray = dayDate.emoji {
+                let mutableEmoji = emojiArray.mutableCopy() as! NSMutableOrderedSet
+                mutableEmoji.add(emoji)
+                dayDate.emoji = mutableEmoji.copy() as? NSOrderedSet
+            }
         }
         
         coredata.saveContext()
-        print(tracker, emoji)
     }
     
     func addOrUpdateEmoji(emoji : String, date : DayDate) -> Emoji {
@@ -317,15 +349,40 @@ extension MainViewController: clickDelegate {
             return newEmoji
             
         } else {
+            let currentEmoji = emojiArray[0]
             // Updating Emoji frequency
-            emojiArray[0].frequency += 1
-            let datesArray = emojiArray[0].date
-            print(datesArray)
-            
+            currentEmoji.frequency += 1
+            if let datesArray = currentEmoji.date {
+                let mutableDates = datesArray.mutableCopy() as! NSMutableSet
+                mutableDates.add(date)
+                currentEmoji.date = mutableDates.copy() as? NSSet
+            }
             return emojiArray[0]
             
         }
+    }
+    
+    func undoSetEmoji() {
+        // Was called only if user changed his mind and set another emoji for current day & tracker
+        // fetch emoji from DB
+        // delete current DayDate
+        // subtrack 1 from frequency
+    }
+    
+    func setTrackerData(title: String, date: DayDate) -> Bool {
+        let tracker = coredata.fetchTracker(tracker: title, date: date)
         
+        if tracker.count == 0 {
+            // there's no tracker data for current day
+            // save data into tracker
+            // give true for data method
+        } else {
+            // data for this day & this tracker was set before
+            // don't save data into tracker
+            // give false for data method
+        }
+        
+        return false
     }
     
 }

@@ -57,8 +57,6 @@ extension Date {
     func getDayDate() -> Int? {
         let calendar = Calendar.init(identifier: .gregorian)
         let components = calendar.dateComponents([.day], from: self)
-        print(self)
-        print(components)
         return components.day
     }
     
