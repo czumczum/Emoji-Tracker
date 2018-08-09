@@ -44,8 +44,11 @@
                                     <stackView verifyAmbiguity="ignoreSizes" opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="411" placeholderIntrinsicHeight="34.5" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="hn5-C3-hO2">
                                         <rect key="frame" x="0.0" y="0.0" width="380" height="57"/>
                                         <subviews>
-                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="SXD-Vc-1OK">
+                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="SXD-Vc-1OK">
                                                 <rect key="frame" x="-2" y="0.0" width="384" height="58"/>
+                                                <connections>
+                                                    <action selector="sliderMoved:" destination="9hv-3d-eEy" eventType="valueChanged" id="EP4-sI-LRV"/>
+                                                </connections>
                                             </slider>
                                         </subviews>
                                     </stackView>

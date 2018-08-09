@@ -192,13 +192,21 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         let trackerList = coredata.trackerArray
         
         switch trackerList[indexPath.row].type {
+            
         case "slider":
             let cell = tableView.dequeueReusableCell(withIdentifier: "sliderCell", for: indexPath) as! SliderCell
             
             cell.titleLabel?.text = trackerList[indexPath.row].title
             cell.emojiLabel?.text = trackerList[indexPath.row].emojis
+            if let maxValue = trackerList[indexPath.row].emojis?.count {
+                cell.slider.maximumValue = Float(maxValue) - 0.001
+                cell.slider.accessibilityIdentifier = trackerList[indexPath.row].emojis
+            }
+            
+            cell.delegate = self
             
             return cell
+            
         case "pick5":
             let cell = tableView.dequeueReusableCell(withIdentifier: "pick5Cell", for: indexPath) as! Pick5Cell
             
@@ -220,7 +228,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
                     }
                 }
             }
-            
+
             return cell
             
         default:
@@ -228,6 +236,8 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             
             cell.titleLabel?.text = trackerList[indexPath.row].title
             cell.emojiLabel?.text = trackerList[indexPath.row].emojis
+            
+             cell.delegate = self
             
             return cell
         }
@@ -249,6 +259,7 @@ extension MainViewController: clickDelegate {
         let predicate = NSCompoundPredicate(type: .and, subpredicates: [titlePredicate, datePredicate])
         let currentDayDate = coredata.fetchDayData(with: predicate)
         
+        print(emoji, tracker)
         if currentDayDate.count == 0 {
             let newDayDate = DayDate(context: context)
             newDayDate.date = currentDateObj.now
