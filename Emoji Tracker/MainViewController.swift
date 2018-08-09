@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import CoreData
 
 class MainViewController: UIViewController {
     
@@ -118,12 +117,12 @@ class MainViewController: UIViewController {
     func updateAllPanels() {
         //today
         updateDates()
-        updateEmojis()
+//        updateEmojis()
         //yesterday
         updateDates(date: currentDateObj.yesterday)
-        updateEmojis(date: currentDateObj.yesterday)
+//        updateEmojis(date: currentDateObj.yesterday)
         //tomorrow
-        updateEmojis(date: currentDateObj.tomorrow)
+//        updateEmojis(date: currentDateObj.tomorrow)
         updateDates(date: currentDateObj.tomorrow)
         
         return
@@ -147,65 +146,46 @@ class MainViewController: UIViewController {
         return
     }
     
-    //MARK: DayDate filtered to only current day
-    func getFilteredDays(date now : Date = currentDateObj.now) -> [DayDate] {
-        var dayList = [DayDate]()
-        
-        let request: NSFetchRequest<DayDate> = DayDate.fetchRequest()
-        
-        if let start = now.startOfTheDay(), let end = now.endOfTheDay() {
-            let predicate: NSPredicate = NSPredicate(format: "date BETWEEN {%@, %@}", start as CVarArg, end as CVarArg)
-            request.predicate = predicate
-        }
-        
-        do {
-            dayList = try context.fetch(request)
-        } catch {
-            print("Error fetching data \(error)")
-        }
-        return dayList
-    }
-    
     //MARK: Add current emojis to calendar
-    func updateEmojis(date currentDate : Date = currentDateObj.now) {
-//        today
-        let currentDayDate = getFilteredDays(date: currentDate)
-        var emojiList = [Emoji]()
-        var emojiString = ""
-        
-        if currentDayDate.count > 0 {
-            guard let today = currentDayDate[0].date else {
-                fatalError("currentDatDate object has no .date")
-                
-            }
-            let datePredicate = NSPredicate(format: "ANY date.date == %@", today as CVarArg)
-            let request: NSFetchRequest<Emoji> = Emoji.fetchRequest()
-            request.predicate = datePredicate
-            
-            do {
-                emojiList = try context.fetch(request)
-            } catch {
-                print("Error fetching data \(error)")
-            }
-            
-        }
-        
-        for emoji in emojiList {
-            emojiString += emoji.symbol ?? ""
-        }
-        switch currentDate {
-        case currentDateObj.now:
-            self.todayEmojiLabel?.text = emojiString
-        case currentDateObj.yesterday:
-            self.yesterdayEmojiLabel?.text = emojiString
-        default:
-            self.tomorrowEmojiLabel?.text = emojiString
-        }
-    }
-    
-    func updateEmojiFrequency() {
-        
-    }
+//    func updateEmojis(date currentDate : Date = currentDateObj.now) {
+////        today
+//        let currentDayDate = getFilteredDays(date: currentDate)
+//        var emojiList = [Emoji]()
+//        var emojiString = ""
+//
+//        if currentDayDate.count > 0 {
+//            guard let today = currentDayDate[0].date else {
+//                fatalError("currentDatDate object has no .date")
+//
+//            }
+//            let datePredicate = NSPredicate(format: "ANY date.date == %@", today as CVarArg)
+//            let request: NSFetchRequest<Emoji> = Emoji.fetchRequest()
+//            request.predicate = datePredicate
+//
+//            do {
+//                emojiList = try context.fetch(request)
+//            } catch {
+//                print("Error fetching data \(error)")
+//            }
+//
+//        }
+//
+//        for emoji in emojiList {
+//            emojiString += emoji.symbol ?? ""
+//        }
+//        switch currentDate {
+//        case currentDateObj.now:
+//            self.todayEmojiLabel?.text = emojiString
+//        case currentDateObj.yesterday:
+//            self.yesterdayEmojiLabel?.text = emojiString
+//        default:
+//            self.tomorrowEmojiLabel?.text = emojiString
+//        }
+//    }
+//
+//    func updateEmojiFrequency() {
+//
+//    }
 
 }
 
@@ -286,104 +266,44 @@ extension MainViewController: clickDelegate {
     //MARK: Cell delegate mothods
     func createNewRecord(emoji: String, tracker: String) {
         
-        // fetch current DayDate
-        // fetch current Emoji
-        // fetch current Tracker
+        guard let start = currentDateObj.now.startOfTheDay() else { fatalError("start date is invalid") }
+        guard let end = currentDateObj.now.endOfTheDay() else { fatalError("end date is invalid") }
         
-        // check if there's any DayDate
-        // if so ->
-            // check if there's such Tracker for today with setTrackerData
-            // Func will add current DayData into Tracker if necessary or do nothing if not
-            // as return will be a bool
-                // if false ->
-                    // fire addOrUpdateEmoji
-                    // add Tracker and Emoji into Date
-                // if true ->
-                    // fire undoSetEmoji & addOrUpdateEmoji for the new one
-                    // change Emoji for this Tracker in current DayDate
+        let titlePredicate = NSPredicate(format: "ANY tracker.title CONTAINS[cd] %@", tracker)
+        let datePredicate = NSPredicate(format: "date BETWEEN {%@, %@}", start as CVarArg, end as CVarArg)
+        let predicate = NSCompoundPredicate(type: .and, subpredicates: [titlePredicate, datePredicate])
+        let currentDayDate = coredata.fetchDayData(with: predicate)
         
-        // if not -> create method
-            // create new DayData
-            // fire setTrackerData -->> it will be always false
-            // fire addOrUpdate Emoji
-            // add Tracker & Emoji into new DayDate
-        
-        // save context
-    }
-    
-    func createNewDayDate(emoji : String, tracker : String) {
-        
-        let dayDateArray = getFilteredDays(date: currentDateObj.now)
-        var dayDate : DayDate
-        
-        if dayDateArray.count == 0 {
-            dayDate = DayDate(context: context)
-            dayDate.date = currentDateObj.now
-            
-            let emoji = addOrUpdateEmoji(emoji: emoji, date: dayDate)
-            dayDate.emoji = [emoji]
+        if currentDayDate.count == 0 {
+            let newDayDate = DayDate(context: context)
+            newDayDate.date = currentDateObj.now
+            newDayDate.emoji = emoji
+            newDayDate.dayOfTheWeek = currentDateObj.now.getDayNumber()
+            newDayDate.tracker = setTrackerData(title: tracker, date: newDayDate)
         } else {
-            dayDate = dayDateArray[0]
-            let emoji = addOrUpdateEmoji(emoji: emoji, date: dayDate)
-            
-            if let emojiArray = dayDate.emoji {
-                let mutableEmoji = emojiArray.mutableCopy() as! NSMutableOrderedSet
-                mutableEmoji.add(emoji)
-                dayDate.emoji = mutableEmoji.copy() as? NSOrderedSet
-            }
+            currentDayDate[0].emoji = emoji
         }
         
         coredata.saveContext()
     }
     
-    func addOrUpdateEmoji(emoji : String, date : DayDate) -> Emoji {
-        let emojiArray = coredata.fetchEmoji(with: emoji)
-        
-        if emojiArray.count == 0 {
-            
-            let newEmoji = Emoji(context: context)
-            newEmoji.symbol = emoji
-            newEmoji.frequency = 1
-            newEmoji.date = [date]
-            
-            return newEmoji
-            
-        } else {
-            let currentEmoji = emojiArray[0]
-            // Updating Emoji frequency
-            currentEmoji.frequency += 1
-            if let datesArray = currentEmoji.date {
-                let mutableDates = datesArray.mutableCopy() as! NSMutableSet
-                mutableDates.add(date)
-                currentEmoji.date = mutableDates.copy() as? NSSet
-            }
-            return emojiArray[0]
-            
+    func setTrackerData(title: String, date: DayDate) -> Tracker {
+        let predicate = NSPredicate(format: "title CONTAINS[cd] %@", title)
+        coredata.loadTrackers(with: predicate)
+
+        guard let trackerDates = coredata.trackerArray[0].date else {
+            fatalError("there's no obiect 'date' in this tracker")
         }
-    }
-    
-    func undoSetEmoji() {
-        // Was called only if user changed his mind and set another emoji for current day & tracker
-        // fetch emoji from DB
-        // delete current DayDate
-        // subtrack 1 from frequency
-    }
-    
-    func setTrackerData(title: String, date: DayDate) -> Bool {
-        let tracker = coredata.fetchTracker(tracker: title, date: date)
-        
-        if tracker.count == 0 {
-            // there's no tracker data for current day
-            // save data into tracker
-            // give true for data method
+
+        if trackerDates.count > 0 {
+               let mutableDates = trackerDates.mutableCopy() as! NSMutableOrderedSet
+               mutableDates.add(date)
+               coredata.trackerArray[0].date = mutableDates.copy() as? NSOrderedSet
         } else {
-            // data for this day & this tracker was set before
-            // don't save data into tracker
-            // give false for data method
+                coredata.trackerArray[0].date = [date]
         }
         
-        return false
+        return coredata.trackerArray[0]
     }
     
 }
-

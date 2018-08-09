@@ -60,6 +60,13 @@ extension Date {
         return components.day
     }
     
+    func getDayNumber() -> Int16 {
+        let calendar = Calendar.init(identifier: .gregorian)
+        let components = calendar.dateComponents([.weekday], from: self)
+        let number = Int16(components.weekday ?? 0)
+        return number
+    }
+    
     func startOfTheDay() -> Date? {
         let dateFormatter = DateFormatter().getFormattedDate()
         dateFormatter.timeStyle = .none

@@ -3,7 +3,7 @@
 import UIKit
 
 protocol clickDelegate {
-    func createNewDayDate(emoji: String, tracker: String)
+    func createNewRecord(emoji: String, tracker: String)
 }
 
 class Pick5Cell: UITableViewCell {
@@ -22,7 +22,7 @@ class Pick5Cell: UITableViewCell {
         
         if let emoji = emojiLabel.text, let tracker = titleLabel.text {
         
-            delegate?.createNewDayDate(emoji: emoji, tracker: tracker)
+            delegate?.createNewRecord(emoji: emoji, tracker: tracker)
         }
     }
     

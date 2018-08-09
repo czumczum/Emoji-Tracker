@@ -16,23 +16,42 @@ class CoreDataMethods {
     
     var trackerArray = [Tracker]()
     
-    func fetchEmoji(with emoji : String, with request: NSFetchRequest<Emoji> = Emoji.fetchRequest()) -> [Emoji]{
+    //MARK: DayDate filtered to only current day
+    func getFilteredDays(date now: Date = currentDateObj.now) -> [DayDate] {
+        var dayList = [DayDate]()
         
-        var emojiList = [Emoji]()
-        let predicate = NSPredicate(format: "symbol CONTAINS[cd] %@", emoji)
+        let request: NSFetchRequest<DayDate> = DayDate.fetchRequest()
+        
+        if let start = now.startOfTheDay(), let end = now.endOfTheDay() {
+            let predicate: NSPredicate = NSPredicate(format: "date BETWEEN {%@, %@}", start as CVarArg, end as CVarArg)
+            request.predicate = predicate
+        }
+        
+        do {
+            dayList = try context.fetch(request)
+        } catch {
+            print("Error fetching data \(error)")
+        }
+        return dayList
+    }
+    
+    func fetchDayData(with predicate: NSPredicate? = nil, with request: NSFetchRequest<DayDate> = DayDate.fetchRequest()) -> [DayDate]{
+        
+        var daysArray = [DayDate]()
         request.predicate = predicate
         
         do {
-            emojiList = try context.fetch(request)
+            daysArray = try context.fetch(request)
         } catch {
             print("Error fetching data \(error)")
         }
         
-        return emojiList
+        return daysArray
     }
     
-    func loadTrackers(with request: NSFetchRequest<Tracker> = Tracker.fetchRequest(), with predicate: NSPredicate? = nil) {
+    func loadTrackers(on request: NSFetchRequest<Tracker> = Tracker.fetchRequest(), with predicate: NSPredicate? = nil) {
         do {
+            request.predicate = predicate
             coredata.trackerArray = try context.fetch(request)
         } catch {
             print("Error fetching data \(error)")
