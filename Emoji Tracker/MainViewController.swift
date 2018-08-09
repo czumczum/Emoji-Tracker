@@ -117,12 +117,12 @@ class MainViewController: UIViewController {
     func updateAllPanels() {
         //today
         updateDates()
-//        updateEmojis()
+        updateEmojis()
         //yesterday
         updateDates(date: currentDateObj.yesterday)
-//        updateEmojis(date: currentDateObj.yesterday)
+        updateEmojis(date: currentDateObj.yesterday)
         //tomorrow
-//        updateEmojis(date: currentDateObj.tomorrow)
+        updateEmojis(date: currentDateObj.tomorrow)
         updateDates(date: currentDateObj.tomorrow)
         
         return
@@ -147,51 +147,29 @@ class MainViewController: UIViewController {
     }
     
     //MARK: Add current emojis to calendar
-//    func updateEmojis(date currentDate : Date = currentDateObj.now) {
-////        today
-//        let currentDayDate = getFilteredDays(date: currentDate)
-//        var emojiList = [Emoji]()
-//        var emojiString = ""
-//
-//        if currentDayDate.count > 0 {
-//            guard let today = currentDayDate[0].date else {
-//                fatalError("currentDatDate object has no .date")
-//
-//            }
-//            let datePredicate = NSPredicate(format: "ANY date.date == %@", today as CVarArg)
-//            let request: NSFetchRequest<Emoji> = Emoji.fetchRequest()
-//            request.predicate = datePredicate
-//
-//            do {
-//                emojiList = try context.fetch(request)
-//            } catch {
-//                print("Error fetching data \(error)")
-//            }
-//
-//        }
-//
-//        for emoji in emojiList {
-//            emojiString += emoji.symbol ?? ""
-//        }
-//        switch currentDate {
-//        case currentDateObj.now:
-//            self.todayEmojiLabel?.text = emojiString
-//        case currentDateObj.yesterday:
-//            self.yesterdayEmojiLabel?.text = emojiString
-//        default:
-//            self.tomorrowEmojiLabel?.text = emojiString
-//        }
-//    }
-//
-//    func updateEmojiFrequency() {
-//
-//    }
+    func updateEmojis(date currentDate : Date = currentDateObj.now) {
+        let currentDayDate = coredata.getFilteredDays(date: currentDate)
+        var emojiString = ""
 
+        for log in currentDayDate {
+            emojiString += log.emoji ?? ""
+        }
+
+        switch currentDate {
+        case currentDateObj.now:
+            self.todayEmojiLabel?.text = emojiString
+        case currentDateObj.yesterday:
+            self.yesterdayEmojiLabel?.text = emojiString
+        default:
+            self.tomorrowEmojiLabel?.text = emojiString
+        }
+    }
 }
 
+
+//MARK: - Table View
+
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
-    
-     //MARK: - Table View
     
     //MARK: Scroll the view for keyboard
     @objc func keyboardWillShow(_ notification:Notification) {
@@ -254,16 +232,13 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         }
     }
-    
-
-    
 }
+
+//MARK: - Cell delegate mothods
 
 extension MainViewController: clickDelegate {
     
-    //MARK: - Saving the DayData from trackers & user's answers
-    
-    //MARK: Cell delegate mothods
+    //MARK: Saving the DayData from trackers & user's answers
     func createNewRecord(emoji: String, tracker: String) {
         
         guard let start = currentDateObj.now.startOfTheDay() else { fatalError("start date is invalid") }
@@ -285,6 +260,7 @@ extension MainViewController: clickDelegate {
         }
         
         coredata.saveContext()
+        updateEmojis()
     }
     
     func setTrackerData(title: String, date: DayDate) -> Tracker {
