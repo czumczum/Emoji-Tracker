@@ -24,17 +24,26 @@
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="pvN-G8-Rgi">
                                 <rect key="frame" x="0.0" y="0.0" width="330" height="57"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="WHn-NV-ETC">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="WHn-NV-ETC">
                                         <rect key="frame" x="0.0" y="0.0" width="165" height="57"/>
-                                        <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="20"/>
-                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <attributedString key="attributedText">
+                                            <fragment content="Label  ">
+                                                <attributes>
+                                                    <color key="NSColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <font key="NSFont" size="20" name="Charter-Italic"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iJb-kM-VMb">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iJb-kM-VMb">
                                         <rect key="frame" x="165" y="0.0" width="165" height="57"/>
-                                        <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="20"/>
+                                        <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="26"/>
                                         <color key="textColor" red="0.2901960784" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
+                                        <color key="highlightedColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="shadowColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <size key="shadowOffset" width="3" height="4"/>
                                     </label>
                                 </subviews>
                             </stackView>
@@ -46,7 +55,7 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="syN-Gy-NqN">
                                                 <rect key="frame" x="0.0" y="0.0" width="66" height="57"/>
-                                                <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="20"/>
+                                                <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="30"/>
                                                 <state key="normal" title="1"/>
                                                 <connections>
                                                     <action selector="buttonClickedWithSender:" destination="9hv-3d-eEy" eventType="touchUpInside" id="WWt-8m-bPL"/>
@@ -54,7 +63,7 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nA5-Na-vfz">
                                                 <rect key="frame" x="66" y="0.0" width="66" height="57"/>
-                                                <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="20"/>
+                                                <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="30"/>
                                                 <state key="normal" title="1"/>
                                                 <connections>
                                                     <action selector="buttonClickedWithSender:" destination="9hv-3d-eEy" eventType="touchUpInside" id="nZ8-Z8-ZGS"/>
@@ -62,7 +71,7 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lNG-wZ-bZK">
                                                 <rect key="frame" x="132" y="0.0" width="66" height="57"/>
-                                                <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="20"/>
+                                                <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="30"/>
                                                 <state key="normal" title="2"/>
                                                 <connections>
                                                     <action selector="buttonClickedWithSender:" destination="9hv-3d-eEy" eventType="touchUpInside" id="GSC-TF-NKf"/>
@@ -70,7 +79,7 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rbh-qS-wpR">
                                                 <rect key="frame" x="198" y="0.0" width="66" height="57"/>
-                                                <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="20"/>
+                                                <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="30"/>
                                                 <state key="normal" title="3"/>
                                                 <connections>
                                                     <action selector="buttonClickedWithSender:" destination="9hv-3d-eEy" eventType="touchUpInside" id="Tha-sh-PbC"/>
@@ -78,7 +87,7 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gGE-4a-fKl">
                                                 <rect key="frame" x="264" y="0.0" width="66" height="57"/>
-                                                <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="20"/>
+                                                <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="30"/>
                                                 <state key="normal" title="4"/>
                                                 <connections>
                                                     <action selector="buttonClickedWithSender:" destination="9hv-3d-eEy" eventType="touchUpInside" id="7Nf-14-aqF"/>

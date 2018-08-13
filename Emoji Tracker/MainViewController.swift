@@ -26,6 +26,10 @@ class MainViewController: UIViewController {
     @IBOutlet var tomorrowPanel: UIView!
     
     //MARK: Navigation items
+    
+    @IBAction func menuClicked(_ sender: UIBarButtonItem) {
+        openTabmenu()
+    }
     @IBOutlet var backToTodayButton: UIBarButtonItem!
     @IBAction func backToTodayButtonClicked(_ sender: UIBarButtonItem) {
         currentDateObj.restoreTimeLine()
@@ -80,6 +84,23 @@ class MainViewController: UIViewController {
         trackersTableView?.reloadData()
     }
     
+    //MARK: - Menu items and functions
+    
+    @IBOutlet var viewLeadingConst: NSLayoutConstraint!
+    @IBOutlet var viewTrailingConst: NSLayoutConstraint!
+    @IBOutlet var menuWidth: NSLayoutConstraint!
+    
+    func openTabmenu() {
+        viewLeadingConst.constant = 100
+        viewTrailingConst.constant = -100
+        menuWidth.constant = 100
+        
+        UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseIn, animations: {
+            self.view.layoutIfNeeded()
+        }, completion: nil)
+    }
+
+    
     //MARK: - Navigation controller "Back to today" button
     func enableBackButton(hidden : Bool) {
         if hidden {
@@ -109,6 +130,7 @@ class MainViewController: UIViewController {
                 currentDateObj.turnBackTime()
             }
             updateAllPanels()
+            trackersTableView.reloadData()
             enableBackButton(hidden: false)
         }
     }
@@ -211,13 +233,13 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             
             if currentDayDate.count != 0 {
             cell.emojiLabel?.text = currentDayDate[0].emoji
+            } else {
+                cell.emojiLabel?.text = ""
             }
             
             if let maxValue = trackerList[indexPath.row].emojis?.count {
                 cell.slider.maximumValue = Float(maxValue) - 0.001
                 cell.slider.accessibilityIdentifier = trackerList[indexPath.row].emojis
-            } else {
-                cell.emojiLabel?.text = ""
             }
             
             cell.delegate = self
