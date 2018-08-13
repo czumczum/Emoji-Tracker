@@ -216,6 +216,8 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             if let maxValue = trackerList[indexPath.row].emojis?.count {
                 cell.slider.maximumValue = Float(maxValue) - 0.001
                 cell.slider.accessibilityIdentifier = trackerList[indexPath.row].emojis
+            } else {
+                cell.emojiLabel?.text = ""
             }
             
             cell.delegate = self
@@ -230,6 +232,8 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
                 
                 if currentDayDate.count != 0 {
                     cell.emojiLabel?.text = currentDayDate[0].emoji
+                } else {
+                    cell.emojiLabel?.text = ""
                 }
                 
                 cell.delegate = self
@@ -282,7 +286,6 @@ extension MainViewController: clickDelegate {
         let predicate = NSCompoundPredicate(type: .and, subpredicates: [titlePredicate, datePredicate])
         let currentDayDate = coredata.fetchDayData(with: predicate)
         
-        print(emoji, tracker)
         if currentDayDate.count == 0 {
             let newDayDate = DayDate(context: context)
             newDayDate.date = currentDateObj.now
