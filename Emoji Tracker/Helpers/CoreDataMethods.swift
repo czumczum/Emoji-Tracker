@@ -49,9 +49,22 @@ class CoreDataMethods {
         return daysArray
     }
     
-    func loadTrackers(on request: NSFetchRequest<Tracker> = Tracker.fetchRequest(), with predicate: NSPredicate? = nil) {
+    func fetchTrackers(on request: NSFetchRequest<Tracker> = Tracker.fetchRequest(), with predicate : NSPredicate) -> [Tracker] {
+        var trackerArray = [Tracker]()
+        
+        request.predicate = predicate
+        
         do {
-            request.predicate = predicate
+            trackerArray = try context.fetch(request)
+        } catch {
+            print("Error fetching data \(error)")
+        }
+        
+        return trackerArray
+    }
+    
+    func loadTrackers(on request: NSFetchRequest<Tracker> = Tracker.fetchRequest()) {
+        do {
             coredata.trackerArray = try context.fetch(request)
         } catch {
             print("Error fetching data \(error)")

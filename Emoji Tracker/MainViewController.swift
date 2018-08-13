@@ -190,6 +190,17 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     //MARK: TableView DataSource Methods
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let trackerList = coredata.trackerArray
+        let tracker = trackerList[indexPath.row]
+        
+        //Fetching the current emoji
+        guard let start = currentDateObj.now.startOfTheDay() else { fatalError("start date is invalid") }
+        guard let end = currentDateObj.now.endOfTheDay() else { fatalError("end date is invalid") }
+        
+        let titlePredicate = NSPredicate(format: "ANY tracker.title CONTAINS[cd] %@", tracker.title ?? "")
+        let datePredicate = NSPredicate(format: "date BETWEEN {%@, %@}", start as CVarArg, end as CVarArg)
+        let predicate = NSCompoundPredicate(type: .and, subpredicates: [titlePredicate, datePredicate])
+        
+        let currentDayDate = coredata.fetchDayData(with: predicate)
         
         switch trackerList[indexPath.row].type {
             
@@ -197,7 +208,11 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "sliderCell", for: indexPath) as! SliderCell
             
             cell.titleLabel?.text = trackerList[indexPath.row].title
-            cell.emojiLabel?.text = trackerList[indexPath.row].emojis
+            
+            if currentDayDate.count != 0 {
+            cell.emojiLabel?.text = currentDayDate[0].emoji
+            }
+            
             if let maxValue = trackerList[indexPath.row].emojis?.count {
                 cell.slider.maximumValue = Float(maxValue) - 0.001
                 cell.slider.accessibilityIdentifier = trackerList[indexPath.row].emojis
@@ -212,7 +227,10 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             
             if let emojis = trackerList[indexPath.row].emojis, let buttons = cell.collectionOfButtons {
                 cell.titleLabel?.text = trackerList[indexPath.row].title
-                cell.emojiLabel?.text = emojis
+                
+                if currentDayDate.count != 0 {
+                    cell.emojiLabel?.text = currentDayDate[0].emoji
+                }
                 
                 cell.delegate = self
                 
@@ -235,7 +253,12 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "inputCell", for: indexPath) as! InputCell
             
             cell.titleLabel?.text = trackerList[indexPath.row].title
-            cell.emojiLabel?.text = trackerList[indexPath.row].emojis
+            
+            if currentDayDate.count != 0 {
+                cell.emojiLabel?.text = currentDayDate[0].emoji
+            } else {
+                cell.emojiLabel?.text = ""
+            }
             
              cell.delegate = self
             
@@ -276,21 +299,21 @@ extension MainViewController: clickDelegate {
     
     func setTrackerData(title: String, date: DayDate) -> Tracker {
         let predicate = NSPredicate(format: "title CONTAINS[cd] %@", title)
-        coredata.loadTrackers(with: predicate)
+        let trackersArray = coredata.fetchTrackers(with: predicate)
 
-        guard let trackerDates = coredata.trackerArray[0].date else {
+        guard let trackerDates = trackersArray[0].date else {
             fatalError("there's no obiect 'date' in this tracker")
         }
 
         if trackerDates.count > 0 {
                let mutableDates = trackerDates.mutableCopy() as! NSMutableOrderedSet
                mutableDates.add(date)
-               coredata.trackerArray[0].date = mutableDates.copy() as? NSOrderedSet
+               trackersArray[0].date = mutableDates.copy() as? NSOrderedSet
         } else {
-                coredata.trackerArray[0].date = [date]
+                trackersArray[0].date = [date]
         }
         
-        return coredata.trackerArray[0]
+        return trackersArray[0]
     }
     
 }
