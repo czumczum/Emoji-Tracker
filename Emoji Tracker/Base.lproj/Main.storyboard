@@ -36,22 +36,22 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="160"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Jy-Y8-svm">
-                                                <rect key="frame" x="0.0" y="0.0" width="79.5" height="160"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="80" height="160"/>
                                                 <subviews>
                                                     <label opaque="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" text="November, 15th" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BO9-sn-Wkw">
-                                                        <rect key="frame" x="0.0" y="61.5" width="79.5" height="37.5"/>
+                                                        <rect key="frame" x="0.0" y="61.5" width="80" height="37.5"/>
                                                         <fontDescription key="fontDescription" name="Lobster-Regular" family="Lobster" pointSize="15"/>
                                                         <color key="textColor" red="0.2901960784" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="😝🤓🧐☹️💋😇😝" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eoh-iU-F7A">
-                                                        <rect key="frame" x="0.0" y="36.5" width="79.5" height="25"/>
+                                                        <rect key="frame" x="0.0" y="36.5" width="80" height="25"/>
                                                         <fontDescription key="fontDescription" name="Lobster-Regular" family="Lobster" pointSize="10"/>
                                                         <color key="textColor" red="0.2901960784" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Friday" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aEA-7f-Jfn">
-                                                        <rect key="frame" x="0.0" y="99" width="79.5" height="15"/>
+                                                        <rect key="frame" x="0.0" y="99" width="80" height="15"/>
                                                         <fontDescription key="fontDescription" name="Lobster-Regular" family="Lobster" pointSize="12"/>
                                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -71,22 +71,22 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1fQ-VY-0R4">
-                                                <rect key="frame" x="82.5" y="5" width="210" height="150"/>
+                                                <rect key="frame" x="83" y="21.5" width="210" height="117.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="June, 16th" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Bm-gQ-ff6">
-                                                        <rect key="frame" x="0.0" y="15.5" width="210" height="44"/>
+                                                        <rect key="frame" x="0.0" y="-1" width="210" height="44"/>
                                                         <fontDescription key="fontDescription" name="Lobster-Regular" family="Lobster" pointSize="35"/>
                                                         <color key="textColor" red="0.2901960784" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Saturday" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VC1-iI-dvf">
-                                                        <rect key="frame" x="0.0" y="59.5" width="210" height="31.5"/>
+                                                        <rect key="frame" x="0.0" y="43" width="210" height="31.5"/>
                                                         <fontDescription key="fontDescription" name="Lobster-Regular" family="Lobster" pointSize="25"/>
                                                         <color key="textColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="😂😇😙😝😛😗😘☺️😆😀😃🤖👻" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KRb-07-Gmk">
-                                                        <rect key="frame" x="0.0" y="91" width="210" height="48"/>
+                                                        <rect key="frame" x="0.0" y="74.5" width="210" height="48"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -107,22 +107,22 @@
                                                 </constraints>
                                             </view>
                                             <view tag="1" contentMode="scaleToFill" restorationIdentifier="yesterday" translatesAutoresizingMaskIntoConstraints="NO" id="LIS-Lb-mWe">
-                                                <rect key="frame" x="295.5" y="0.0" width="79.5" height="160"/>
+                                                <rect key="frame" x="296" y="0.0" width="79" height="160"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sunday" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hTB-Vx-1Ng">
-                                                        <rect key="frame" x="0.0" y="99" width="79.5" height="15"/>
+                                                        <rect key="frame" x="0.0" y="99" width="79" height="15"/>
                                                         <fontDescription key="fontDescription" name="Lobster-Regular" family="Lobster" pointSize="12"/>
                                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="😝🤓🧐☹️💋😇😝" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ux0-tf-DI5">
-                                                        <rect key="frame" x="0.0" y="36.5" width="79.5" height="25"/>
+                                                        <rect key="frame" x="0.0" y="36.5" width="79" height="25"/>
                                                         <fontDescription key="fontDescription" name="Lobster-Regular" family="Lobster" pointSize="10"/>
                                                         <color key="textColor" red="0.2901960784" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="left" horizontalHuggingPriority="251" text="December, 15th" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0NH-qA-Wpd">
-                                                        <rect key="frame" x="0.0" y="61.5" width="79.5" height="37.5"/>
+                                                        <rect key="frame" x="0.0" y="61.5" width="79" height="37.5"/>
                                                         <fontDescription key="fontDescription" name="Lobster-Regular" family="Lobster" pointSize="15"/>
                                                         <color key="textColor" red="0.2901960784" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -183,35 +183,59 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KgQ-4v-sOw" userLabel="Menu">
                                 <rect key="frame" x="0.0" y="64" width="0.0" height="603"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="n5U-ey-5sA">
-                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="603"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="chz-2g-iSV">
-                                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="151"/>
-                                                <state key="normal" title="Stats"/>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xfp-7c-PV7">
-                                                <rect key="frame" x="0.0" y="151" width="0.0" height="150.5"/>
-                                                <state key="normal" title="Settings"/>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="39e-eR-2OC">
-                                                <rect key="frame" x="0.0" y="301.5" width="0.0" height="151"/>
-                                                <state key="normal" title="Privacy Policy"/>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hyy-wx-5vY">
-                                                <rect key="frame" x="0.0" y="452.5" width="0.0" height="150.5"/>
-                                                <state key="normal" title="About"/>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="chz-2g-iSV">
+                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="37"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="20"/>
+                                        <state key="normal" title="Stats">
+                                            <color key="titleShadowColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lju-yB-cs9">
+                                        <rect key="frame" x="0.0" y="37" width="0.0" height="37"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="20"/>
+                                        <state key="normal" title="Settings">
+                                            <color key="titleShadowColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JWu-RF-wKS">
+                                        <rect key="frame" x="0.0" y="74" width="0.0" height="37"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="20"/>
+                                        <state key="normal" title="About">
+                                            <color key="titleShadowColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="DLA-oS-6ME">
+                                        <rect key="frame" x="0.0" y="111" width="100" height="52"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="20"/>
+                                        <state key="normal" title="Privacy Policy">
+                                            <color key="titleShadowColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="1" alpha="0.29644691780821919" colorSpace="deviceWhite"/>
                                 <constraints>
-                                    <constraint firstItem="n5U-ey-5sA" firstAttribute="leading" secondItem="KgQ-4v-sOw" secondAttribute="leading" id="8Ff-en-s9d"/>
+                                    <constraint firstAttribute="trailing" secondItem="Lju-yB-cs9" secondAttribute="trailing" id="0t1-FO-AZF"/>
+                                    <constraint firstAttribute="trailing" secondItem="DLA-oS-6ME" secondAttribute="trailing" id="3Xd-3i-7T6"/>
+                                    <constraint firstAttribute="trailing" secondItem="JWu-RF-wKS" secondAttribute="trailing" id="8nm-o8-tie"/>
                                     <constraint firstAttribute="width" id="CRl-hM-DmP"/>
-                                    <constraint firstAttribute="trailing" secondItem="n5U-ey-5sA" secondAttribute="trailing" id="N3D-En-Gvm"/>
-                                    <constraint firstItem="n5U-ey-5sA" firstAttribute="top" secondItem="KgQ-4v-sOw" secondAttribute="top" id="ZZO-Q5-Zk2"/>
-                                    <constraint firstAttribute="bottom" secondItem="n5U-ey-5sA" secondAttribute="bottom" id="btY-0s-sDK"/>
+                                    <constraint firstItem="DLA-oS-6ME" firstAttribute="leading" secondItem="KgQ-4v-sOw" secondAttribute="leading" id="DOA-5K-sa6"/>
+                                    <constraint firstAttribute="trailing" secondItem="chz-2g-iSV" secondAttribute="trailing" id="GRR-Cn-N4a"/>
+                                    <constraint firstItem="chz-2g-iSV" firstAttribute="top" secondItem="KgQ-4v-sOw" secondAttribute="top" id="Kzf-Og-aiq"/>
+                                    <constraint firstItem="JWu-RF-wKS" firstAttribute="top" secondItem="Lju-yB-cs9" secondAttribute="bottom" id="Nlm-K2-mdu"/>
+                                    <constraint firstItem="chz-2g-iSV" firstAttribute="leading" secondItem="KgQ-4v-sOw" secondAttribute="leading" id="V23-Vq-1Tx"/>
+                                    <constraint firstAttribute="trailing" secondItem="DLA-oS-6ME" secondAttribute="trailing" id="XlW-Nw-Sbt"/>
+                                    <constraint firstItem="Lju-yB-cs9" firstAttribute="top" secondItem="chz-2g-iSV" secondAttribute="bottom" id="aEi-yZ-Qv2"/>
+                                    <constraint firstItem="Lju-yB-cs9" firstAttribute="leading" secondItem="KgQ-4v-sOw" secondAttribute="leading" id="bmQ-fx-cAU"/>
+                                    <constraint firstItem="DLA-oS-6ME" firstAttribute="top" secondItem="JWu-RF-wKS" secondAttribute="bottom" id="ckW-VR-jjX"/>
+                                    <constraint firstItem="DLA-oS-6ME" firstAttribute="leading" secondItem="KgQ-4v-sOw" secondAttribute="leading" id="h3V-VB-fFs"/>
+                                    <constraint firstItem="Lju-yB-cs9" firstAttribute="top" secondItem="chz-2g-iSV" secondAttribute="bottom" id="hiV-AM-kVR"/>
+                                    <constraint firstItem="DLA-oS-6ME" firstAttribute="top" secondItem="JWu-RF-wKS" secondAttribute="bottom" id="lqe-cx-4kg"/>
+                                    <constraint firstItem="JWu-RF-wKS" firstAttribute="leading" secondItem="KgQ-4v-sOw" secondAttribute="leading" id="qnI-I2-02D"/>
+                                    <constraint firstAttribute="trailing" secondItem="Lju-yB-cs9" secondAttribute="trailing" id="uAN-NH-Du2"/>
                                 </constraints>
                             </view>
                         </subviews>

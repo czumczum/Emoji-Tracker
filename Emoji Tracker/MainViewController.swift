@@ -26,10 +26,6 @@ class MainViewController: UIViewController {
     @IBOutlet var tomorrowPanel: UIView!
     
     //MARK: Navigation items
-    
-    @IBAction func menuClicked(_ sender: UIBarButtonItem) {
-        openTabmenu()
-    }
     @IBOutlet var backToTodayButton: UIBarButtonItem!
     @IBAction func backToTodayButtonClicked(_ sender: UIBarButtonItem) {
         currentDateObj.restoreTimeLine()
@@ -85,6 +81,25 @@ class MainViewController: UIViewController {
     }
     
     //MARK: - Menu items and functions
+    @IBAction func menuClicked(_ sender: UIBarButtonItem) {
+        if menuWidth.constant == 0 {
+            viewLeadingConst.constant = 100
+            viewTrailingConst.constant = -100
+            menuWidth.constant = 100
+            
+            UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseIn, animations: {
+                self.view.layoutIfNeeded()
+            }, completion: nil)
+        } else {
+            viewLeadingConst.constant = 0
+            viewTrailingConst.constant = 0
+            menuWidth.constant = 0
+            
+            UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseIn, animations: {
+                self.view.layoutIfNeeded()
+            }, completion: nil)
+        }
+    }
     
     @IBOutlet var viewLeadingConst: NSLayoutConstraint!
     @IBOutlet var viewTrailingConst: NSLayoutConstraint!
