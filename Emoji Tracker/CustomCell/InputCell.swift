@@ -1,8 +1,9 @@
 
 
 import UIKit
+import SwipeCellKit
 
-class InputCell: UITableViewCell, UITextFieldDelegate {
+class InputCell: SwipeTableViewCell, UITextFieldDelegate {
     
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var emojiLabel: UILabel!
@@ -11,14 +12,14 @@ class InputCell: UITableViewCell, UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let emojiStr = emojiInput.text {
             let emoji = emojiStr[emojiStr.startIndex]
-            delegate?.createNewRecord(emoji: "\(emoji)", tracker: titleLabel.text!)
+            clickDelegate?.createNewRecord(emoji: "\(emoji)", tracker: titleLabel.text!)
             emojiLabel.text = String(emoji)
         }
         emojiInput.endEditing(true)
         return true
     }
     
-     var delegate : clickDelegate?
+     var clickDelegate : clickDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()

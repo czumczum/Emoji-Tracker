@@ -23,6 +23,7 @@
 		75918CC021152558003702DB /* CurrentDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75918CBF21152558003702DB /* CurrentDate.swift */; };
 		75918CC52119402C003702DB /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 75918CC32119402C003702DB /* DataModel.xcdatamodeld */; };
 		75918CC72119F7FB003702DB /* CoreDataMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75918CC62119F7FB003702DB /* CoreDataMethods.swift */; };
+		75918CCA2126307D003702DB /* SwippableTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75918CC92126307D003702DB /* SwippableTableView.swift */; };
 		759925592113407100B29C50 /* SliderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 759925582113407100B29C50 /* SliderCell.xib */; };
 		7599255B211341BC00B29C50 /* SliderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7599255A211341BC00B29C50 /* SliderCell.swift */; };
 		7599255D21135D0C00B29C50 /* InputCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7599255C21135D0B00B29C50 /* InputCell.xib */; };
@@ -49,6 +50,7 @@
 		75918CBF21152558003702DB /* CurrentDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentDate.swift; sourceTree = "<group>"; };
 		75918CC42119402C003702DB /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		75918CC62119F7FB003702DB /* CoreDataMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataMethods.swift; sourceTree = "<group>"; };
+		75918CC92126307D003702DB /* SwippableTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwippableTableView.swift; sourceTree = "<group>"; };
 		759925582113407100B29C50 /* SliderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SliderCell.xib; sourceTree = "<group>"; };
 		7599255A211341BC00B29C50 /* SliderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderCell.swift; sourceTree = "<group>"; };
 		7599255C21135D0B00B29C50 /* InputCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InputCell.xib; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				753A2A95210BDF3F00EE9982 /* TrackersViewController.swift */,
 				7548683D21091FAB00627971 /* MainViewController.swift */,
 				75486857210A5D0200627971 /* SwipingPages.swift */,
+				75918CC92126307D003702DB /* SwippableTableView.swift */,
 				75992560211362D300B29C50 /* StatsViewController.swift */,
 				75918CC82119FCCB003702DB /* Helpers */,
 				7578064C211223D10041AC23 /* CustomCell */,
@@ -265,11 +268,13 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Emoji Tracker/Pods-Emoji Tracker-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SwipeCellKit/SwipeCellKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwipeCellKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -288,6 +293,7 @@
 				75918CC52119402C003702DB /* DataModel.xcdatamodeld in Sources */,
 				75992561211362D300B29C50 /* StatsViewController.swift in Sources */,
 				7599255F21135D2700B29C50 /* InputCell.swift in Sources */,
+				75918CCA2126307D003702DB /* SwippableTableView.swift in Sources */,
 				75486858210A5D0200627971 /* SwipingPages.swift in Sources */,
 				753A2A94210BDCE200EE9982 /* AddNewViewController.swift in Sources */,
 				75780650211224CD0041AC23 /* Pick5Cell.swift in Sources */,

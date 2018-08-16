@@ -1,17 +1,18 @@
 
 
 import UIKit
+import SwipeCellKit
 
 protocol clickDelegate {
     func createNewRecord(emoji: String, tracker: String)
 }
 
-class Pick5Cell: UITableViewCell {
+class Pick5Cell: SwipeTableViewCell {
     
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var emojiLabel: UILabel!
     
-    var delegate : clickDelegate?
+    var clickDelegate : clickDelegate?
     
     @IBOutlet var collectionOfButtons: Array<UIButton>?
     
@@ -22,7 +23,7 @@ class Pick5Cell: UITableViewCell {
         
         if let emoji = emojiLabel.text, let tracker = titleLabel.text {
         
-            delegate?.createNewRecord(emoji: emoji, tracker: tracker)
+            clickDelegate?.createNewRecord(emoji: emoji, tracker: tracker)
         }
     }
     

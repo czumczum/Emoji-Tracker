@@ -8,5 +8,6 @@ target 'Emoji Tracker' do
   # Pods for Emoji Tracker
 
 pod 'RealmSwift'
+pod 'SwipeCellKit'
 
 end

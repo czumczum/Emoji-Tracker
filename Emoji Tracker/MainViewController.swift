@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwipeCellKit
 
 class MainViewController: UIViewController {
     
@@ -207,7 +208,7 @@ class MainViewController: UIViewController {
 //MARK: - Table View
 
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
-    
+
     //MARK: Scroll the view for keyboard
     @objc func keyboardWillShow(_ notification:Notification) {
         
@@ -258,6 +259,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             }
             
             cell.delegate = self
+            cell.clickDelegate = self
             
             return cell
             
@@ -274,6 +276,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
                 }
                 
                 cell.delegate = self
+                cell.clickDelegate = self
                 
                 for button in buttons {
                     guard let index = buttons.index(of: button) else {
@@ -301,7 +304,8 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.emojiLabel?.text = ""
             }
             
-             cell.delegate = self
+            cell.delegate = self
+            cell.clickDelegate = self
             
             return cell
         }
@@ -357,3 +361,42 @@ extension MainViewController: clickDelegate {
     }
     
 }
+
+//MARK: - Swippable cells methods
+
+extension MainViewController: SwipeTableViewCellDelegate {
+    func visibleRect(for tableView: UITableView) -> CGRect? {
+        return tableView.safeAreaLayoutGuide.layoutFrame
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+        guard orientation == .right else { return nil }
+        
+        let archiveAction = SwipeAction(style: .destructive, title: "Archive") { action, indexPath in
+            
+            // TODO: handle archive
+            
+        }
+        
+        let editAction = SwipeAction(style: .default, title: "Edit") { action, indexPath in
+            
+            //TODO: handle edit
+        }
+        
+        // customize the action appearance
+        archiveAction.image = UIImage(named: "archive")
+        editAction.backgroundColor = UIColor.blue
+        editAction.image = UIImage(named: "edit")
+        
+        return [archiveAction, editAction]
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeTableOptions {
+        
+        var options = SwipeTableOptions()
+        options.expansionStyle = .selection
+        options.transitionStyle = .reveal
+        return options
+    }
+}
+
