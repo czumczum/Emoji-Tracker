@@ -372,7 +372,7 @@ extension MainViewController: SwipeTableViewCellDelegate {
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         guard orientation == .right else { return nil }
         
-        let archiveAction = SwipeAction(style: .destructive, title: "Archive") { action, indexPath in
+        let archiveAction = SwipeAction(style: .default, title: "Archive") { action, indexPath in
             
             // TODO: handle archive
             
@@ -385,7 +385,8 @@ extension MainViewController: SwipeTableViewCellDelegate {
         
         // customize the action appearance
         archiveAction.image = UIImage(named: "archive")
-        editAction.backgroundColor = UIColor.blue
+        archiveAction.backgroundColor = UIColor(red:0.93, green:0.77, blue:0.40, alpha:1.0)
+        editAction.backgroundColor = UIColor(red:0.78, green:0.45, blue:0.92, alpha:1.0)
         editAction.image = UIImage(named: "edit")
         
         return [archiveAction, editAction]
@@ -394,7 +395,7 @@ extension MainViewController: SwipeTableViewCellDelegate {
     func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeTableOptions {
         
         var options = SwipeTableOptions()
-        options.expansionStyle = .selection
+        options.expansionStyle = .none
         options.transitionStyle = .reveal
         return options
     }
