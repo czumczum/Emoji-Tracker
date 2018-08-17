@@ -183,49 +183,67 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KgQ-4v-sOw" userLabel="Menu">
                                 <rect key="frame" x="0.0" y="64" width="0.0" height="603"/>
                                 <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menu bg" translatesAutoresizingMaskIntoConstraints="NO" id="PkZ-eE-opP">
+                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="603"/>
+                                    </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="chz-2g-iSV">
-                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="37"/>
+                                        <rect key="frame" x="0.0" y="20" width="0.0" height="50"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="EuI-R2-or9"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="20"/>
                                         <state key="normal" title="Stats">
                                             <color key="titleShadowColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lju-yB-cs9">
-                                        <rect key="frame" x="0.0" y="37" width="0.0" height="37"/>
+                                        <rect key="frame" x="0.0" y="70" width="0.0" height="50"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="EHz-Ba-EOj"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="20"/>
                                         <state key="normal" title="Settings">
                                             <color key="titleShadowColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JWu-RF-wKS">
-                                        <rect key="frame" x="0.0" y="74" width="0.0" height="37"/>
+                                        <rect key="frame" x="0.0" y="120" width="0.0" height="50"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="RiB-Gy-r66"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="20"/>
                                         <state key="normal" title="About">
                                             <color key="titleShadowColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="DLA-oS-6ME">
-                                        <rect key="frame" x="0.0" y="111" width="100" height="52"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="DLA-oS-6ME">
+                                        <rect key="frame" x="0.0" y="170" width="0.0" height="50"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="MO6-0R-RTS"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="20"/>
                                         <state key="normal" title="Privacy Policy">
                                             <color key="titleShadowColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="0.29644691780821919" colorSpace="deviceWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="Lju-yB-cs9" secondAttribute="trailing" id="0t1-FO-AZF"/>
                                     <constraint firstAttribute="trailing" secondItem="DLA-oS-6ME" secondAttribute="trailing" id="3Xd-3i-7T6"/>
                                     <constraint firstAttribute="trailing" secondItem="JWu-RF-wKS" secondAttribute="trailing" id="8nm-o8-tie"/>
                                     <constraint firstAttribute="width" id="CRl-hM-DmP"/>
+                                    <constraint firstItem="PkZ-eE-opP" firstAttribute="leading" secondItem="KgQ-4v-sOw" secondAttribute="leading" id="D9G-fp-ijT"/>
                                     <constraint firstItem="DLA-oS-6ME" firstAttribute="leading" secondItem="KgQ-4v-sOw" secondAttribute="leading" id="DOA-5K-sa6"/>
                                     <constraint firstAttribute="trailing" secondItem="chz-2g-iSV" secondAttribute="trailing" id="GRR-Cn-N4a"/>
-                                    <constraint firstItem="chz-2g-iSV" firstAttribute="top" secondItem="KgQ-4v-sOw" secondAttribute="top" id="Kzf-Og-aiq"/>
+                                    <constraint firstItem="chz-2g-iSV" firstAttribute="top" secondItem="KgQ-4v-sOw" secondAttribute="top" constant="20" id="Kzf-Og-aiq"/>
                                     <constraint firstItem="JWu-RF-wKS" firstAttribute="top" secondItem="Lju-yB-cs9" secondAttribute="bottom" id="Nlm-K2-mdu"/>
+                                    <constraint firstAttribute="bottom" secondItem="PkZ-eE-opP" secondAttribute="bottom" id="OuL-BF-GSB"/>
+                                    <constraint firstAttribute="trailing" secondItem="PkZ-eE-opP" secondAttribute="trailing" id="SGX-5K-Kd8"/>
                                     <constraint firstItem="chz-2g-iSV" firstAttribute="leading" secondItem="KgQ-4v-sOw" secondAttribute="leading" id="V23-Vq-1Tx"/>
                                     <constraint firstAttribute="trailing" secondItem="DLA-oS-6ME" secondAttribute="trailing" id="XlW-Nw-Sbt"/>
                                     <constraint firstItem="Lju-yB-cs9" firstAttribute="top" secondItem="chz-2g-iSV" secondAttribute="bottom" id="aEi-yZ-Qv2"/>
@@ -233,6 +251,7 @@
                                     <constraint firstItem="DLA-oS-6ME" firstAttribute="top" secondItem="JWu-RF-wKS" secondAttribute="bottom" id="ckW-VR-jjX"/>
                                     <constraint firstItem="DLA-oS-6ME" firstAttribute="leading" secondItem="KgQ-4v-sOw" secondAttribute="leading" id="h3V-VB-fFs"/>
                                     <constraint firstItem="Lju-yB-cs9" firstAttribute="top" secondItem="chz-2g-iSV" secondAttribute="bottom" id="hiV-AM-kVR"/>
+                                    <constraint firstItem="PkZ-eE-opP" firstAttribute="top" secondItem="KgQ-4v-sOw" secondAttribute="top" id="l3O-K4-Yqk"/>
                                     <constraint firstItem="DLA-oS-6ME" firstAttribute="top" secondItem="JWu-RF-wKS" secondAttribute="bottom" id="lqe-cx-4kg"/>
                                     <constraint firstItem="JWu-RF-wKS" firstAttribute="leading" secondItem="KgQ-4v-sOw" secondAttribute="leading" id="qnI-I2-02D"/>
                                     <constraint firstAttribute="trailing" secondItem="Lju-yB-cs9" secondAttribute="trailing" id="uAN-NH-Du2"/>
@@ -848,6 +867,7 @@
     <resources>
         <image name="back-button" width="83" height="35"/>
         <image name="bg" width="375" height="667"/>
+        <image name="menu bg" width="202" height="791"/>
         <image name="plus-button" width="35" height="34"/>
     </resources>
 </document>
