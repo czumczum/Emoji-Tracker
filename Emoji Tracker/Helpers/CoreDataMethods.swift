@@ -65,6 +65,13 @@ class CoreDataMethods {
         return trackerArray
     }
     
+    func deleteTracker(on request: NSFetchRequest<Tracker> = Tracker.fetchRequest(), with tracker : Tracker) {
+        
+        if let result = try? context.fetch(request) {
+            context.delete(tracker)
+        }
+    }
+    
     func loadTrackers(on request: NSFetchRequest<Tracker> = Tracker.fetchRequest()) {
         do {
             allTrackersArray = try context.fetch(request)

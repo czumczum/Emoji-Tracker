@@ -251,6 +251,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "sliderCell", for: indexPath) as! SliderCell
             
             cell.titleLabel?.text = trackerList[indexPath.row].title
+
             
             if currentDayDate.count != 0 {
             cell.emojiLabel?.text = currentDayDate[0].emoji
@@ -377,10 +378,15 @@ extension MainViewController: SwipeTableViewCellDelegate {
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         guard orientation == .right else { return nil }
         
-        let archiveAction = SwipeAction(style: .default, title: "Archive") { action, indexPath in
+        let tracker = coredata.trackerArray[indexPath.row]
+        
+        let archiveAction = SwipeAction(style: .destructive, title: "Archive") { action, indexPath in
+
+            tracker.archived = true
+            coredata.saveContext()
             
-            // TODO: handle archive
-            
+            coredata.loadTrackers()
+            self.trackersTableView.reloadData()
         }
         
         let editAction = SwipeAction(style: .default, title: "Edit") { action, indexPath in
@@ -390,7 +396,11 @@ extension MainViewController: SwipeTableViewCellDelegate {
         
         let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
             
-            //TODO: handle edit
+            coredata.deleteTracker(with: tracker)
+            
+            coredata.loadTrackers()
+            self.trackersTableView.reloadData()
+            
         }
         
         // customize the action appearance

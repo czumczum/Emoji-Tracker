@@ -48,7 +48,7 @@ class TrackersViewController: UIViewController, UITableViewDelegate, UITableView
         TrackerList(sectionName: "Archived", sectionObjects: coredata.archivedTrackerArray)
     ]
 
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return trackersArray.count
     }
     
@@ -63,6 +63,14 @@ class TrackersViewController: UIViewController, UITableViewDelegate, UITableView
         
         cell.textLabel?.text = tracker.title
         cell.detailTextLabel?.text = tracker.emojis
+        
+        if tracker.archived {
+            cell.backgroundColor = UIColor(red:0.80, green:0.75, blue:0.80, alpha:0.5)
+            cell.textLabel?.textColor = UIColor(red:0.57, green:0.57, blue:0.57, alpha:1.0)
+            
+            cell.textLabel?.font = cell.textLabel?.font.withSize(17)
+            cell.detailTextLabel?.font = cell.detailTextLabel?.font.withSize(20)
+        }
         
         return cell
     }
