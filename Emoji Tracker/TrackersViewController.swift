@@ -36,19 +36,39 @@ class TrackersViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var trackersTableView: UITableView!
     @IBOutlet weak var addNewTrackerButtonClicked: UIBarButtonItem!
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return coredata.trackerArray.count
+    //MARK: TableView DataSource Methods
+    struct TrackerList {
+        
+        var sectionName : String
+        var sectionObjects : [Tracker]
     }
     
-    //MARK: TableView DataSource Methods
+    var trackersArray = [
+        TrackerList(sectionName: "Active", sectionObjects: coredata.trackerArray),
+        TrackerList(sectionName: "Archived", sectionObjects: coredata.archivedTrackerArray)
+    ]
+
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return trackersArray.count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return trackersArray[section].sectionObjects.count
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let tracker = trackersArray[indexPath.section].sectionObjects[indexPath.row]
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "trackCell", for: indexPath)
         
-        cell.textLabel?.text = coredata.trackerArray[indexPath.row].title
-        cell.detailTextLabel?.text = coredata.trackerArray[indexPath.row].emojis
+        cell.textLabel?.text = tracker.title
+        cell.detailTextLabel?.text = tracker.emojis
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return trackersArray[section].sectionName
     }
     
     

@@ -113,9 +113,11 @@ class AddNewViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var addNewTrackerButton: UIButton!
     @IBAction func addNewTrackerButtonClicked(_ sender: UIButton) {
         
+        let emojis = newTrackerEmojis.text!.replacingOccurrences(of: " ", with: "")
+        
         let tracker = Tracker(context: context)
         tracker.title = newTrackerName.text!
-        tracker.emojis = newTrackerEmojis.text!
+        tracker.emojis = emojis
         tracker.type = newTrackerType
         
         coredata.trackerArray.append(tracker)

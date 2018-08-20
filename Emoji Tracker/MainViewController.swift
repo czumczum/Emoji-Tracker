@@ -383,13 +383,18 @@ extension MainViewController: SwipeTableViewCellDelegate {
             //TODO: handle edit
         }
         
+        let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
+            
+            //TODO: handle edit
+        }
+        
         // customize the action appearance
-        archiveAction.image = UIImage(named: "archive")
+//        archiveAction.image = UIImage(named: "archive")
         archiveAction.backgroundColor = UIColor(red:0.93, green:0.77, blue:0.40, alpha:1.0)
         editAction.backgroundColor = UIColor(red:0.78, green:0.45, blue:0.92, alpha:1.0)
-        editAction.image = UIImage(named: "edit")
+        deleteAction.backgroundColor = UIColor(red:0.98, green:0.45, blue:0.62, alpha:1.0)
         
-        return [archiveAction, editAction]
+        return [archiveAction, editAction, deleteAction]
     }
     
     func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeTableOptions {

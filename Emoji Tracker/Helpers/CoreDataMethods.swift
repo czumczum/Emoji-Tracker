@@ -15,6 +15,8 @@ let context = (UIApplication.shared.delegate as! AppDelegate).persistentContaine
 class CoreDataMethods {
     
     var trackerArray = [Tracker]()
+    var archivedTrackerArray = [Tracker]()
+    private var allTrackersArray = [Tracker]()
     
     //MARK: DayDate filtered to only current day
     func getFilteredDays(date now: Date = currentDateObj.now) -> [DayDate] {
@@ -65,10 +67,13 @@ class CoreDataMethods {
     
     func loadTrackers(on request: NSFetchRequest<Tracker> = Tracker.fetchRequest()) {
         do {
-            coredata.trackerArray = try context.fetch(request)
+            allTrackersArray = try context.fetch(request)
         } catch {
             print("Error fetching data \(error)")
         }
+        
+        loadActiveTrackers()
+        loadArchivedTrackers()
     }
     
     func saveContext() {
@@ -77,6 +82,28 @@ class CoreDataMethods {
         } catch {
             print("Error saving context, \(error)!")
         }
+    }
+    
+    private func loadArchivedTrackers() {
+        archivedTrackerArray = []
+        
+        for tracker in allTrackersArray {
+            if tracker.archived {
+                archivedTrackerArray.append(tracker)
+            }
+        }
+        return
+    }
+    
+    private func loadActiveTrackers() {
+        trackerArray = []
+
+        for tracker in allTrackersArray {
+            if !tracker.archived {
+                trackerArray.append(tracker)
+            }
+        }
+        return
     }
     
 }
