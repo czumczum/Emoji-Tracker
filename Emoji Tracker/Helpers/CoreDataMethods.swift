@@ -72,8 +72,7 @@ class CoreDataMethods {
             print("Error fetching data \(error)")
         }
         
-        loadActiveTrackers()
-        loadArchivedTrackers()
+        sortTrackers()
     }
     
     func saveContext() {
@@ -84,26 +83,17 @@ class CoreDataMethods {
         }
     }
     
-    private func loadArchivedTrackers() {
+    private func sortTrackers() {
         archivedTrackerArray = []
+        trackerArray = []
         
         for tracker in allTrackersArray {
             if tracker.archived {
                 archivedTrackerArray.append(tracker)
-            }
-        }
-        return
-    }
-    
-    private func loadActiveTrackers() {
-        trackerArray = []
-
-        for tracker in allTrackersArray {
-            if !tracker.archived {
+            } else {
                 trackerArray.append(tracker)
             }
         }
         return
     }
-    
 }

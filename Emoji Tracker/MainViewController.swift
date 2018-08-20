@@ -79,6 +79,11 @@ class MainViewController: UIViewController {
         
         //Trackers' table view methods
         trackersTableView?.reloadData()
+        
+        //Hide side menu
+        viewLeadingConst.constant = 0
+        viewTrailingConst.constant = 0
+        menuWidth.constant = 0
     }
     
     //MARK: - Menu items and functions
