@@ -391,7 +391,116 @@ extension MainViewController: SwipeTableViewCellDelegate {
         
         let editAction = SwipeAction(style: .default, title: "Edit") { action, indexPath in
             
-            //TODO: handle edit
+            let menu = UIAlertController(title: "Edit Tracker", message: nil, preferredStyle: .actionSheet)
+            
+            // Name change
+            let changeNameAction = UIAlertAction(title: "Change Name", style: .default) { (action) in
+                
+                // Alert-prompt to enter a new name
+                let alert = UIAlertController(title: "Edit name", message: "", preferredStyle: .alert)
+                var textField = UITextField()
+                let action = UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                    
+                    // Updating Category with a new name
+                    if let newName = textField.text {
+                        tracker.title = newName
+                        coredata.saveContext()
+                    }
+                    self.trackersTableView.reloadData()
+                })
+                
+                alert.addAction(action)
+                alert.addTextField { (alertTextField) in
+                    alertTextField.placeholder = "New name"
+                    textField = alertTextField
+                }
+                self.present(alert, animated: true, completion: nil)
+                
+            }
+            // Emojis change
+            let changeEmojiAction = UIAlertAction(title: "Change Emojis", style: .default) { (action) in
+                
+                // Alert-prompt to enter a new name
+                let alert = UIAlertController(title: "Edit emojis", message: "", preferredStyle: .alert)
+                var textField = UITextField()
+                
+                let action = UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                    
+                    // Updating Category with a new name
+                    if let newEmojis = textField.text {
+                        tracker.emojis = newEmojis
+                        coredata.saveContext()
+                    }
+                    self.trackersTableView.reloadData()
+                })
+                
+                alert.addAction(action)
+                alert.addTextField { (alertTextField) in
+                    alertTextField.placeholder = "New emojis"
+                    textField = alertTextField
+                    textField.text = tracker.emojis
+                }
+                self.present(alert, animated: true, completion: nil)
+                
+            }
+            
+            // Type change
+            let changeTypeAction = UIAlertAction(title: "Change Type of Tracker", style: .default, handler: { (action) in
+                let changeTypeAlert = UIAlertController (title: "Change type of Tracker", message: nil, preferredStyle: UIAlertControllerStyle.alert)
+                
+                
+                //preset keyword as button in alert controller
+                let bt1 = UIAlertAction(title: "Slider", style: UIAlertActionStyle.default){
+                    (action) in
+                    tracker.type = "slider"
+                    coredata.saveContext()
+                    self.trackersTableView.reloadData()
+                }
+
+                changeTypeAlert.addAction(bt1)
+                
+                //preset keyword as button in alert controller
+                let bt2 = UIAlertAction(title: "Pick 5", style: UIAlertActionStyle.default){
+                    (action) in
+                    tracker.type = "pick5"
+                    coredata.saveContext()
+                    self.trackersTableView.reloadData()
+                    
+                }
+                
+                changeTypeAlert.addAction(bt2)
+                
+                //preset keyword as button in alert controller
+                let bt3 = UIAlertAction(title: "Input", style: UIAlertActionStyle.default){
+                    (action) in
+                    tracker.type = "input"
+                    coredata.saveContext()
+                    self.trackersTableView.reloadData()
+                }
+                
+                changeTypeAlert.addAction(bt3)
+                
+                //Create Cancel Action
+                let cancel = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil)
+                
+                changeTypeAlert.addAction(cancel)
+                
+                //Present Alert Controller
+                self.present(changeTypeAlert, animated:true, completion: nil)
+            })
+        
+            
+            // Cancel
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action in
+            }
+            
+            menu.addAction(changeNameAction)
+            menu.addAction(changeEmojiAction)
+            menu.addAction(changeTypeAction)
+            menu.addAction(cancelAction)
+            
+            self.present(menu, animated: true)
+            
         }
         
         let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
@@ -403,8 +512,7 @@ extension MainViewController: SwipeTableViewCellDelegate {
             
         }
         
-        // customize the action appearance
-//        archiveAction.image = UIImage(named: "archive")
+        //MARK: Swipe menu custom appearance
         archiveAction.backgroundColor = UIColor(red:0.93, green:0.77, blue:0.40, alpha:1.0)
         editAction.backgroundColor = UIColor(red:0.78, green:0.45, blue:0.92, alpha:1.0)
         deleteAction.backgroundColor = UIColor(red:0.98, green:0.45, blue:0.62, alpha:1.0)
