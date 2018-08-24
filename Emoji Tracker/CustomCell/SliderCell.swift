@@ -12,8 +12,12 @@ class SliderCell: SwipeTableViewCell {
     
     var clickDelegate : clickDelegate?
     
+    var trackerId : String = ""
+    
     @IBAction func sliderMoved(_ sender: UISlider) {
-        if let emojis = sender.accessibilityIdentifier, let tracker = titleLabel.text {
+        let tracker = coredata.fetchTrackerById(with: trackerId)
+        
+        if let emojis = sender.accessibilityIdentifier {
             let emoji = String(Array(emojis)[Int(sender.value)])
             emojiLabel.text = emoji
             clickDelegate?.createNewRecord(emoji: emoji, tracker: tracker)

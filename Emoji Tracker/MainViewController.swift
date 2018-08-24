@@ -239,9 +239,9 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         guard let start = currentDateObj.now.startOfTheDay() else { fatalError("start date is invalid") }
         guard let end = currentDateObj.now.endOfTheDay() else { fatalError("end date is invalid") }
         
-        let titlePredicate = NSPredicate(format: "ANY tracker.title CONTAINS[cd] %@", tracker.title ?? "")
+        let idPredicate = NSPredicate(format: "ANY tracker == %@", tracker.objectID)
         let datePredicate = NSPredicate(format: "date BETWEEN {%@, %@}", start as CVarArg, end as CVarArg)
-        let predicate = NSCompoundPredicate(type: .and, subpredicates: [titlePredicate, datePredicate])
+        let predicate = NSCompoundPredicate(type: .and, subpredicates: [idPredicate, datePredicate])
         
         let currentDayDate = coredata.fetchDayData(with: predicate)
         
@@ -251,6 +251,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "sliderCell", for: indexPath) as! SliderCell
             
             cell.titleLabel?.text = trackerList[indexPath.row].title
+            cell.trackerId = trackerList[indexPath.row].objectID.uriRepresentation().absoluteString
 
             
             if currentDayDate.count != 0 {
@@ -274,6 +275,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             
             if let emojis = trackerList[indexPath.row].emojis, let buttons = cell.collectionOfButtons {
                 cell.titleLabel?.text = trackerList[indexPath.row].title
+                cell.trackerId = trackerList[indexPath.row].objectID.uriRepresentation().absoluteString
                 
                 if currentDayDate.count != 0 {
                     cell.emojiLabel?.text = currentDayDate[0].emoji
@@ -303,6 +305,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "inputCell", for: indexPath) as! InputCell
             
             cell.titleLabel?.text = trackerList[indexPath.row].title
+            cell.trackerId = trackerList[indexPath.row].objectID.uriRepresentation().absoluteString
             
             if currentDayDate.count != 0 {
                 cell.emojiLabel?.text = currentDayDate[0].emoji
@@ -323,14 +326,14 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
 extension MainViewController: clickDelegate {
     
     //MARK: Saving the DayData from trackers & user's answers
-    func createNewRecord(emoji: String, tracker: String) {
+    func createNewRecord(emoji: String, tracker: Tracker) {
         
         guard let start = currentDateObj.now.startOfTheDay() else { fatalError("start date is invalid") }
         guard let end = currentDateObj.now.endOfTheDay() else { fatalError("end date is invalid") }
         
-        let titlePredicate = NSPredicate(format: "ANY tracker.title CONTAINS[cd] %@", tracker)
+        let idPredicate = NSPredicate(format: "ANY tracker == %@", tracker.objectID)
         let datePredicate = NSPredicate(format: "date BETWEEN {%@, %@}", start as CVarArg, end as CVarArg)
-        let predicate = NSCompoundPredicate(type: .and, subpredicates: [titlePredicate, datePredicate])
+        let predicate = NSCompoundPredicate(type: .and, subpredicates: [idPredicate, datePredicate])
         let currentDayDate = coredata.fetchDayData(with: predicate)
         
         if currentDayDate.count == 0 {
@@ -338,7 +341,7 @@ extension MainViewController: clickDelegate {
             newDayDate.date = currentDateObj.now
             newDayDate.emoji = emoji
             newDayDate.dayOfTheWeek = currentDateObj.now.getDayNumber()
-            newDayDate.tracker = setTrackerData(title: tracker, date: newDayDate)
+            newDayDate.tracker = setTrackerData(trackerId: tracker.objectID.uriRepresentation().absoluteString, date: newDayDate)
         } else {
             currentDayDate[0].emoji = emoji
         }
@@ -347,23 +350,22 @@ extension MainViewController: clickDelegate {
         updateEmojis()
     }
     
-    func setTrackerData(title: String, date: DayDate) -> Tracker {
-        let predicate = NSPredicate(format: "title CONTAINS[cd] %@", title)
-        let trackersArray = coredata.fetchTrackers(with: predicate)
+    func setTrackerData(trackerId: String, date: DayDate) -> Tracker {
+        let tracker = coredata.fetchTrackerById(with: trackerId)
 
-        guard let trackerDates = trackersArray[0].date else {
+        guard let trackerDates = tracker.date else {
             fatalError("there's no obiect 'date' in this tracker")
         }
 
         if trackerDates.count > 0 {
                let mutableDates = trackerDates.mutableCopy() as! NSMutableOrderedSet
                mutableDates.add(date)
-               trackersArray[0].date = mutableDates.copy() as? NSOrderedSet
+               tracker.date = mutableDates.copy() as? NSOrderedSet
         } else {
-                trackersArray[0].date = [date]
+                tracker.date = [date]
         }
         
-        return trackersArray[0]
+        return tracker
     }
     
 }

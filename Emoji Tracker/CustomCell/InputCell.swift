@@ -10,9 +10,11 @@ class InputCell: SwipeTableViewCell, UITextFieldDelegate {
     @IBOutlet var emojiInput: UITextField!
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        let tracker = coredata.fetchTrackerById(with: trackerId)
+        
         if let emojiStr = emojiInput.text {
             let emoji = emojiStr[emojiStr.startIndex]
-            clickDelegate?.createNewRecord(emoji: "\(emoji)", tracker: titleLabel.text!)
+            clickDelegate?.createNewRecord(emoji: "\(emoji)", tracker: tracker)
             emojiLabel.text = String(emoji)
         }
         emojiInput.endEditing(true)
@@ -20,6 +22,8 @@ class InputCell: SwipeTableViewCell, UITextFieldDelegate {
     }
     
      var clickDelegate : clickDelegate?
+    
+    var trackerId : String = ""
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -20,6 +20,7 @@
 		7578064E211224AA0041AC23 /* Pick5Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7578064D211224AA0041AC23 /* Pick5Cell.xib */; };
 		75780650211224CD0041AC23 /* Pick5Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7578064F211224CD0041AC23 /* Pick5Cell.swift */; };
 		758EB164212CCEAA00CC6AD2 /* TrackersActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758EB163212CCEAA00CC6AD2 /* TrackersActions.swift */; };
+		758EB166212CDF3800CC6AD2 /* TouchGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758EB165212CDF3800CC6AD2 /* TouchGestureRecognizer.swift */; };
 		75918CBE21137E7D003702DB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75918CBD21137E7D003702DB /* Extensions.swift */; };
 		75918CC021152558003702DB /* CurrentDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75918CBF21152558003702DB /* CurrentDate.swift */; };
 		75918CC52119402C003702DB /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 75918CC32119402C003702DB /* DataModel.xcdatamodeld */; };
@@ -48,6 +49,7 @@
 		7578064D211224AA0041AC23 /* Pick5Cell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Pick5Cell.xib; sourceTree = "<group>"; };
 		7578064F211224CD0041AC23 /* Pick5Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pick5Cell.swift; sourceTree = "<group>"; };
 		758EB163212CCEAA00CC6AD2 /* TrackersActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackersActions.swift; sourceTree = "<group>"; };
+		758EB165212CDF3800CC6AD2 /* TouchGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchGestureRecognizer.swift; sourceTree = "<group>"; };
 		75918CBD21137E7D003702DB /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		75918CBF21152558003702DB /* CurrentDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentDate.swift; sourceTree = "<group>"; };
 		75918CC42119402C003702DB /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 				75918CC62119F7FB003702DB /* CoreDataMethods.swift */,
 				75918CBF21152558003702DB /* CurrentDate.swift */,
 				758EB163212CCEAA00CC6AD2 /* TrackersActions.swift */,
+				758EB165212CDF3800CC6AD2 /* TouchGestureRecognizer.swift */,
 				75918CBD21137E7D003702DB /* Extensions.swift */,
 			);
 			path = Helpers;
@@ -292,6 +295,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7548683E21091FAB00627971 /* MainViewController.swift in Sources */,
+				758EB166212CDF3800CC6AD2 /* TouchGestureRecognizer.swift in Sources */,
 				753A2A96210BDF3F00EE9982 /* TrackersViewController.swift in Sources */,
 				75918CC52119402C003702DB /* DataModel.xcdatamodeld in Sources */,
 				758EB164212CCEAA00CC6AD2 /* TrackersActions.swift in Sources */,

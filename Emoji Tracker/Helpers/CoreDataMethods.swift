@@ -65,9 +65,28 @@ class CoreDataMethods {
         return trackerArray
     }
     
+    func fetchTrackerById(on request: NSFetchRequest<Tracker> = Tracker.fetchRequest(), with id: String) -> Tracker {
+        
+        var tracker : Any = ""
+        
+        if let objectIDURL = URL(string: id) {
+            if let managedObjectID = context.persistentStoreCoordinator?.managedObjectID(forURIRepresentation: objectIDURL) {
+                do {
+                    tracker = try context.existingObject(with: managedObjectID)
+                    
+                } catch {
+                    print("Error fetching data \(error)")
+                }
+                
+            }
+        }
+        
+        return tracker as! Tracker
+    }
+    
     func deleteTracker(on request: NSFetchRequest<Tracker> = Tracker.fetchRequest(), with tracker : Tracker) {
         
-        if let result = try? context.fetch(request) {
+        if (try? context.fetch(request)) != nil {
             context.delete(tracker)
         }
     }
