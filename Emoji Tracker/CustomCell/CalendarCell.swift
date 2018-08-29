@@ -16,6 +16,8 @@ class CalendarCell: JTAppleCell {
     }
     
     @IBOutlet var dataLabel: UILabel!
+    @IBOutlet var labelBg: UIView!
+    //MARK: Used as selectedCell
+    @IBOutlet var cellArea: UIView!
     
-
 }

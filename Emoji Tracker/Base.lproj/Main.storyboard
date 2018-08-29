@@ -340,51 +340,82 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="8Gz-Co-QcR">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Gom-Ub-cFr" customClass="JTAppleCalendarView" customModule="JTAppleCalendar">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Gom-Ub-cFr" customClass="JTAppleCalendarView" customModule="JTAppleCalendar">
+                                <rect key="frame" x="0.0" y="160" width="375" height="507"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="eOc-sI-KFc">
-                                    <size key="itemSize" width="111" height="104"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" sectionInsetReference="safeArea" id="gtV-cp-8Ru">
+                                    <size key="itemSize" width="70" height="70"/>
+                                    <size key="headerReferenceSize" width="50" height="50"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="calendarCell" id="TYM-2V-l1D" customClass="CalendarCell" customModule="Emoji_Tracker">
-                                        <rect key="frame" x="0.0" y="0.0" width="111" height="104"/>
+                                        <rect key="frame" x="0.0" y="50" width="70" height="70"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="111" height="104"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="geb-XA-pH4">
-                                                    <rect key="frame" x="34" y="42" width="42" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
                                         </view>
                                     </collectionViewCell>
                                 </cells>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="qhk-SS-HtN">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </collectionReusableView>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cellSize">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="np2-MP-9R9">
+                                <rect key="frame" x="0.0" y="64" width="375" height="96"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All Trackers" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nEI-rv-Vof">
+                                        <rect key="frame" x="0.0" y="10" width="375" height="44"/>
+                                        <fontDescription key="fontDescription" name="Lobster-Regular" family="Lobster" pointSize="35"/>
+                                        <color key="textColor" red="0.2901960784" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="😀😇🤩😵🎃" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ei-P2-EKt">
+                                        <rect key="frame" x="0.0" y="54" width="375" height="42"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                        <color key="textColor" red="0.2901960784" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="9Ei-P2-EKt" firstAttribute="leading" secondItem="np2-MP-9R9" secondAttribute="leading" id="6ia-Nx-ocZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="9Ei-P2-EKt" secondAttribute="trailing" id="B3g-NH-IUz"/>
+                                    <constraint firstItem="nEI-rv-Vof" firstAttribute="top" secondItem="np2-MP-9R9" secondAttribute="top" constant="10" id="RXZ-vd-VAO"/>
+                                    <constraint firstItem="9Ei-P2-EKt" firstAttribute="top" secondItem="nEI-rv-Vof" secondAttribute="bottom" id="Vef-CU-Axk"/>
+                                    <constraint firstItem="9Ei-P2-EKt" firstAttribute="top" secondItem="nEI-rv-Vof" secondAttribute="bottom" id="YXp-Ii-oVM"/>
+                                    <constraint firstItem="nEI-rv-Vof" firstAttribute="leading" secondItem="np2-MP-9R9" secondAttribute="leading" id="azo-2l-7qr"/>
+                                    <constraint firstAttribute="bottom" secondItem="9Ei-P2-EKt" secondAttribute="bottom" id="hBF-GM-zDt"/>
+                                    <constraint firstAttribute="trailing" secondItem="nEI-rv-Vof" secondAttribute="trailing" id="iSj-dm-sWe"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Gom-Ub-cFr" firstAttribute="bottom" secondItem="4ep-KV-KpE" secondAttribute="bottom" id="8ax-wD-6ht"/>
                             <constraint firstItem="8Gz-Co-QcR" firstAttribute="top" secondItem="hbj-Ar-qPM" secondAttribute="top" id="BWW-Vc-0mf"/>
+                            <constraint firstItem="Gom-Ub-cFr" firstAttribute="trailing" secondItem="4ep-KV-KpE" secondAttribute="trailing" id="Bh9-yk-QdD"/>
+                            <constraint firstItem="np2-MP-9R9" firstAttribute="trailing" secondItem="4ep-KV-KpE" secondAttribute="trailing" id="En5-oR-ZCg"/>
                             <constraint firstItem="8Gz-Co-QcR" firstAttribute="bottom" secondItem="4ep-KV-KpE" secondAttribute="bottom" id="NLu-1M-xCm"/>
                             <constraint firstItem="8Gz-Co-QcR" firstAttribute="leading" secondItem="4ep-KV-KpE" secondAttribute="leading" id="PQR-bx-BZf"/>
-                            <constraint firstItem="Gom-Ub-cFr" firstAttribute="trailing" secondItem="4ep-KV-KpE" secondAttribute="trailing" id="jkZ-oX-LOb"/>
+                            <constraint firstItem="Gom-Ub-cFr" firstAttribute="top" secondItem="np2-MP-9R9" secondAttribute="bottom" id="a4g-lD-HTF"/>
+                            <constraint firstItem="Gom-Ub-cFr" firstAttribute="leading" secondItem="4ep-KV-KpE" secondAttribute="leading" id="k42-J9-A1b"/>
                             <constraint firstItem="8Gz-Co-QcR" firstAttribute="trailing" secondItem="4ep-KV-KpE" secondAttribute="trailing" id="mel-br-YUn"/>
-                            <constraint firstItem="Gom-Ub-cFr" firstAttribute="top" secondItem="4ep-KV-KpE" secondAttribute="top" id="ovi-G9-ISN"/>
-                            <constraint firstItem="Gom-Ub-cFr" firstAttribute="leading" secondItem="4ep-KV-KpE" secondAttribute="leading" id="qe6-Zj-kBo"/>
+                            <constraint firstItem="np2-MP-9R9" firstAttribute="leading" secondItem="4ep-KV-KpE" secondAttribute="leading" id="nsX-ZP-z18"/>
+                            <constraint firstItem="np2-MP-9R9" firstAttribute="top" secondItem="4ep-KV-KpE" secondAttribute="top" id="uBe-uh-OUS"/>
+                            <constraint firstItem="Gom-Ub-cFr" firstAttribute="bottom" secondItem="4ep-KV-KpE" secondAttribute="bottom" id="w29-G8-a8A"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4ep-KV-KpE"/>
                     </view>
                     <connections>
-                        <outlet property="collectionView" destination="Gom-Ub-cFr" id="yLt-ta-UcR"/>
+                        <outlet property="collectionView" destination="Gom-Ub-cFr" id="QLI-2w-5Rz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3wf-OM-H80" userLabel="First Responder" sceneMemberID="firstResponder"/>
