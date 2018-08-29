@@ -217,9 +217,12 @@
                                             <constraint firstAttribute="height" constant="50" id="EHz-Ba-EOj"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="20"/>
-                                        <state key="normal" title="Settings">
+                                        <state key="normal" title="Calendar">
                                             <color key="titleShadowColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="cB4-wj-5ih" kind="show" id="kxj-TZ-kOq"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JWu-RF-wKS">
                                         <rect key="frame" x="0.0" y="170" width="0.0" height="50"/>
@@ -325,6 +328,68 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5532" y="26.53673163418291"/>
+        </scene>
+        <!--Calendar View-->
+        <scene sceneID="xN8-aS-jK3">
+            <objects>
+                <viewController id="cB4-wj-5ih" customClass="CalendarView" customModule="Emoji_Tracker" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hbj-Ar-qPM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="8Gz-Co-QcR">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Gom-Ub-cFr" customClass="JTAppleCalendarView" customModule="JTAppleCalendar">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="eOc-sI-KFc">
+                                    <size key="itemSize" width="111" height="104"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="calendarCell" id="TYM-2V-l1D" customClass="CalendarCell" customModule="Emoji_Tracker">
+                                        <rect key="frame" x="0.0" y="0.0" width="111" height="104"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="111" height="104"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="geb-XA-pH4">
+                                                    <rect key="frame" x="34" y="42" width="42" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Gom-Ub-cFr" firstAttribute="bottom" secondItem="4ep-KV-KpE" secondAttribute="bottom" id="8ax-wD-6ht"/>
+                            <constraint firstItem="8Gz-Co-QcR" firstAttribute="top" secondItem="hbj-Ar-qPM" secondAttribute="top" id="BWW-Vc-0mf"/>
+                            <constraint firstItem="8Gz-Co-QcR" firstAttribute="bottom" secondItem="4ep-KV-KpE" secondAttribute="bottom" id="NLu-1M-xCm"/>
+                            <constraint firstItem="8Gz-Co-QcR" firstAttribute="leading" secondItem="4ep-KV-KpE" secondAttribute="leading" id="PQR-bx-BZf"/>
+                            <constraint firstItem="Gom-Ub-cFr" firstAttribute="trailing" secondItem="4ep-KV-KpE" secondAttribute="trailing" id="jkZ-oX-LOb"/>
+                            <constraint firstItem="8Gz-Co-QcR" firstAttribute="trailing" secondItem="4ep-KV-KpE" secondAttribute="trailing" id="mel-br-YUn"/>
+                            <constraint firstItem="Gom-Ub-cFr" firstAttribute="top" secondItem="4ep-KV-KpE" secondAttribute="top" id="ovi-G9-ISN"/>
+                            <constraint firstItem="Gom-Ub-cFr" firstAttribute="leading" secondItem="4ep-KV-KpE" secondAttribute="leading" id="qe6-Zj-kBo"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="4ep-KV-KpE"/>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="Gom-Ub-cFr" id="yLt-ta-UcR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3wf-OM-H80" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5528.8000000000002" y="848.72563718140941"/>
         </scene>
         <!--Trackers View Controller-->
         <scene sceneID="cwj-kN-I3a">
@@ -679,7 +744,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="psK-9i-Dbr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7213.6000000000004" y="57.121439280359823"/>
+            <point key="canvasLocation" x="6492" y="36"/>
         </scene>
         <!--Swiping Pages-->
         <scene sceneID="rva-6q-jmj">

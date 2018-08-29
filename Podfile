@@ -9,5 +9,6 @@ target 'Emoji Tracker' do
 
 pod 'RealmSwift'
 pod 'SwipeCellKit'
+pod 'JTAppleCalendar', '~> 7.0'
 
 end
