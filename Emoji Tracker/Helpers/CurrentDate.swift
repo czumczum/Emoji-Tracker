@@ -16,16 +16,24 @@ class CurrentDate {
     var yesterday : Date = Date()
     var tomorrow : Date = Date()
     
+    private let calendar = Calendar(identifier: .gregorian)
+    
     func turnBackTime() {
-        let calendar = Calendar(identifier: .gregorian)
         now = calendar.getYesterdayDate()
         setYesterdayAndTomorrow()
     }
     
     func backToTheFuture() {
-        let calendar = Calendar(identifier: .gregorian)
         now = calendar.getTomorrowDate()
         setYesterdayAndTomorrow()
+    }
+    
+    func oneYearBack() -> Date {
+        return calendar.subtractOneYear()
+    }
+    
+    func oneYearForward() -> Date {
+        return calendar.addOneYear()
     }
     
     func restoreTimeLine() {
@@ -34,7 +42,6 @@ class CurrentDate {
     }
     
     func setYesterdayAndTomorrow() {
-        let calendar = Calendar(identifier: .gregorian)
         yesterday = calendar.getYesterdayDate()
         tomorrow = calendar.getTomorrowDate()
     }

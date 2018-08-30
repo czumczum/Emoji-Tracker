@@ -31,6 +31,26 @@ extension Calendar {
         return tomorrow
     }
     
+    func addOneYear(with date : Date = currentDateObj.now) -> Date {
+        guard let nextYear = Calendar.current.date(
+            byAdding: .year,
+            value: 1,
+            to: date) else {
+                fatalError("Cannot get the next year's date")
+        }
+        return nextYear
+    }
+    
+    func subtractOneYear(with date : Date = currentDateObj.now) -> Date {
+        guard let previousYear = Calendar.current.date(
+            byAdding: .year,
+            value: -1,
+            to: date) else {
+                fatalError("Cannot get the next year's date")
+        }
+        return previousYear
+    }
+    
 }
 
 extension Date {
@@ -91,6 +111,14 @@ extension DateFormatter {
     func getFormattedDate() -> DateFormatter {
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = TimeZone.current
+        return dateFormatter
+    }
+    
+    func getCalendarFormatted() -> DateFormatter {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM dd yyyy"
+        dateFormatter.locale = Calendar.current.locale
+        
         return dateFormatter
     }
 }

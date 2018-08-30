@@ -59,9 +59,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="82" id="AQC-Ka-Jta"/>
                             <constraint firstAttribute="trailing" secondItem="olJ-ZM-Icv" secondAttribute="trailing" id="I6P-oJ-HJN"/>
-                            <constraint firstAttribute="width" constant="82" id="JbM-iO-YYi"/>
                             <constraint firstItem="SGh-0C-Gfn" firstAttribute="top" secondItem="qAy-j5-r9z" secondAttribute="top" id="MIl-Uc-1Q2"/>
                             <constraint firstAttribute="trailing" secondItem="SGh-0C-Gfn" secondAttribute="trailing" id="MRD-1I-Emn"/>
                             <constraint firstAttribute="bottom" secondItem="olJ-ZM-Icv" secondAttribute="bottom" id="WpM-3a-saH"/>
@@ -93,7 +91,8 @@
             </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="cellArea" destination="qAy-j5-r9z" id="nUT-19-i8q"/>
-                <outlet property="dataLabel" destination="jRc-TC-xdV" id="HPZ-PH-268"/>
+                <outlet property="dateLabel" destination="jRc-TC-xdV" id="dCH-Ei-t35"/>
+                <outlet property="emojiLabel" destination="olJ-ZM-Icv" id="mIU-4P-Sc0"/>
                 <outlet property="labelBg" destination="SGh-0C-Gfn" id="YjR-iV-Lqo"/>
             </connections>
             <point key="canvasLocation" x="52" y="70"/>

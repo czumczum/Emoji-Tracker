@@ -11,9 +11,11 @@ import JTAppleCalendar
 
 class CalendarView: UIViewController {
     
-    let dateFormatter = DateFormatter().getFormattedDate()
+    let dateFormatter = DateFormatter().getCalendarFormatted()
     
     @IBOutlet var collectionView: JTAppleCalendarView!
+    @IBOutlet var monthLabel: UILabel!
+    @IBOutlet var yearLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,17 +41,37 @@ extension CalendarView: JTAppleCalendarViewDataSource {
     
     //MARK: - Calendar configuration
     func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
-        dateFormatter.dateFormat = "MM dd yyyy"
-        dateFormatter.locale = Calendar.current.locale
         
-        guard let startDate = dateFormatter.date(from: "01 01 2018") else {
+        calendar.isHidden = true
+        
+        let myStartDate = dateFormatter.string(from: currentDateObj.oneYearBack())
+        let myEndDate = dateFormatter.string(from: currentDateObj.oneYearForward())
+        
+        guard let startDate = dateFormatter.date(from: myStartDate) else {
             fatalError("Start date coudn't be retreived")
         }
-        guard let endDate = dateFormatter.date(from: "12 31 2018") else {
+        guard let endDate = dateFormatter.date(from: myEndDate) else {
             fatalError("End date coudn't be retreived")
         }
         
-        let parameters = ConfigurationParameters(startDate: startDate, endDate: endDate)
+        UIView.animate(withDuration: 2, animations: {
+            calendar.scrollToDate(currentDateObj.now)
+        }) { (true) in
+            calendar.isHidden = false
+        }
+        
+        //MARK: Update month label after first appear
+        calendar.visibleDates { (visibleDates) in
+            self.updateCalendarHeader(dates: visibleDates)
+        }
+        
+        let parameters = ConfigurationParameters(
+            startDate: startDate,
+            endDate: endDate,
+            generateInDates: .forAllMonths,
+            generateOutDates: .tillEndOfRow,
+            firstDayOfWeek: .monday
+        )
         return parameters
     }
 }
@@ -66,19 +88,46 @@ extension CalendarView: JTAppleCalendarViewDelegate {
     func calendar(_ calendar: JTAppleCalendarView, willDisplay cell: JTAppleCell, forItemAt date: Date, cellState: CellState, indexPath: IndexPath) {
         
         let calendarCell = cell as! CalendarCell
-        calendarCell.dataLabel.text = cellState.text
+        calendarCell.dateLabel.text = cellState.text
         
-        print(cellState)
+        
+        //MARK: UI for dates not belonged to current month
+        if cellState.dateBelongsTo != .thisMonth {
+            calendarCell.dateLabel.textColor = UIColor.lightGray
+            calendarCell.emojiLabel.alpha = 0.3
+        } else {
+            calendarCell.dateLabel.textColor = UIColor(red: 0.26, green: 0.47, blue: 0.96, alpha: 1)
+            calendarCell.emojiLabel.alpha = 1
+        }
+        
+        //MARK: Add UI for today's cell
+        currentDateObj.restoreTimeLine()
+        print(cellState.date, currentDateObj.now)
+        if cellState.date == currentDateObj.now {
+            calendarCell.layer.borderColor = UIColor(red:0.98, green:0.45, blue:0.62, alpha:1.0).cgColor
+            calendarCell.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.2)
+        } else {
+            calendarCell.layer.borderColor = UIColor.clear.cgColor
+            calendarCell.backgroundColor = UIColor.clear
+        }
         
     }
     
-    func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
-        guard let selectedCell = cell as? CalendarCell else {
-            fatalError("There was a problem with selecting a cell")
+    func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
+        updateCalendarHeader(dates: visibleDates)
+        
+    }
+    
+    func updateCalendarHeader(dates visibleDates : DateSegmentInfo) {
+        guard let date = visibleDates.monthDates.first?.date else {
+            fatalError("date cannot be obtained")
         }
         
-        selectedCell.layer.borderColor = UIColor(red:0.98, green:0.45, blue:0.62, alpha:1.0).cgColor
-        selectedCell.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.2)
+        dateFormatter.dateFormat = "MMMM"
+        monthLabel.text = dateFormatter.string(from: date)
+
+        dateFormatter.dateFormat = "YYYY"
+        yearLabel.text = dateFormatter.string(from: date)
     }
     
 }

@@ -15,9 +15,9 @@ class CalendarCell: JTAppleCell {
         super.awakeFromNib()
     }
     
-    @IBOutlet var dataLabel: UILabel!
+    @IBOutlet var dateLabel: UILabel!
     @IBOutlet var labelBg: UIView!
-    //MARK: Used as selectedCell
+    @IBOutlet var emojiLabel: UILabel!
     @IBOutlet var cellArea: UIView!
     
 }
