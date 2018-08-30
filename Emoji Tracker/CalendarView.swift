@@ -42,8 +42,6 @@ extension CalendarView: JTAppleCalendarViewDataSource {
     //MARK: - Calendar configuration
     func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
         
-        calendar.isHidden = true
-        
         let myStartDate = dateFormatter.string(from: currentDateObj.oneYearBack())
         let myEndDate = dateFormatter.string(from: currentDateObj.oneYearForward())
         
@@ -54,16 +52,14 @@ extension CalendarView: JTAppleCalendarViewDataSource {
             fatalError("End date coudn't be retreived")
         }
         
-        UIView.animate(withDuration: 2, animations: {
-            calendar.scrollToDate(currentDateObj.now)
-        }) { (true) in
-            calendar.isHidden = false
-        }
+        calendar.scrollToDate(currentDateObj.now, animateScroll: false)
         
         //MARK: Update month label after first appear
         calendar.visibleDates { (visibleDates) in
             self.updateCalendarHeader(dates: visibleDates)
         }
+        
+        calendar.scrollingMode = .stopAtEachSection
         
         let parameters = ConfigurationParameters(
             startDate: startDate,
@@ -90,6 +86,13 @@ extension CalendarView: JTAppleCalendarViewDelegate {
         let calendarCell = cell as! CalendarCell
         calendarCell.dateLabel.text = cellState.text
         
+        //MARK: - Add emojis to each cell
+        let currentDayDate = coredata.getFilteredDays(date: cellState.date)
+        var emojiString = ""
+        for log in currentDayDate {
+            emojiString += log.emoji ?? ""
+        }
+        calendarCell.emojiLabel.text = emojiString
         
         //MARK: UI for dates not belonged to current month
         if cellState.dateBelongsTo != .thisMonth {
@@ -102,10 +105,10 @@ extension CalendarView: JTAppleCalendarViewDelegate {
         
         //MARK: Add UI for today's cell
         currentDateObj.restoreTimeLine()
-        print(cellState.date, currentDateObj.now)
-        if cellState.date == currentDateObj.now {
-            calendarCell.layer.borderColor = UIColor(red:0.98, green:0.45, blue:0.62, alpha:1.0).cgColor
+        if cellState.date == currentDateObj.now.startOfTheDay() {
+            calendarCell.layer.borderColor = UIColor(red:0.35, green:0.00, blue:0.00, alpha:1.0).cgColor
             calendarCell.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.2)
+            calendarCell.dateLabel.textColor = UIColor(red:0.35, green:0.00, blue:0.00, alpha:1.0)
         } else {
             calendarCell.layer.borderColor = UIColor.clear.cgColor
             calendarCell.backgroundColor = UIColor.clear
