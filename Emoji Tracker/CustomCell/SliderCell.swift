@@ -9,12 +9,15 @@ class SliderCell: SwipeTableViewCell {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var emojiLabel: UILabel!
     @IBOutlet var slider: UISlider!
+    @IBOutlet var bottomView: UIView!
     
     var clickDelegate : clickDelegate?
     
     var trackerId : String = ""
     
     @IBAction func sliderMoved(_ sender: UISlider) {
+        bottomView.isHidden = true
+        
         let tracker = coredata.fetchTrackerById(with: trackerId)
         
         if let emojis = sender.accessibilityIdentifier {

@@ -8,6 +8,7 @@ class InputCell: SwipeTableViewCell, UITextFieldDelegate {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var emojiLabel: UILabel!
     @IBOutlet var emojiInput: UITextField!
+    @IBOutlet var bottomView: UIView!
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         let tracker = coredata.fetchTrackerById(with: trackerId)
@@ -18,6 +19,9 @@ class InputCell: SwipeTableViewCell, UITextFieldDelegate {
             emojiLabel.text = String(emoji)
         }
         emojiInput.endEditing(true)
+        
+        bottomView.isHidden = true
+        
         return true
     }
     

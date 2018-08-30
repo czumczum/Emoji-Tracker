@@ -11,6 +11,7 @@ class Pick5Cell: SwipeTableViewCell {
     
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var emojiLabel: UILabel!
+    @IBOutlet var bottomView: UIView!
     
     var clickDelegate : clickDelegate?
     
@@ -20,6 +21,8 @@ class Pick5Cell: SwipeTableViewCell {
     
 
     @IBAction func buttonClicked( sender: UIButton) {
+        
+        bottomView.isHidden = true
         
         emojiLabel.text = sender.titleLabel?.text
         let tracker = coredata.fetchTrackerById(with: trackerId)

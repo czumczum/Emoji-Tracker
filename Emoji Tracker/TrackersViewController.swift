@@ -44,7 +44,7 @@ class TrackersViewController: UIViewController, UITableViewDelegate, UITableView
             if let tapIndexPath = self.trackersTableView.indexPathForRow(at: tapLocation) {
                 if let tappedCell = self.trackersTableView.cellForRow(at: tapIndexPath) {
                     let tracker = coredata.fetchTrackerById(with: tappedCell.accessibilityIdentifier ?? "")
-                    trackersActions.editTracker(tracker: tracker as! Tracker, tableView: self.trackersTableView, controller: self)
+                    trackersActions.editTracker(tracker: tracker as Tracker, tableView: self.trackersTableView, controller: self)
                 }
             }
         }

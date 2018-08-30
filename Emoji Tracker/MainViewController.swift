@@ -67,6 +67,11 @@ class MainViewController: UIViewController {
         tapGestureForth.delegate = self as? UIGestureRecognizerDelegate
         tomorrowPanel.isUserInteractionEnabled = true
         tomorrowPanel.addGestureRecognizer(tapGestureForth)
+        
+        let tapGestureTracker = UITapGestureRecognizer(target: self, action: #selector(self.trackerCellTapped(_:)))
+        tapGestureTracker.delegate = self as? UIGestureRecognizerDelegate
+        trackersTableView.isUserInteractionEnabled = true
+        trackersTableView.addGestureRecognizer(tapGestureTracker)
     
     }
     
@@ -153,6 +158,28 @@ class MainViewController: UIViewController {
             updateAllPanels()
             trackersTableView.reloadData()
             enableBackButton(hidden: false)
+        }
+    }
+    
+    @objc func trackerCellTapped(_ sender: UITapGestureRecognizer) {
+        if sender.state == UIGestureRecognizerState.ended {
+            let tapLocation = sender.location(in: self.trackersTableView)
+            if let tapIndexPath = self.trackersTableView.indexPathForRow(at: tapLocation) {
+                if let tappedCell = self.trackersTableView.cellForRow(at: tapIndexPath) {
+                    switch tappedCell.accessibilityIdentifier {
+                    case "pick5":
+                        let cell = tappedCell as! Pick5Cell
+                        cell.bottomView.isHidden = false
+                    case "input":
+                        let cell = tappedCell as! InputCell
+                        cell.bottomView.isHidden = false
+                    default:
+                        let cell = tappedCell as! SliderCell
+                        cell.bottomView.isHidden = false
+                    }
+
+                }
+            }
         }
     }
     
@@ -252,7 +279,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             
             cell.titleLabel?.text = trackerList[indexPath.row].title
             cell.trackerId = trackerList[indexPath.row].objectID.uriRepresentation().absoluteString
-
+            cell.accessibilityIdentifier = "slider"
             
             if currentDayDate.count != 0 {
             cell.emojiLabel?.text = currentDayDate[0].emoji
@@ -276,6 +303,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             if let emojis = trackerList[indexPath.row].emojis, let buttons = cell.collectionOfButtons {
                 cell.titleLabel?.text = trackerList[indexPath.row].title
                 cell.trackerId = trackerList[indexPath.row].objectID.uriRepresentation().absoluteString
+                cell.accessibilityIdentifier = "pick5"
                 
                 if currentDayDate.count != 0 {
                     cell.emojiLabel?.text = currentDayDate[0].emoji
@@ -306,6 +334,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             
             cell.titleLabel?.text = trackerList[indexPath.row].title
             cell.trackerId = trackerList[indexPath.row].objectID.uriRepresentation().absoluteString
+            cell.accessibilityIdentifier = "input"
             
             if currentDayDate.count != 0 {
                 cell.emojiLabel?.text = currentDayDate[0].emoji

@@ -80,6 +80,7 @@
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
+                <outlet property="bottomView" destination="qgd-41-9qt" id="jC1-ri-mXR"/>
                 <outlet property="emojiInput" destination="wnJ-x7-x8M" id="vbc-nb-dqU"/>
                 <outlet property="emojiLabel" destination="iJb-kM-VMb" id="AmJ-32-KMT"/>
                 <outlet property="titleLabel" destination="WHn-NV-ETC" id="cOU-8z-jdf"/>

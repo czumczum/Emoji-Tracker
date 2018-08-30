@@ -117,6 +117,7 @@
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
+                <outlet property="bottomView" destination="qgd-41-9qt" id="NMo-je-HGW"/>
                 <outlet property="emojiLabel" destination="iJb-kM-VMb" id="RAn-94-bh5"/>
                 <outlet property="titleLabel" destination="WHn-NV-ETC" id="KRK-1U-tG9"/>
                 <outletCollection property="collectionOfButtons" destination="syN-Gy-NqN" collectionClass="NSMutableArray" id="qgo-P5-0e9"/>
