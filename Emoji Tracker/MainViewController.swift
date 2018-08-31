@@ -428,6 +428,7 @@ extension MainViewController: SwipeTableViewCellDelegate {
         let tracker = coredata.trackerArray[indexPath.row]
         let trackersActions = TrackersActions()
         
+        //MARK: Swippable actions
         let archiveAction = SwipeAction(style: .destructive, title: "Archive") { action, indexPath in
 
             tracker.archived = true
@@ -443,6 +444,10 @@ extension MainViewController: SwipeTableViewCellDelegate {
             
         }
         
+        let calendarAction = SwipeAction(style: .default, title: "Calendar") { (action, indexPath) in
+            self.performSegue(withIdentifier: "openTrackerCalendar", sender: tracker)
+        }
+        
 //        let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
 //
 //            coredata.deleteTracker(with: tracker)
@@ -455,9 +460,19 @@ extension MainViewController: SwipeTableViewCellDelegate {
         //MARK: Swipe menu custom appearance
         archiveAction.backgroundColor = UIColor(red:0.93, green:0.77, blue:0.40, alpha:1.0)
         editAction.backgroundColor = UIColor(red:0.78, green:0.45, blue:0.92, alpha:1.0)
+        calendarAction.backgroundColor = UIColor(red:0.98, green:0.45, blue:0.62, alpha:1.0)
 //        deleteAction.backgroundColor = UIColor(red:0.98, green:0.45, blue:0.62, alpha:1.0)
         
-        return [archiveAction, editAction]
+        return [calendarAction, archiveAction, editAction]
+    }
+    
+    //MARK: - Segue info to pass
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "openTrackerCalendar" {
+            let calendar = segue.destination as! CalendarView
+            let tracker = sender as? Tracker
+            calendar.sender = tracker
+        }
     }
     
     func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeTableOptions {

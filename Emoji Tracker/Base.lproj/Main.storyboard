@@ -221,7 +221,7 @@
                                             <color key="titleShadowColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <segue destination="cB4-wj-5ih" kind="show" id="kxj-TZ-kOq"/>
+                                            <segue destination="cB4-wj-5ih" kind="show" identifier="openCalendar" id="kxj-TZ-kOq"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JWu-RF-wKS">
@@ -323,6 +323,7 @@
                         <outlet property="yesterdayDayLabel" destination="aEA-7f-Jfn" id="Ov0-Oz-5fG"/>
                         <outlet property="yesterdayEmojiLabel" destination="eoh-iU-F7A" id="1Sg-At-U4D"/>
                         <outlet property="yesterdayPanel" destination="3Jy-Y8-svm" id="MX7-Yk-sjg"/>
+                        <segue destination="cB4-wj-5ih" kind="show" identifier="openTrackerCalendar" id="XVR-Ic-N6w"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -483,6 +484,8 @@
                     <connections>
                         <outlet property="collectionView" destination="Gom-Ub-cFr" id="QLI-2w-5Rz"/>
                         <outlet property="monthLabel" destination="BE3-iK-aIA" id="hhg-rj-gtu"/>
+                        <outlet property="trackerEmojisLabel" destination="9Ei-P2-EKt" id="quX-jW-jvC"/>
+                        <outlet property="trackerTitleLabel" destination="nEI-rv-Vof" id="aEc-eQ-A5D"/>
                         <outlet property="yearLabel" destination="S8a-zX-G4l" id="mnF-q8-vtC"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="mainStoryBoard" id="7mP-Kk-nw7"/>
                     </connections>
@@ -1044,6 +1047,7 @@
         <image name="plus-button" width="35" height="34"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="XVR-Ic-N6w"/>
         <segue reference="7mP-Kk-nw7"/>
     </inferredMetricsTieBreakers>
 </document>

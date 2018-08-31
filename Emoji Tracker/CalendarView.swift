@@ -11,12 +11,15 @@ import JTAppleCalendar
 
 
 class CalendarView: UIViewController {
-    
     let dateFormatter = DateFormatter().getCalendarFormatted()
+    
+    var sender: Tracker?
     
     @IBOutlet var collectionView: JTAppleCalendarView!
     @IBOutlet var monthLabel: UILabel!
     @IBOutlet var yearLabel: UILabel!
+    @IBOutlet var trackerTitleLabel: UILabel!
+    @IBOutlet var trackerEmojisLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,12 +37,19 @@ class CalendarView: UIViewController {
         tapGesture.delegate = self as? UIGestureRecognizerDelegate
         collectionView.isUserInteractionEnabled = true
         collectionView.addGestureRecognizer(tapGesture)
-
+        
     }
     
     func setUpCalendarView() {
         collectionView.minimumLineSpacing = 1
         collectionView.minimumInteritemSpacing = 1
+    
+        //MARK: Setup for Tracker CalendarView -> header
+        if sender != nil {
+            trackerTitleLabel.text = sender?.title
+            trackerEmojisLabel.text = sender?.emojis
+        }
+        
     }
     
     //MARK: - Tap gestuer handler
@@ -111,13 +121,29 @@ extension CalendarView: JTAppleCalendarViewDelegate {
         calendarCell.date = cellState.date
         
         //MARK: - Add emojis to each cell
-        let currentDayDate = coredata.getFilteredDays(date: cellState.date)
+        var currentDayDate = [DayDate]()
+        
+        //MARK: Add all emojis or just for one tracker
+        //If trackerCalendar was performed
+        if sender != nil {
+            guard let start = cellState.date.startOfTheDay() else { fatalError("start date is invalid") }
+            guard let end = cellState.date.endOfTheDay() else { fatalError("end date is invalid") }
+            
+            let idPredicate = NSPredicate(format: "ANY tracker == %@", sender!.objectID)
+            let datePredicate = NSPredicate(format: "date BETWEEN {%@, %@}", start as CVarArg, end as CVarArg)
+            let predicate = NSCompoundPredicate(type: .and, subpredicates: [idPredicate, datePredicate])
+            currentDayDate = coredata.fetchDayData(with: predicate)
+        } else {
+            currentDayDate = coredata.getFilteredDays(date: cellState.date)
+        }
+        
         var emojiString = ""
         for log in currentDayDate {
             emojiString += log.emoji ?? ""
         }
-        calendarCell.emojiLabel.text = emojiString
         
+        calendarCell.emojiLabel.text = emojiString
+       
         //MARK: UI for dates not belonged to current month
         if cellState.dateBelongsTo != .thisMonth {
             calendarCell.dateLabel.textColor = UIColor.lightGray
