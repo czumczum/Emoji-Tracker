@@ -16,8 +16,6 @@ class SliderCell: SwipeTableViewCell {
     var trackerId : String = ""
     
     @IBAction func sliderMoved(_ sender: UISlider) {
-        bottomView.isHidden = true
-        
         let tracker = coredata.fetchTrackerById(with: trackerId)
         
         if let emojis = sender.accessibilityIdentifier {

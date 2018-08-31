@@ -89,6 +89,8 @@ class MainViewController: UIViewController {
         viewLeadingConst.constant = 0
         viewTrailingConst.constant = 0
         menuWidth.constant = 0
+        
+        checkIfBackButtonShouldBeEnable()
     }
     
     //MARK: - Menu items and functions
@@ -128,13 +130,21 @@ class MainViewController: UIViewController {
 
     
     //MARK: - Navigation controller "Back to today" button
-    func enableBackButton(hidden : Bool) {
+    public func enableBackButton(hidden : Bool) {
         if hidden {
             backToTodayButton.isEnabled = false
             backToTodayButton.tintColor = UIColor(displayP3Red: 0, green: 0, blue: 0, alpha: 0)
         } else {
             backToTodayButton.isEnabled = true
             backToTodayButton.tintColor = UIColor(displayP3Red: 0.290196, green: 0.564706, blue: 0.886275, alpha: 1)
+        }
+    }
+    
+    func checkIfBackButtonShouldBeEnable() {
+        if currentDateObj.now.startOfTheDay() != Date().startOfTheDay() {
+            enableBackButton(hidden: false)
+        } else {
+            enableBackButton(hidden: true)
         }
     }
     
@@ -157,7 +167,7 @@ class MainViewController: UIViewController {
             }
             updateAllPanels()
             trackersTableView.reloadData()
-            enableBackButton(hidden: false)
+            checkIfBackButtonShouldBeEnable()
         }
     }
     
@@ -169,15 +179,14 @@ class MainViewController: UIViewController {
                     switch tappedCell.accessibilityIdentifier {
                     case "pick5":
                         let cell = tappedCell as! Pick5Cell
-                        cell.bottomView.isHidden = false
-                    case "input":
-                        let cell = tappedCell as! InputCell
-                        cell.bottomView.isHidden = false
-                    default:
+                        cell.bottomView.isHidden = !cell.bottomView.isHidden
+                    case "slider":
                         let cell = tappedCell as! SliderCell
-                        cell.bottomView.isHidden = false
+                        cell.bottomView.isHidden = !cell.bottomView.isHidden
+                    default:
+                        let cell = tappedCell as! InputCell
+                        cell.bottomView.isHidden = !cell.bottomView.isHidden
                     }
-
                 }
             }
         }
@@ -282,9 +291,11 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             cell.accessibilityIdentifier = "slider"
             
             if currentDayDate.count != 0 {
-            cell.emojiLabel?.text = currentDayDate[0].emoji
+                cell.emojiLabel?.text = currentDayDate[0].emoji
+                cell.bottomView?.isHidden = true
             } else {
                 cell.emojiLabel?.text = ""
+                cell.bottomView?.isHidden = false
             }
             
             if let maxValue = trackerList[indexPath.row].emojis?.count {
@@ -307,8 +318,10 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
                 
                 if currentDayDate.count != 0 {
                     cell.emojiLabel?.text = currentDayDate[0].emoji
+                    cell.bottomView?.isHidden = true
                 } else {
                     cell.emojiLabel?.text = ""
+                    cell.bottomView?.isHidden = false
                 }
                 
                 cell.delegate = self
@@ -338,8 +351,10 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             
             if currentDayDate.count != 0 {
                 cell.emojiLabel?.text = currentDayDate[0].emoji
+                cell.bottomView?.isHidden = true
             } else {
                 cell.emojiLabel?.text = ""
+                cell.bottomView?.isHidden = false
             }
             
             cell.delegate = self

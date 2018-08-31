@@ -20,4 +20,6 @@ class CalendarCell: JTAppleCell {
     @IBOutlet var emojiLabel: UILabel!
     @IBOutlet var cellArea: UIView!
     
+    var date: Date = Date()
+    
 }

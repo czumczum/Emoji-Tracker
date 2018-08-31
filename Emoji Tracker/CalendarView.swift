@@ -9,6 +9,7 @@
 import UIKit
 import JTAppleCalendar
 
+
 class CalendarView: UIViewController {
     
     let dateFormatter = DateFormatter().getCalendarFormatted()
@@ -27,6 +28,12 @@ class CalendarView: UIViewController {
         collectionView.register(UINib(nibName: "CalendarCell", bundle: nil), forCellWithReuseIdentifier: "calendarCell")
         
         setUpCalendarView()
+        
+        //tapGesture
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.tapHandler(_:)))
+        tapGesture.delegate = self as? UIGestureRecognizerDelegate
+        collectionView.isUserInteractionEnabled = true
+        collectionView.addGestureRecognizer(tapGesture)
 
     }
     
@@ -34,7 +41,23 @@ class CalendarView: UIViewController {
         collectionView.minimumLineSpacing = 1
         collectionView.minimumInteritemSpacing = 1
     }
-
+    
+    //MARK: - Tap gestuer handler
+    @objc func tapHandler(_ sender: UITapGestureRecognizer) {
+        if sender.state == UIGestureRecognizerState.ended {
+            let tapLocation = sender.location(in: self.collectionView)
+            if let tapIndexPath = self.collectionView.indexPathForItem(at: tapLocation) {
+                if let tappedCell = self.collectionView.cellForItem(at: tapIndexPath) {
+                   let cell = tappedCell as! CalendarCell
+                    
+                    //After tap on cell the date changes to date from cell and CalendarView is dismissed
+                    currentDateObj.now = cell.date
+                    self.performSegue(withIdentifier: "mainStoryBoard", sender: self)
+                    
+                }
+            }
+        }
+    }
 }
 
 extension CalendarView: JTAppleCalendarViewDataSource {
@@ -85,6 +108,7 @@ extension CalendarView: JTAppleCalendarViewDelegate {
         
         let calendarCell = cell as! CalendarCell
         calendarCell.dateLabel.text = cellState.text
+        calendarCell.date = cellState.date
         
         //MARK: - Add emojis to each cell
         let currentDayDate = coredata.getFilteredDays(date: cellState.date)
