@@ -9,7 +9,8 @@
 import UIKit
 
 class TrackersViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+    
+    var toolTipView: ToolTipView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +22,7 @@ class TrackersViewController: UIViewController, UITableViewDelegate, UITableView
         
         coredata.loadTrackers()
         
+        toolTipView = ToolTipView()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -43,8 +45,9 @@ class TrackersViewController: UIViewController, UITableViewDelegate, UITableView
             let tapLocation = sender.location(in: self.trackersTableView)
             if let tapIndexPath = self.trackersTableView.indexPathForRow(at: tapLocation) {
                 if let tappedCell = self.trackersTableView.cellForRow(at: tapIndexPath) {
-                    let tracker = coredata.fetchTrackerById(with: tappedCell.accessibilityIdentifier ?? "")
-                    trackersActions.editTracker(tracker: tracker as Tracker, tableView: self.trackersTableView, controller: self)
+//                    let tracker = coredata.fetchTrackerById(with: tappedCell.accessibilityIdentifier ?? "")
+//                    trackersActions.editTracker(tracker: tracker as Tracker, tableView: self.trackersTableView, controller: self)
+                    openToolTip()
                 }
             }
         }
@@ -113,6 +116,33 @@ class TrackersViewController: UIViewController, UITableViewDelegate, UITableView
     func configureTableView() {
         trackersTableView?.rowHeight = UITableViewAutomaticDimension
         trackersTableView?.estimatedRowHeight = 120.0
+    }
+    
+    //MARK: - UIMenuController as Tooltip
+    func openToolTip() {
+        
+        toolTipView.frame = CGRect(x: 0, y: 0, width: 200, height: 50)
+        toolTipView.center = self.view.center
+//        toolTipView.backgroundColor = UIColor(red: 124.0/255.0, green: 112.0/255.0, blue: 255.0/255.0, alpha: 1.0)
+        toolTipView.layer.cornerRadius = 4;
+        toolTipView.layer.masksToBounds = true
+        
+        self.view.addSubview(toolTipView)
+
+        toolTipView.becomeFirstResponder()
+        
+        // Set up the shared UIMenuController
+        let menu = UIMenuController.shared
+        menu.arrowDirection = .default
+        menu.setTargetRect(toolTipView.frame, in: self.view)
+        
+        // UIMenuController methods
+        let archiveItem = UIMenuItem(title: "Archive", action: #selector(saveTapped))
+        let deleteItem = UIMenuItem(title: "Delete", action: #selector(deleteTapped))
+        UIMenuController.shared.menuItems = [saveMenuItem, deleteMenuItem]
+        
+        menu.setMenuVisible(true, animated: true)
+        
     }
 
 }

@@ -63,11 +63,11 @@ class CalendarView: UIViewController {
                     //After tap on cell the date changes to date from cell and CalendarView is dismissed
                     currentDateObj.now = cell.date
                     self.performSegue(withIdentifier: "mainStoryBoard", sender: self)
-                    
                 }
             }
         }
     }
+    
 }
 
 extension CalendarView: JTAppleCalendarViewDataSource {
@@ -118,12 +118,13 @@ extension CalendarView: JTAppleCalendarViewDelegate {
         
         let calendarCell = cell as! CalendarCell
         calendarCell.dateLabel.text = cellState.text
+        //Used for transfering to the right date after clicking on the calendar
         calendarCell.date = cellState.date
         
         //MARK: - Add emojis to each cell
         var currentDayDate = [DayDate]()
         
-        //MARK: Add all emojis or just for one tracker
+        //MARK: Add all emojis from a day or just for one tracker
         //If trackerCalendar was performed
         if sender != nil {
             guard let start = cellState.date.startOfTheDay() else { fatalError("start date is invalid") }

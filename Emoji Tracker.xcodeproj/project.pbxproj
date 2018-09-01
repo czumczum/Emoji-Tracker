@@ -10,6 +10,7 @@
 		52A8068F675EB18F5B0B0980 /* Pods_Emoji_Tracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0320D86320A7E77EC0DC93F /* Pods_Emoji_Tracker.framework */; };
 		753A2A94210BDCE200EE9982 /* AddNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753A2A93210BDCE200EE9982 /* AddNewViewController.swift */; };
 		753A2A96210BDF3F00EE9982 /* TrackersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753A2A95210BDF3F00EE9982 /* TrackersViewController.swift */; };
+		753CB6D52139E5D000BD4061 /* ToolTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753CB6D42139E5D000BD4061 /* ToolTipView.swift */; };
 		753D9E6C2136E21D001ACED1 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753D9E6B2136E21D001ACED1 /* CalendarView.swift */; };
 		753D9E6F2136E490001ACED1 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753D9E6D2136E490001ACED1 /* CalendarCell.swift */; };
 		753D9E702136E490001ACED1 /* CalendarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 753D9E6E2136E490001ACED1 /* CalendarCell.xib */; };
@@ -40,6 +41,7 @@
 		6E44BBD5E848A99115D5A45C /* Pods-Emoji Tracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Emoji Tracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Emoji Tracker/Pods-Emoji Tracker.debug.xcconfig"; sourceTree = "<group>"; };
 		753A2A93210BDCE200EE9982 /* AddNewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewViewController.swift; sourceTree = "<group>"; };
 		753A2A95210BDF3F00EE9982 /* TrackersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackersViewController.swift; sourceTree = "<group>"; };
+		753CB6D42139E5D000BD4061 /* ToolTipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolTipView.swift; sourceTree = "<group>"; };
 		753D9E6B2136E21D001ACED1 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		753D9E6D2136E490001ACED1 /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		753D9E6E2136E490001ACED1 /* CalendarCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarCell.xib; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 				7548683B21091FAB00627971 /* AppDelegate.swift */,
 				753A2A93210BDCE200EE9982 /* AddNewViewController.swift */,
 				753A2A95210BDF3F00EE9982 /* TrackersViewController.swift */,
+				753CB6D42139E5D000BD4061 /* ToolTipView.swift */,
 				7548683D21091FAB00627971 /* MainViewController.swift */,
 				753D9E6B2136E21D001ACED1 /* CalendarView.swift */,
 				75486857210A5D0200627971 /* SwipingPages.swift */,
@@ -319,6 +322,7 @@
 				753A2A94210BDCE200EE9982 /* AddNewViewController.swift in Sources */,
 				75780650211224CD0041AC23 /* Pick5Cell.swift in Sources */,
 				7599255B211341BC00B29C50 /* SliderCell.swift in Sources */,
+				753CB6D52139E5D000BD4061 /* ToolTipView.swift in Sources */,
 				753D9E6F2136E490001ACED1 /* CalendarCell.swift in Sources */,
 				75918CC021152558003702DB /* CurrentDate.swift in Sources */,
 				7548683C21091FAB00627971 /* AppDelegate.swift in Sources */,

@@ -32,23 +32,25 @@ class MainViewController: UIViewController {
         currentDateObj.restoreTimeLine()
         updateAllPanels()
         enableBackButton(hidden: true)
+        trackersTableView.reloadData()
     }
     
+    //MARK: - ViewDidLoad functions
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //Trackers list
+        //MARK: Trackers list
         trackersTableView?.delegate = self
         trackersTableView?.dataSource = self
         
         coredata.loadTrackers()
         
-        //adding custom cells' layout
+        //MARK: adding custom cells' layout
         trackersTableView?.register(UINib(nibName: "SliderCell", bundle: nil), forCellReuseIdentifier: "sliderCell")
         trackersTableView?.register(UINib(nibName: "Pick5Cell", bundle: nil), forCellReuseIdentifier: "pick5Cell")
         trackersTableView.register(UINib(nibName: "InputCell", bundle: nil), forCellReuseIdentifier: "inputCell")
         
-        //Keyboard scrolling
+        //MARK: Keyboard scrolling
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
@@ -57,7 +59,7 @@ class MainViewController: UIViewController {
         currentDateObj.setYesterdayAndTomorrow()
         updateAllPanels()
         
-        //tapGesture
+        //MARK: tapGesture
         let tapGestureBack = UITapGestureRecognizer(target: self, action: #selector(self.stackViewTapped(_:)))
         tapGestureBack.delegate = self as? UIGestureRecognizerDelegate
         yesterdayPanel.isUserInteractionEnabled = true
@@ -77,7 +79,7 @@ class MainViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         
-        //Navigation controller w/transparent bg
+        //MARK: Navigation controller w/transparent bg
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isTranslucent = true
@@ -85,12 +87,22 @@ class MainViewController: UIViewController {
         //Trackers' table view methods
         trackersTableView?.reloadData()
         
-        //Hide side menu
+        //MARK: Hide side menu
         viewLeadingConst.constant = 0
         viewTrailingConst.constant = 0
         menuWidth.constant = 0
         
+        //MARK: StackView back to today button
         checkIfBackButtonShouldBeEnable()
+    }
+    
+    //MARK: - Segue info to pass
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "openTrackerCalendar" {
+            let calendar = segue.destination as! CalendarView
+            let tracker = sender as? Tracker
+            calendar.sender = tracker
+        }
     }
     
     //MARK: - Menu items and functions
@@ -464,15 +476,6 @@ extension MainViewController: SwipeTableViewCellDelegate {
 //        deleteAction.backgroundColor = UIColor(red:0.98, green:0.45, blue:0.62, alpha:1.0)
         
         return [calendarAction, archiveAction, editAction]
-    }
-    
-    //MARK: - Segue info to pass
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "openTrackerCalendar" {
-            let calendar = segue.destination as! CalendarView
-            let tracker = sender as? Tracker
-            calendar.sender = tracker
-        }
     }
     
     func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeTableOptions {
