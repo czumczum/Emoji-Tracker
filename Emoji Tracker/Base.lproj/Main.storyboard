@@ -600,6 +600,7 @@
                     <connections>
                         <outlet property="addNewTrackerButtonClicked" destination="Eqh-cD-Jyw" id="ojL-xA-hvT"/>
                         <outlet property="trackersTableView" destination="Y1u-w4-tps" id="Gzo-4k-KIE"/>
+                        <segue destination="cB4-wj-5ih" kind="show" identifier="openTrackerCalendar" id="zCz-p3-7SD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FBS-dz-NuW" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1060,7 +1061,7 @@
         <image name="plus-button" width="35" height="34"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="XVR-Ic-N6w"/>
+        <segue reference="zCz-p3-7SD"/>
         <segue reference="7mP-Kk-nw7"/>
     </inferredMetricsTieBreakers>
 </document>

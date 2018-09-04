@@ -32,7 +32,7 @@ class CalendarView: UIViewController {
         
         setUpCalendarView()
         
-        //tapGesture
+        //MARK: tapGesture
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.tapHandler(_:)))
         tapGesture.delegate = self as? UIGestureRecognizerDelegate
         collectionView.isUserInteractionEnabled = true
