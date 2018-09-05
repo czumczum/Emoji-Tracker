@@ -12,6 +12,7 @@ class StatsViewController: UIViewController {
     
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var statsTableView: UITableView!
+    @IBOutlet var statsCollection: UITableView?
     
     var emojis = [(String, Int)]()
     
@@ -40,10 +41,18 @@ class StatsViewController: UIViewController {
         }
         
         emojis.forEach { emojiCount[$0, default: 0] += 1 }
+        
         let sortedEmojis = emojiCount.sortedByValue
         
         return sortedEmojis
     }
+    
+    func getPercentForEmoji(emojiList: [(String, Int)], emojiCount: Int) -> Int {
+        let total = emojiList.reduce(0) { (sum, dict) in sum + (dict.1) }
+        
+        return (emojiCount * 100)/total
+    }
+    
 }
 
 extension StatsViewController: UITableViewDataSource {
@@ -58,11 +67,13 @@ extension StatsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
+        let cell = statsTableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
     
         let emoji = "\(emojis[indexPath.row])"
+        let percent = getPercentForEmoji(emojiList: emojis, emojiCount: emojis[indexPath.row].1)
         
         cell.textLabel?.text = emoji[2..<3]
+        cell.detailTextLabel?.text = "\(percent)%"
         
         return cell
     }
