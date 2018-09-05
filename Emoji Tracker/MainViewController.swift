@@ -108,9 +108,9 @@ class MainViewController: UIViewController {
     //MARK: - Menu items and functions
     @IBAction func menuClicked(_ sender: UIBarButtonItem) {
         if menuWidth.constant == 0 {
-            viewLeadingConst.constant = 200
-            viewTrailingConst.constant = -200
-            menuWidth.constant = 200
+            viewLeadingConst.constant = 150
+            viewTrailingConst.constant = -150
+            menuWidth.constant = 150
             
             UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseIn, animations: {
                 self.view.layoutIfNeeded()

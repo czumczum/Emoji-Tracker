@@ -35,22 +35,22 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="160"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Jy-Y8-svm">
-                                                <rect key="frame" x="0.0" y="0.0" width="80" height="160"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="80.5" height="160"/>
                                                 <subviews>
                                                     <label opaque="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" text="November, 15th" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BO9-sn-Wkw">
-                                                        <rect key="frame" x="0.0" y="61.5" width="80" height="37.5"/>
+                                                        <rect key="frame" x="2" y="71" width="88" height="19"/>
                                                         <fontDescription key="fontDescription" name="Lobster-Regular" family="Lobster" pointSize="15"/>
                                                         <color key="textColor" red="0.2901960784" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="😝🤓🧐☹️💋😇😝" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eoh-iU-F7A">
-                                                        <rect key="frame" x="0.0" y="36.5" width="80" height="25"/>
+                                                        <rect key="frame" x="0.0" y="46" width="80.5" height="25"/>
                                                         <fontDescription key="fontDescription" name="Lobster-Regular" family="Lobster" pointSize="10"/>
                                                         <color key="textColor" red="0.2901960784" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Friday" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aEA-7f-Jfn">
-                                                        <rect key="frame" x="0.0" y="99" width="80" height="15"/>
+                                                        <rect key="frame" x="0.0" y="90" width="80.5" height="15"/>
                                                         <fontDescription key="fontDescription" name="Lobster-Regular" family="Lobster" pointSize="12"/>
                                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -60,7 +60,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="aEA-7f-Jfn" secondAttribute="trailing" id="1El-Dv-VZw"/>
                                                     <constraint firstItem="BO9-sn-Wkw" firstAttribute="centerY" secondItem="3Jy-Y8-svm" secondAttribute="centerY" id="4fX-gs-Ges"/>
-                                                    <constraint firstItem="BO9-sn-Wkw" firstAttribute="leading" secondItem="3Jy-Y8-svm" secondAttribute="leading" id="7PP-Nl-U4v"/>
+                                                    <constraint firstItem="BO9-sn-Wkw" firstAttribute="leading" secondItem="3Jy-Y8-svm" secondAttribute="leading" constant="2" id="7PP-Nl-U4v"/>
                                                     <constraint firstAttribute="trailing" secondItem="eoh-iU-F7A" secondAttribute="trailing" id="IwO-3R-S1q"/>
                                                     <constraint firstItem="eoh-iU-F7A" firstAttribute="leading" secondItem="3Jy-Y8-svm" secondAttribute="leading" id="L2h-9j-eDe"/>
                                                     <constraint firstAttribute="trailing" secondItem="BO9-sn-Wkw" secondAttribute="trailing" id="Zii-cb-FOS"/>
@@ -70,7 +70,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1fQ-VY-0R4">
-                                                <rect key="frame" x="83" y="21.5" width="210" height="117.5"/>
+                                                <rect key="frame" x="83.5" y="21.5" width="210" height="117.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="June, 16th" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Bm-gQ-ff6">
                                                         <rect key="frame" x="0.0" y="-1" width="210" height="44"/>
@@ -106,22 +106,22 @@
                                                 </constraints>
                                             </view>
                                             <view tag="1" contentMode="scaleToFill" restorationIdentifier="yesterday" translatesAutoresizingMaskIntoConstraints="NO" id="LIS-Lb-mWe">
-                                                <rect key="frame" x="296" y="0.0" width="79" height="160"/>
+                                                <rect key="frame" x="296.5" y="0.0" width="78.5" height="160"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sunday" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hTB-Vx-1Ng">
-                                                        <rect key="frame" x="0.0" y="99" width="79" height="15"/>
+                                                        <rect key="frame" x="0.0" y="99" width="78.5" height="15"/>
                                                         <fontDescription key="fontDescription" name="Lobster-Regular" family="Lobster" pointSize="12"/>
                                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="😝🤓🧐☹️💋😇😝" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ux0-tf-DI5">
-                                                        <rect key="frame" x="0.0" y="36.5" width="79" height="25"/>
+                                                        <rect key="frame" x="0.0" y="36.5" width="78.5" height="25"/>
                                                         <fontDescription key="fontDescription" name="Lobster-Regular" family="Lobster" pointSize="10"/>
                                                         <color key="textColor" red="0.2901960784" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="left" horizontalHuggingPriority="251" text="December, 15th" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0NH-qA-Wpd">
-                                                        <rect key="frame" x="0.0" y="61.5" width="79" height="37.5"/>
+                                                        <rect key="frame" x="0.0" y="61.5" width="73.5" height="37.5"/>
                                                         <fontDescription key="fontDescription" name="Lobster-Regular" family="Lobster" pointSize="15"/>
                                                         <color key="textColor" red="0.2901960784" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -133,7 +133,7 @@
                                                     <constraint firstItem="0NH-qA-Wpd" firstAttribute="leading" secondItem="LIS-Lb-mWe" secondAttribute="leading" id="JQb-zm-DUm"/>
                                                     <constraint firstAttribute="trailing" secondItem="Ux0-tf-DI5" secondAttribute="trailing" id="ORs-Vm-IvY"/>
                                                     <constraint firstAttribute="trailing" secondItem="hTB-Vx-1Ng" secondAttribute="trailing" id="V0u-ZN-lyp"/>
-                                                    <constraint firstAttribute="trailing" secondItem="0NH-qA-Wpd" secondAttribute="trailing" id="nl7-Dn-NsF"/>
+                                                    <constraint firstAttribute="trailing" secondItem="0NH-qA-Wpd" secondAttribute="trailing" constant="5" id="nl7-Dn-NsF"/>
                                                     <constraint firstItem="hTB-Vx-1Ng" firstAttribute="top" secondItem="0NH-qA-Wpd" secondAttribute="bottom" id="rrf-h7-KhN"/>
                                                     <constraint firstItem="Ux0-tf-DI5" firstAttribute="leading" secondItem="LIS-Lb-mWe" secondAttribute="leading" id="sMc-hJ-9Wz"/>
                                                     <constraint firstItem="0NH-qA-Wpd" firstAttribute="centerY" secondItem="LIS-Lb-mWe" secondAttribute="centerY" id="uQU-1Z-XUp"/>
@@ -988,7 +988,7 @@
                                 </constraints>
                             </pageControl>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="Iwz-Ph-p6l">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="657"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pft-is-yaM">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
@@ -1059,13 +1059,12 @@
                             <constraint firstItem="YYn-WM-KWL" firstAttribute="trailing" secondItem="XBH-1g-Xcw" secondAttribute="trailing" id="C0m-dR-mSo"/>
                             <constraint firstItem="pBW-6V-wa7" firstAttribute="centerX" secondItem="jlM-2O-Yca" secondAttribute="centerX" id="Erl-kf-fcJ"/>
                             <constraint firstItem="Iwz-Ph-p6l" firstAttribute="leading" secondItem="YYn-WM-KWL" secondAttribute="leading" id="Oor-dC-hxS"/>
-                            <constraint firstItem="HMh-zn-CRi" firstAttribute="top" secondItem="Iwz-Ph-p6l" secondAttribute="bottom" id="PrV-vV-nOQ"/>
                             <constraint firstAttribute="bottom" secondItem="pBW-6V-wa7" secondAttribute="bottom" id="TnR-1J-BVf"/>
-                            <constraint firstItem="HMh-zn-CRi" firstAttribute="top" secondItem="Iwz-Ph-p6l" secondAttribute="bottom" id="Tsb-Ba-Ywf"/>
                             <constraint firstItem="Iwz-Ph-p6l" firstAttribute="top" secondItem="jlM-2O-Yca" secondAttribute="top" id="VXF-ps-vG0"/>
                             <constraint firstAttribute="bottom" secondItem="HMh-zn-CRi" secondAttribute="bottom" id="Y4l-Fo-cpu"/>
                             <constraint firstItem="HMh-zn-CRi" firstAttribute="centerX" secondItem="jlM-2O-Yca" secondAttribute="centerX" id="ZeH-b0-YE7"/>
                             <constraint firstItem="pBW-6V-wa7" firstAttribute="top" secondItem="XBH-1g-Xcw" secondAttribute="bottom" constant="26" id="a5I-my-d5P"/>
+                            <constraint firstItem="Iwz-Ph-p6l" firstAttribute="bottom" secondItem="YYn-WM-KWL" secondAttribute="bottom" id="e7a-1d-dzj"/>
                             <constraint firstItem="Pft-is-yaM" firstAttribute="top" secondItem="jlM-2O-Yca" secondAttribute="top" id="eFb-Iz-0Oe"/>
                             <constraint firstItem="XBH-1g-Xcw" firstAttribute="top" secondItem="Pft-is-yaM" secondAttribute="bottom" id="olk-op-DbV"/>
                             <constraint firstAttribute="trailing" secondItem="Pft-is-yaM" secondAttribute="trailing" id="qA7-Ob-zIe"/>
@@ -1139,7 +1138,7 @@
         <image name="plus-button" width="35" height="34"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="zCz-p3-7SD"/>
+        <segue reference="XVR-Ic-N6w"/>
         <segue reference="7mP-Kk-nw7"/>
     </inferredMetricsTieBreakers>
 </document>
