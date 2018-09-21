@@ -129,6 +129,8 @@ extension Dictionary where Value:Comparable {
 
 }
 
+// MARK: - Usage
+// string[0..<3]
 extension String {
     subscript(_ range: CountableRange<Int>) -> String {
         let idx1 = index(startIndex, offsetBy: max(0, range.lowerBound))

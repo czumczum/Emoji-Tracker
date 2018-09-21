@@ -168,6 +168,7 @@ class AddNewViewController: UIViewController, UITextFieldDelegate {
             newTrackerEmojis.isHidden = false
             newTrackerEmojisLabel.isHidden = false
             newTrackerEmojis.placeholder = "Pick a few"
+            
         } else {
             newTrackerEmojis.isHidden = true
             newTrackerEmojisLabel.isHidden = true

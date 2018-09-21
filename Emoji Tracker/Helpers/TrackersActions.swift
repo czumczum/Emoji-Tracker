@@ -48,6 +48,10 @@ class TrackersActions {
                 // Updating Category with a new name
                 if let newEmojis = textField.text {
                     tracker.emojis = newEmojis
+                    
+                    if tracker.type == "pick5" {
+                        tracker.emojis = newEmojis[0..<5]
+                    }
                     coredata.saveContext()
                 }
                 trackersTableView.reloadData()

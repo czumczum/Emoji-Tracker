@@ -91,6 +91,7 @@ class MainViewController: UIViewController {
         navigationController?.navigationBar.isTranslucent = true
         
         //Trackers' table view methods
+        coredata.loadTrackers()
         trackersTableView?.reloadData()
         
         //MARK: Hide side menu
@@ -354,9 +355,13 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
                     }
                     
                     if index < Array(emojis).count {
+                        print(index, Array(emojis).count)
                         button.setTitle("\(Array(emojis)[index])", for: [])
+                        
+                        button.isHidden = false
+                        
                     } else {
-                        button.removeFromSuperview()
+                        button.isHidden = true
                     }
                 }
             }
@@ -462,7 +467,6 @@ extension MainViewController: SwipeTableViewCellDelegate {
         let editAction = SwipeAction(style: .default, title: "Edit") { action, indexPath in
             
             trackersActions.editTracker(tracker: tracker, tableView: self.trackersTableView, controller: self)
-            
         }
         
         let calendarAction = SwipeAction(style: .default, title: "Calendar") { (action, indexPath) in

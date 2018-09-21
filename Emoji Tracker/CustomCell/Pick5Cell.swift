@@ -12,6 +12,7 @@ class Pick5Cell: SwipeTableViewCell {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var emojiLabel: UILabel!
     @IBOutlet var bottomView: UIView!
+    @IBOutlet var buttonsContainer: UIStackView!
     
     var clickDelegate : clickDelegate?
     
