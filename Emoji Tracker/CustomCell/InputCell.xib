@@ -44,10 +44,10 @@
                                 <rect key="frame" x="0.0" y="57" width="330" height="57"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Enter an emoji" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wnJ-x7-x8M">
-                                        <rect key="frame" x="65.5" y="10" width="200" height="37"/>
+                                        <rect key="frame" x="40.5" y="10" width="250" height="37"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="200" id="9bb-ZU-ljf"/>
+                                            <constraint firstAttribute="width" constant="250" id="9bb-ZU-ljf"/>
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="20"/>

@@ -89,6 +89,8 @@ class CoreDataMethods {
         if (try? context.fetch(request)) != nil {
             context.delete(tracker)
         }
+        
+        saveContext()
     }
     
     func loadTrackers(on request: NSFetchRequest<Tracker> = Tracker.fetchRequest()) {
@@ -121,5 +123,31 @@ class CoreDataMethods {
             }
         }
         return
+    }
+    
+    // MARK: - Creating dummy trackers for the first time use of the app
+    func createDummyData() {
+        
+        let tracker1 = Tracker(context: context)
+        tracker1.title = "Click bottom + to add a tracker"
+        tracker1.emojis = "👇👇👇➕"
+        tracker1.type = "pick5"
+        
+        let tracker2 = Tracker(context: context)
+        tracker2.title = "Slide left to reveal the menu"
+        tracker2.emojis = "👈"
+        tracker2.type = "pick5"
+        
+        let tracker3 = Tracker(context: context)
+        tracker3.title = "Menu 👉 All Trackers"
+        tracker3.emojis = "Long touch to delete"
+        tracker3.type = "input"
+        
+        coredata.trackerArray.append(tracker1)
+        coredata.trackerArray.append(tracker2)
+        coredata.trackerArray.append(tracker3)
+        
+        coredata.saveContext()
+        
     }
 }

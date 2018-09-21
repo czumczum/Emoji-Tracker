@@ -17,8 +17,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        let defaults = UserDefaults.standard
         
-//        print(persistentContainer.persistentStoreCoordinator.persistentStores.first?.url)
+        if defaults.bool(forKey: "emojitracker_1.0_firstUse") == false {
+            coredata.createDummyData()
+            defaults.set(true, forKey: "emojitracker_1.0_firstUse")
+            
+        } else {
+            return true
+        }
+        
         return true
     }
     

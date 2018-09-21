@@ -537,7 +537,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="l3C-Bi-9lk">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="l3C-Bi-9lk">
                                                     <rect key="frame" x="20" y="7.0000000000000018" width="91" height="30.666666666666668"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <rect key="contentStretch" x="0.14999999999999999" y="0.0" width="1" height="1"/>
@@ -545,7 +545,7 @@
                                                     <color key="textColor" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aT5-vJ-WtT">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="aT5-vJ-WtT">
                                                     <rect key="frame" x="117" y="12.000000000000002" width="68" height="24.666666666666668"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="20"/>
@@ -1292,7 +1292,7 @@
         <image name="plus-button" width="35" height="34"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="XVR-Ic-N6w"/>
+        <segue reference="zCz-p3-7SD"/>
         <segue reference="7mP-Kk-nw7"/>
     </inferredMetricsTieBreakers>
 </document>

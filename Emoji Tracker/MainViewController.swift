@@ -178,7 +178,6 @@ class MainViewController: UIViewController {
     //MARK: Method for custom Gesture
     @objc func stackViewTapped(_ sender: UITapGestureRecognizer) {
         if let tag = sender.view?.tag {
-            print(tag)
             switch tag {
             case 1:
                 currentDateObj.backToTheFuture()
@@ -355,7 +354,6 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
                     }
                     
                     if index < Array(emojis).count {
-                        print(index, Array(emojis).count)
                         button.setTitle("\(Array(emojis)[index])", for: [])
                         
                         button.isHidden = false
@@ -381,6 +379,10 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             } else {
                 cell.emojiLabel?.text = ""
                 cell.bottomView?.isHidden = false
+                
+                if tracker.emojis != "" {
+                    cell.emojiInput.placeholder = tracker.emojis
+                }
             }
             
             cell.delegate = self
