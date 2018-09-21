@@ -15,6 +15,7 @@ class MainViewController: UIViewController {
     @IBOutlet var todayDateLabel: UILabel!
     @IBOutlet var todayDayLabel: UILabel!
     @IBOutlet var todayEmojiLabel: UILabel!
+    @IBOutlet var todayPanel: UIView!
     
     @IBOutlet var yesterdayEmojiLabel: UILabel!
     @IBOutlet var yesterdayDateLabel: UILabel!
@@ -69,6 +70,11 @@ class MainViewController: UIViewController {
         tapGestureForth.delegate = self as? UIGestureRecognizerDelegate
         tomorrowPanel.isUserInteractionEnabled = true
         tomorrowPanel.addGestureRecognizer(tapGestureForth)
+        
+        let tapGestureToday = UITapGestureRecognizer(target: self, action: #selector(self.stackViewTapped(_:)))
+        tapGestureToday.delegate = self as? UIGestureRecognizerDelegate
+        todayPanel.isUserInteractionEnabled = true
+        todayPanel.addGestureRecognizer(tapGestureToday)
         
         let tapGestureTracker = UITapGestureRecognizer(target: self, action: #selector(self.trackerCellTapped(_:)))
         tapGestureTracker.delegate = self as? UIGestureRecognizerDelegate
@@ -171,11 +177,14 @@ class MainViewController: UIViewController {
     //MARK: Method for custom Gesture
     @objc func stackViewTapped(_ sender: UITapGestureRecognizer) {
         if let tag = sender.view?.tag {
+            print(tag)
             switch tag {
             case 1:
                 currentDateObj.backToTheFuture()
-            default:
+            case 2:
                 currentDateObj.turnBackTime()
+            default:
+                performSegue(withIdentifier: "openTrackerCalendar", sender: sender)
             }
             updateAllPanels()
             trackersTableView.reloadData()

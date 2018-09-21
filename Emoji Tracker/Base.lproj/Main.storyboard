@@ -34,7 +34,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="KxA-Ku-rRO">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="176.66666666666666"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Jy-Y8-svm">
+                                            <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Jy-Y8-svm">
                                                 <rect key="frame" x="0.0" y="0.0" width="88.666666666666671" height="176.66666666666666"/>
                                                 <subviews>
                                                     <label opaque="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" text="November, 15th" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BO9-sn-Wkw">
@@ -70,22 +70,22 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1fQ-VY-0R4">
-                                                <rect key="frame" x="91.666666666666671" y="29.666666666666664" width="232.33333333333331" height="117.33333333333334"/>
+                                                <rect key="frame" x="91.666666666666671" y="0.0" width="232.33333333333331" height="176.66666666666666"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="June, 16th" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Bm-gQ-ff6">
-                                                        <rect key="frame" x="0.0" y="-1" width="232.33333333333334" height="44"/>
+                                                        <rect key="frame" x="0.0" y="28.666666666666664" width="232.33333333333334" height="43.999999999999993"/>
                                                         <fontDescription key="fontDescription" name="Lobster-Regular" family="Lobster" pointSize="35"/>
                                                         <color key="textColor" red="0.2901960784" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Saturday" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VC1-iI-dvf">
-                                                        <rect key="frame" x="0.0" y="43.000000000000007" width="232.33333333333334" height="31.333333333333336"/>
+                                                        <rect key="frame" x="0.0" y="72.666666666666671" width="232.33333333333334" height="31.333333333333329"/>
                                                         <fontDescription key="fontDescription" name="Lobster-Regular" family="Lobster" pointSize="25"/>
                                                         <color key="textColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="😂😇😙😝😛😗😘☺️😆😀😃🤖👻" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KRb-07-Gmk">
-                                                        <rect key="frame" x="0.0" y="74.333333333333343" width="232.33333333333334" height="48"/>
+                                                        <rect key="frame" x="0.0" y="104" width="232.33333333333334" height="48"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -142,8 +142,10 @@
                                             </view>
                                         </subviews>
                                         <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="1fQ-VY-0R4" secondAttribute="bottom" id="7kb-yo-Zlx"/>
                                             <constraint firstAttribute="bottom" secondItem="3Jy-Y8-svm" secondAttribute="bottom" id="Rcv-4v-QiP"/>
                                             <constraint firstAttribute="bottom" secondItem="LIS-Lb-mWe" secondAttribute="bottom" id="bKe-eY-R9i"/>
+                                            <constraint firstItem="1fQ-VY-0R4" firstAttribute="top" secondItem="KxA-Ku-rRO" secondAttribute="top" id="jsu-oY-GYF"/>
                                             <constraint firstItem="LIS-Lb-mWe" firstAttribute="top" secondItem="KxA-Ku-rRO" secondAttribute="top" id="ka5-TG-xbG"/>
                                             <constraint firstAttribute="width" secondItem="KxA-Ku-rRO" secondAttribute="height" multiplier="375:160" id="qC7-u7-vmI"/>
                                             <constraint firstItem="3Jy-Y8-svm" firstAttribute="top" secondItem="KxA-Ku-rRO" secondAttribute="top" id="rd1-bt-MqK"/>
@@ -298,6 +300,7 @@
                         <outlet property="todayDateLabel" destination="5Bm-gQ-ff6" id="J6p-Sa-fbJ"/>
                         <outlet property="todayDayLabel" destination="VC1-iI-dvf" id="6mg-j2-XuC"/>
                         <outlet property="todayEmojiLabel" destination="KRb-07-Gmk" id="m9c-7F-pVP"/>
+                        <outlet property="todayPanel" destination="1fQ-VY-0R4" id="bh8-6C-kOm"/>
                         <outlet property="tomorrowDateLabel" destination="0NH-qA-Wpd" id="3l9-3P-3cu"/>
                         <outlet property="tomorrowDayLabel" destination="hTB-Vx-1Ng" id="iF8-yF-U1a"/>
                         <outlet property="tomorrowEmojiLabel" destination="Ux0-tf-DI5" id="QfH-jV-0r0"/>
@@ -747,6 +750,7 @@
                                         <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="20"/>
                                         <textInputTraits key="textInputTraits" keyboardAppearance="light" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                         <connections>
+                                            <action selector="newTrackerEmojisChanged:" destination="0cd-5g-eGj" eventType="editingChanged" id="AUl-LR-1Px"/>
                                             <outlet property="delegate" destination="0cd-5g-eGj" id="1kv-c2-NsI"/>
                                         </connections>
                                     </textField>
@@ -828,6 +832,7 @@
                         <outlet property="newEmojisLabel" destination="CLt-4O-AjJ" id="flL-51-bBT"/>
                         <outlet property="newTitleLabel" destination="2qg-Fn-gSN" id="Cw4-d1-nKX"/>
                         <outlet property="newTrackerEmojis" destination="799-3t-Gc8" id="Cbm-Kl-nfz"/>
+                        <outlet property="newTrackerEmojisLabel" destination="Gws-al-b8L" id="eZc-Ta-tP3"/>
                         <outlet property="newTrackerName" destination="raK-rp-Ghv" id="oAV-ll-ysI"/>
                         <outlet property="newTrackerStackview" destination="q2H-Mo-eN2" id="iz2-BI-WZG"/>
                     </connections>
@@ -1114,7 +1119,7 @@
         <!--About-->
         <scene sceneID="EBe-Lz-AJn">
             <objects>
-                <viewController storyboardIdentifier="about" id="AwT-NV-FKz" userLabel="About" customClass="StatsViewController" customModule="Emoji_Tracker" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="about" id="AwT-NV-FKz" userLabel="About" customClass="AboutPageController" customModule="Emoji_Tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RM4-Hc-yqh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1172,13 +1177,19 @@
                                                 </attributedString>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7h6-D5-mso" userLabel="strona">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7h6-D5-mso" userLabel="strona">
                                                 <rect key="frame" x="0.0" y="50" width="394" height="50"/>
-                                                <state key="normal" title="http://emojitracker.com"/>
+                                                <state key="normal" title="emojitracker.com"/>
+                                                <connections>
+                                                    <action selector="fbLink:" destination="AwT-NV-FKz" eventType="touchUpInside" id="zU4-1m-j6j"/>
+                                                </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="95o-H0-bLj" userLabel="mail">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2nT-be-MlE">
                                                 <rect key="frame" x="0.0" y="100" width="394" height="50"/>
-                                                <state key="normal" title="support@emojitracker.com"/>
+                                                <state key="normal" title="contact@emojitracker.com"/>
+                                                <connections>
+                                                    <action selector="emailLink:" destination="AwT-NV-FKz" eventType="touchUpInside" id="F2C-Pe-dHP"/>
+                                                </connections>
                                             </button>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RcM-Br-b3a" userLabel="developed">
                                                 <rect key="frame" x="0.0" y="150" width="394" height="50"/>
@@ -1197,7 +1208,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="SBi-0K-CiG" userLabel="twiter">
                                                 <rect key="frame" x="0.0" y="200" width="394" height="50"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Twitter" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uTe-H9-vKx">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Twitter:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uTe-H9-vKx">
                                                         <rect key="frame" x="0.0" y="0.0" width="197" height="50"/>
                                                         <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="17"/>
                                                         <color key="textColor" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1230,66 +1241,24 @@
                                         <rect key="frame" x="0.0" y="300" width="414" height="30"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pzm-ZB-sxr" userLabel="Privacy Policy">
-                                                <rect key="frame" x="0.0" y="0.0" width="207" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="30"/>
                                                 <state key="normal" title="Privacy Policy"/>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3bH-gk-S5o" userLabel="Termas of Service">
-                                                <rect key="frame" x="207" y="0.0" width="207" height="30"/>
-                                                <state key="normal" title="Terms of Service"/>
+                                                <connections>
+                                                    <action selector="privacyLink:" destination="AwT-NV-FKz" eventType="touchUpInside" id="i9B-Me-NrA"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mQt-lN-5TW">
-                                        <rect key="frame" x="0.0" y="338" width="414" height="238"/>
-                                        <subviews>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kpd-5b-XPx" userLabel="Privacy Policy">
-                                                <rect key="frame" x="10" y="8" width="355" height="222"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <attributedString key="attributedText">
-                                                    <fragment content="Privacy Policy...">
-                                                        <attributes>
-                                                            <color key="NSColor" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <font key="NSFont" size="17" name="Charter-Roman"/>
-                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                        </attributes>
-                                                    </fragment>
-                                                </attributedString>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                            </textView>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hQG-w7-ZcI">
-                                                <rect key="frame" x="10" y="8" width="355" height="222"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <attributedString key="attributedText">
-                                                    <fragment content="Terms of Service">
-                                                        <attributes>
-                                                            <color key="NSColor" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <font key="NSFont" size="17" name="Charter-Roman"/>
-                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                        </attributes>
-                                                    </fragment>
-                                                </attributedString>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
-                                            </textView>
-                                        </subviews>
-                                    </scrollView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="U6G-Pt-xrs" secondAttribute="trailing" id="5iE-G0-XWl"/>
                                     <constraint firstItem="U6G-Pt-xrs" firstAttribute="leading" secondItem="jzX-YC-fLO" secondAttribute="leading" id="5rH-Se-5sj"/>
                                     <constraint firstItem="U6G-Pt-xrs" firstAttribute="top" secondItem="9gv-g9-vuD" secondAttribute="bottom" id="7av-KS-cdH"/>
-                                    <constraint firstItem="mQt-lN-5TW" firstAttribute="top" secondItem="U6G-Pt-xrs" secondAttribute="bottom" id="ClH-Ah-xZr"/>
                                     <constraint firstAttribute="trailing" secondItem="9gv-g9-vuD" secondAttribute="trailing" constant="10" id="G6f-Sz-BYk"/>
                                     <constraint firstItem="9gv-g9-vuD" firstAttribute="top" secondItem="jzX-YC-fLO" secondAttribute="top" id="Gak-7t-8eb"/>
-                                    <constraint firstItem="mQt-lN-5TW" firstAttribute="leading" secondItem="jzX-YC-fLO" secondAttribute="leading" id="H5y-nm-K0n"/>
-                                    <constraint firstItem="mQt-lN-5TW" firstAttribute="top" secondItem="U6G-Pt-xrs" secondAttribute="bottom" id="YCC-ns-1e8"/>
                                     <constraint firstItem="9gv-g9-vuD" firstAttribute="leading" secondItem="jzX-YC-fLO" secondAttribute="leading" constant="10" id="czN-7J-0Q9"/>
-                                    <constraint firstAttribute="trailing" secondItem="mQt-lN-5TW" secondAttribute="trailing" id="d7j-HP-luR"/>
                                     <constraint firstItem="U6G-Pt-xrs" firstAttribute="top" secondItem="9gv-g9-vuD" secondAttribute="bottom" id="eZk-Nu-si0"/>
-                                    <constraint firstAttribute="bottom" secondItem="mQt-lN-5TW" secondAttribute="bottom" id="gf8-9Q-JfC"/>
                                 </constraints>
                             </view>
                         </subviews>

@@ -35,6 +35,7 @@
 		7599255D21135D0C00B29C50 /* InputCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7599255C21135D0B00B29C50 /* InputCell.xib */; };
 		7599255F21135D2700B29C50 /* InputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7599255E21135D2700B29C50 /* InputCell.swift */; };
 		75992561211362D300B29C50 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75992560211362D300B29C50 /* StatsViewController.swift */; };
+		75C20E4A21498DF2001073C1 /* AboutPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C20E4921498DF2001073C1 /* AboutPageController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +69,7 @@
 		7599255C21135D0B00B29C50 /* InputCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InputCell.xib; sourceTree = "<group>"; };
 		7599255E21135D2700B29C50 /* InputCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputCell.swift; sourceTree = "<group>"; };
 		75992560211362D300B29C50 /* StatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
+		75C20E4921498DF2001073C1 /* AboutPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutPageController.swift; sourceTree = "<group>"; };
 		7B669ECEFC30CEF45DE5A0F2 /* Pods-Emoji Tracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Emoji Tracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-Emoji Tracker/Pods-Emoji Tracker.release.xcconfig"; sourceTree = "<group>"; };
 		E0320D86320A7E77EC0DC93F /* Pods_Emoji_Tracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Emoji_Tracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -130,6 +132,7 @@
 				753D9E6B2136E21D001ACED1 /* CalendarView.swift */,
 				75486857210A5D0200627971 /* SwipingPages.swift */,
 				75918CC92126307D003702DB /* SwippableTableView.swift */,
+				75C20E4921498DF2001073C1 /* AboutPageController.swift */,
 				75992560211362D300B29C50 /* StatsViewController.swift */,
 				75918CC82119FCCB003702DB /* Helpers */,
 				7578064C211223D10041AC23 /* CustomCell */,
@@ -309,6 +312,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75C20E4A21498DF2001073C1 /* AboutPageController.swift in Sources */,
 				7548683E21091FAB00627971 /* MainViewController.swift in Sources */,
 				758EB166212CDF3800CC6AD2 /* TouchGestureRecognizer.swift in Sources */,
 				753A2A96210BDF3F00EE9982 /* TrackersViewController.swift in Sources */,

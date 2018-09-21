@@ -17,9 +17,13 @@ class AddNewViewController: UIViewController, UITextFieldDelegate {
         coredata.loadTrackers()
         
         //Add new tracker
-        addNewTrackerButton?.isHidden = true
         newTrackerName?.delegate = self
         newTrackerEmojis?.delegate = self
+        
+        //The emoji fields and 'done' button are hide as default
+        addNewTrackerButton?.isHidden = true
+        newTrackerEmojis.isHidden = true
+        newTrackerEmojisLabel.isHidden = true
     
     }
     
@@ -31,8 +35,19 @@ class AddNewViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet var newTitleLabel: UILabel!
     @IBOutlet var newEmojisLabel: UILabel!
+    
     @IBOutlet var newTrackerName: UITextField!
-    @IBOutlet var newTrackerEmojis: UITextField! //TODO: Add max 5 symbol limit to the newTrackerEmojis
+    
+    
+    @IBOutlet var newTrackerEmojisLabel: UILabel!
+    @IBOutlet var newTrackerEmojis: UITextField!
+    @IBAction func newTrackerEmojisChanged(_ sender: UITextField) {
+        if newTrackerType == "pick5", let field = sender.text {
+            if field.count > 5 {
+                sender.deleteBackward()
+            }
+        }
+    }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         moveTextField(textField, moveDistance: 100, up: true)
@@ -69,6 +84,7 @@ class AddNewViewController: UIViewController, UITextFieldDelegate {
     func endEditingTextFields() {
         updatenewTrackerLabels()
         activateAddNewTrackerButton()
+        activateAddNewEmojiFields()
         newTrackerName.endEditing(true)
         newTrackerEmojis.endEditing(true)
     }
@@ -128,9 +144,38 @@ class AddNewViewController: UIViewController, UITextFieldDelegate {
     }
     
     func activateAddNewTrackerButton() {
-        if newTrackerName.text != "" && newTrackerEmojis.text != "" && newTrackerType != "" {
-            addNewTrackerButton.isHidden = false
+        if newTrackerName.text != "" && newTrackerType != "" {
+            
+            if newTrackerType == "input" {
+                addNewTrackerButton.isHidden = false
+                
+            } else if newTrackerEmojis.text != "" {
+                addNewTrackerButton.isHidden = false
+                
+            } else {
+                addNewTrackerButton.isHidden = true
+            }
         }
+    }
+    
+    func activateAddNewEmojiFields() {
+        if newTrackerType == "pick5" {
+            newTrackerEmojis.isHidden = false
+            newTrackerEmojisLabel.isHidden = false
+            newTrackerEmojis.placeholder = "Pick 5"
+            
+        } else if newTrackerType == "slider" {
+            newTrackerEmojis.isHidden = false
+            newTrackerEmojisLabel.isHidden = false
+            newTrackerEmojis.placeholder = "Pick a few"
+        } else {
+            newTrackerEmojis.isHidden = true
+            newTrackerEmojisLabel.isHidden = true
+            
+            newTrackerEmojis.text = ""
+        }
+        
+        updatenewTrackerLabels()
     }
     
     ///////////////////////////////////////////
