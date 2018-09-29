@@ -54,7 +54,7 @@ class CalendarView: UIViewController {
     
     //MARK: - Tap gestuer handler
     @objc func tapHandler(_ sender: UITapGestureRecognizer) {
-        if sender.state == UIGestureRecognizerState.ended {
+        if sender.state == UIGestureRecognizer.State.ended {
             let tapLocation = sender.location(in: self.collectionView)
             if let tapIndexPath = self.collectionView.indexPathForItem(at: tapLocation) {
                 if let tappedCell = self.collectionView.cellForItem(at: tapIndexPath) {

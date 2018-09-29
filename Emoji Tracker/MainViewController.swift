@@ -52,9 +52,9 @@ class MainViewController: UIViewController {
         trackersTableView.register(UINib(nibName: "InputCell", bundle: nil), forCellReuseIdentifier: "inputCell")
         
         //MARK: Keyboard scrolling
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         //Get the current date's data
         currentDateObj.setYesterdayAndTomorrow()
@@ -193,7 +193,7 @@ class MainViewController: UIViewController {
     }
     
     @objc func trackerCellTapped(_ sender: UITapGestureRecognizer) {
-        if sender.state == UIGestureRecognizerState.ended {
+        if sender.state == UIGestureRecognizer.State.ended {
             let tapLocation = sender.location(in: self.trackersTableView)
             if let tapIndexPath = self.trackersTableView.indexPathForRow(at: tapLocation) {
                 if let tappedCell = self.trackersTableView.cellForRow(at: tapIndexPath) {
@@ -274,13 +274,13 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     //MARK: Scroll the view for keyboard
     @objc func keyboardWillShow(_ notification:Notification) {
         
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            trackersTableView.contentInset = UIEdgeInsetsMake(0, 0, keyboardSize.height, 0)
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            trackersTableView.contentInset = UIEdgeInsets.init(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
         }
     }
     @objc func keyboardWillHide(_ notification:Notification) {
         
-        trackersTableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
+        trackersTableView.contentInset = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

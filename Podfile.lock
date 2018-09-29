@@ -1,11 +1,11 @@
 PODS:
-  - JTAppleCalendar (7.1.5)
-  - Realm (3.5.0):
-    - Realm/Headers (= 3.5.0)
-  - Realm/Headers (3.5.0)
-  - RealmSwift (3.5.0):
-    - Realm (= 3.5.0)
-  - SwipeCellKit (2.3.1)
+  - JTAppleCalendar (7.1.6)
+  - Realm (3.10.0):
+    - Realm/Headers (= 3.10.0)
+  - Realm/Headers (3.10.0)
+  - RealmSwift (3.10.0):
+    - Realm (= 3.10.0)
+  - SwipeCellKit (2.5.0)
 
 DEPENDENCIES:
   - JTAppleCalendar (~> 7.0)
@@ -20,10 +20,10 @@ SPEC REPOS:
     - SwipeCellKit
 
 SPEC CHECKSUMS:
-  JTAppleCalendar: 2d4f974f9f3c8b4964d51ca1f6e004883c031fbe
-  Realm: 0378021c424e4e2bd6a0e63b27881e929d9b9ad1
-  RealmSwift: 3322562622fda2ad596985ead4d8d8be30cf838c
-  SwipeCellKit: f7a3e76611704fa1404f83f98a842ed90c52d8df
+  JTAppleCalendar: abb30678f42a4ef8a340a932b1dcb8c85a33dac2
+  Realm: 85ab9e4f779d66f6e9ffeb118dc25b7f130c96ac
+  RealmSwift: 69121c8b86d0ae005fb779efdb10e606732e1c74
+  SwipeCellKit: d8f2617538ce3021cb0a11d1b93856a06a2f2e20
 
 PODFILE CHECKSUM: 8a43fad24ae0c3826a7a080c64b6e1538585adfa
 

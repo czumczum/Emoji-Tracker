@@ -69,11 +69,11 @@ class TrackersActions {
         
         // Type change
         let changeTypeAction = UIAlertAction(title: "Change Type of Tracker", style: .default, handler: { (action) in
-            let changeTypeAlert = UIAlertController (title: "Change type of Tracker", message: nil, preferredStyle: UIAlertControllerStyle.alert)
+            let changeTypeAlert = UIAlertController (title: "Change type of Tracker", message: nil, preferredStyle: UIAlertController.Style.alert)
             
             
             //preset keyword as button in alert controller
-            let bt1 = UIAlertAction(title: "Slider", style: UIAlertActionStyle.default){
+            let bt1 = UIAlertAction(title: "Slider", style: UIAlertAction.Style.default){
                 (action) in
                 tracker.type = "slider"
                 coredata.saveContext()
@@ -83,7 +83,7 @@ class TrackersActions {
             changeTypeAlert.addAction(bt1)
             
             //preset keyword as button in alert controller
-            let bt2 = UIAlertAction(title: "Pick 5", style: UIAlertActionStyle.default){
+            let bt2 = UIAlertAction(title: "Pick 5", style: UIAlertAction.Style.default){
                 (action) in
                 tracker.type = "pick5"
                 coredata.saveContext()
@@ -94,7 +94,7 @@ class TrackersActions {
             changeTypeAlert.addAction(bt2)
             
             //preset keyword as button in alert controller
-            let bt3 = UIAlertAction(title: "Input", style: UIAlertActionStyle.default){
+            let bt3 = UIAlertAction(title: "Input", style: UIAlertAction.Style.default){
                 (action) in
                 tracker.type = "input"
                 coredata.saveContext()
@@ -104,7 +104,7 @@ class TrackersActions {
             changeTypeAlert.addAction(bt3)
             
             //Create Cancel Action
-            let cancel = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil)
+            let cancel = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil)
             
             changeTypeAlert.addAction(cancel)
             

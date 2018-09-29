@@ -47,7 +47,7 @@ class TrackersViewController: UIViewController, UITableViewDelegate, UITableView
     
     //MARK: Tapped cell
     @objc func trackerCellTapped(_ sender: UITapGestureRecognizer) {
-        if sender.state == UIGestureRecognizerState.ended {
+        if sender.state == UIGestureRecognizer.State.ended {
             let tapLocation = sender.location(in: self.trackersTableView)
             if let tapIndexPath = self.trackersTableView.indexPathForRow(at: tapLocation) {
                 if let tappedCell = self.trackersTableView.cellForRow(at: tapIndexPath) {
@@ -64,7 +64,7 @@ class TrackersViewController: UIViewController, UITableViewDelegate, UITableView
     
     @objc func forceTouchHandler(_ sender: ForceTouchGestureRecognizer) {
         UINotificationFeedbackGenerator().notificationOccurred(.success)
-        if sender.state == UIGestureRecognizerState.ended {
+        if sender.state == UIGestureRecognizer.State.ended {
             let absoluteLocation = sender.location(in: self.view)
             let tapLocation = sender.location(in: self.trackersTableView)
             if let tapIndexPath = self.trackersTableView.indexPathForRow(at: tapLocation) {
@@ -158,7 +158,7 @@ class TrackersViewController: UIViewController, UITableViewDelegate, UITableView
     
     //ConfigureTableView
     func configureTableView() {
-        trackersTableView?.rowHeight = UITableViewAutomaticDimension
+        trackersTableView?.rowHeight = UITableView.automaticDimension
         trackersTableView?.estimatedRowHeight = 120.0
     }
     

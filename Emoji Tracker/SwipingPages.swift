@@ -26,7 +26,7 @@ class SwipingPages: UIPageViewController, UIPageViewControllerDataSource, UIPage
         pages.append(page2)
         pages.append(page3)
         
-        setViewControllers([page1], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
+        setViewControllers([page1], direction: UIPageViewController.NavigationDirection.forward, animated: true, completion: nil)
         
     }
 

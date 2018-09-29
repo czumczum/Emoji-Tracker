@@ -28,19 +28,19 @@ final class ForceTouchGestureRecognizer: UIGestureRecognizer {
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent) {
         super.touchesEnded(touches, with: event)
-        state = UIGestureRecognizerState.cancelled
+        state = UIGestureRecognizer.State.cancelled
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent) {
         super.touchesCancelled(touches, with: event)
-        state = UIGestureRecognizerState.cancelled
+        state = UIGestureRecognizer.State.cancelled
     }
     
     private func handleTouch(_ touch: UITouch) {
         guard touch.force != 0 && touch.maximumPossibleForce != 0 else { return }
         
         if touch.force / touch.maximumPossibleForce >= threshold {
-            state = UIGestureRecognizerState.recognized
+            state = UIGestureRecognizer.State.recognized
         }
     }
     
