@@ -139,8 +139,8 @@ class CoreDataMethods {
         tracker2.type = "pick5"
         
         let tracker3 = Tracker(context: context)
-        tracker3.title = "Menu 👉 All Trackers"
-        tracker3.emojis = "Long touch to delete"
+        tracker3.title = "Go to Menu & All Trackers"
+        tracker3.emojis = "Then 👉 3d touch to delete"
         tracker3.type = "input"
         
         coredata.trackerArray.append(tracker1)

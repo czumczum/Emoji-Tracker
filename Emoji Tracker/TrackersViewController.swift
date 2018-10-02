@@ -89,7 +89,7 @@ class TrackersViewController: UIViewController, UITableViewDelegate, UITableView
     
     //MARK: - Trackers Board
     @IBOutlet weak var trackersTableView: UITableView!
-    @IBOutlet weak var addNewTrackerButtonClicked: UIBarButtonItem!
+
     
     //MARK: TableView DataSource Methods
     struct TrackerList {
