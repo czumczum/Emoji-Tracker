@@ -11,7 +11,7 @@ import UIKit
 
 extension Calendar {
     
-    func getYesterdayDate(with date : Date = currentDateObj.now) -> Date {
+    func getYesterdayDate(with date : Date = currentDateObj.now.startOfTheDay() ?? currentDateObj.now) -> Date {
         guard let yesterday = Calendar.current.date(
             byAdding: .hour,
             value: -24,
@@ -22,10 +22,26 @@ extension Calendar {
     }
     
     func getTomorrowDate(with date : Date = currentDateObj.now) -> Date {
+        guard let current = date.startOfTheDay() else {
+            fatalError("current date coudn't be retreived")
+        }
+        guard let tomorrow = Calendar.current.date(
+            byAdding: .hour,
+            value: 24,
+            to: current) else {
+                fatalError("Cannot get tomorrow's date")
+        }
+        return tomorrow
+    }
+    
+    func getTEndOfTheDay(with date : Date = currentDateObj.now) -> Date {
+        guard let current = date.startOfTheDay() else {
+            fatalError("current date coudn't be retreived")
+        }
         guard let tomorrow = Calendar.current.date(
             byAdding: .second,
             value: 86399,
-            to: date) else {
+            to: current) else {
                 fatalError("Cannot get tomorrow's date")
         }
         return tomorrow
@@ -100,7 +116,7 @@ extension Date {
         dateFormatter.timeStyle = .full
         dateFormatter.dateStyle = .full
         let calendar = Calendar.init(identifier: .gregorian)
-        let endDaydate = calendar.getTomorrowDate(with: self)
+        let endDaydate = calendar.getTEndOfTheDay(with: self)
         let stringDate = dateFormatter.string(from: endDaydate)
         return dateFormatter.date(from: stringDate)
     }

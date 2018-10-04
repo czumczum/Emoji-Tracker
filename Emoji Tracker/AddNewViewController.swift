@@ -50,11 +50,11 @@ class AddNewViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        moveTextField(textField, moveDistance: 100, up: true)
+        moveTextField(textField, moveDistance: 150, up: true)
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        moveTextField(textField, moveDistance: 100, up: false)
+        moveTextField(textField, moveDistance: 150, up: false)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

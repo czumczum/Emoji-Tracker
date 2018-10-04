@@ -143,9 +143,9 @@ class CoreDataMethods {
         tracker3.emojis = "Then 👉 3d touch to delete"
         tracker3.type = "input"
         
+        coredata.trackerArray.append(tracker3)
         coredata.trackerArray.append(tracker1)
         coredata.trackerArray.append(tracker2)
-        coredata.trackerArray.append(tracker3)
         
         coredata.saveContext()
         
