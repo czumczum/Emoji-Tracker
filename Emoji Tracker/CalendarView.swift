@@ -130,6 +130,7 @@ extension CalendarView: JTAppleCalendarViewDelegate {
             guard let start = cellState.date.startOfTheDay() else { fatalError("start date is invalid") }
             guard let end = cellState.date.endOfTheDay() else { fatalError("end date is invalid") }
             
+            
             let idPredicate = NSPredicate(format: "ANY tracker == %@", sender!.objectID)
             let datePredicate = NSPredicate(format: "date BETWEEN {%@, %@}", start as CVarArg, end as CVarArg)
             let predicate = NSCompoundPredicate(type: .and, subpredicates: [idPredicate, datePredicate])

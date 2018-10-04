@@ -149,7 +149,7 @@ class MainViewController: UIViewController {
 
     
     //MARK: - Navigation controller "Back to today" button
-    public func enableBackButton(hidden : Bool) {
+    func enableBackButton(hidden : Bool) {
         if hidden {
             backToTodayButton.isEnabled = false
             backToTodayButton.tintColor = UIColor(displayP3Red: 0, green: 0, blue: 0, alpha: 0)
@@ -414,6 +414,7 @@ extension MainViewController: clickDelegate {
             newDayDate.emoji = emoji
             newDayDate.dayOfTheWeek = currentDateObj.now.getDayNumber()
             newDayDate.tracker = setTrackerData(trackerId: tracker.objectID.uriRepresentation().absoluteString, date: newDayDate)
+            
         } else {
             currentDayDate[0].emoji = emoji
         }

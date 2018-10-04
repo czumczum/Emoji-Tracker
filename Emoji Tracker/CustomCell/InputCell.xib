@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -19,19 +19,19 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Vdq-4y-wtS">
-                        <rect key="frame" x="10" y="0.0" width="330" height="114"/>
+                        <rect key="frame" x="10" y="0.0" width="330" height="113.5"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="pvN-G8-Rgi">
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="pvN-G8-Rgi">
                                 <rect key="frame" x="0.0" y="0.0" width="330" height="57"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="WHn-NV-ETC">
-                                        <rect key="frame" x="0.0" y="16.5" width="162.5" height="24.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="162.5" height="57"/>
                                         <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="20"/>
                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iJb-kM-VMb">
-                                        <rect key="frame" x="167.5" y="8" width="162.5" height="41"/>
+                                        <rect key="frame" x="167.5" y="0.0" width="162.5" height="57"/>
                                         <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="30"/>
                                         <color key="textColor" red="0.2901960784" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -41,14 +41,11 @@
                                 </subviews>
                             </stackView>
                             <view contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="qgd-41-9qt" userLabel="BottomView">
-                                <rect key="frame" x="0.0" y="57" width="330" height="57"/>
+                                <rect key="frame" x="0.0" y="57" width="330" height="56.5"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Enter an emoji" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wnJ-x7-x8M">
-                                        <rect key="frame" x="40.5" y="10" width="250" height="37"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" restorationIdentifier="777" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Enter an emoji" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wnJ-x7-x8M">
+                                        <rect key="frame" x="0.0" y="21.5" width="330" height="25"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="250" id="9bb-ZU-ljf"/>
-                                        </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="20"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="go" enablesReturnKeyAutomatically="YES"/>
@@ -56,26 +53,20 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="wnJ-x7-x8M" firstAttribute="top" secondItem="qgd-41-9qt" secondAttribute="top" constant="10" id="7qb-xG-5rL"/>
-                                    <constraint firstItem="wnJ-x7-x8M" firstAttribute="centerX" secondItem="qgd-41-9qt" secondAttribute="centerX" id="9xy-or-mhk"/>
-                                    <constraint firstAttribute="bottom" secondItem="wnJ-x7-x8M" secondAttribute="bottom" constant="10" id="bg4-9Z-1tR"/>
+                                    <constraint firstAttribute="bottom" secondItem="wnJ-x7-x8M" secondAttribute="bottom" constant="10" id="QJz-ba-ZZA"/>
+                                    <constraint firstItem="wnJ-x7-x8M" firstAttribute="leading" secondItem="qgd-41-9qt" secondAttribute="leading" id="XkC-au-SX2"/>
+                                    <constraint firstAttribute="trailing" secondItem="wnJ-x7-x8M" secondAttribute="trailing" id="gOg-dX-KW6"/>
                                 </constraints>
                             </view>
                         </subviews>
-                        <constraints>
-                            <constraint firstItem="qgd-41-9qt" firstAttribute="top" secondItem="pvN-G8-Rgi" secondAttribute="bottom" id="4Eq-aB-byV"/>
-                            <constraint firstItem="qgd-41-9qt" firstAttribute="leading" secondItem="Vdq-4y-wtS" secondAttribute="leading" id="5sQ-tT-5kc"/>
-                            <constraint firstAttribute="bottom" secondItem="qgd-41-9qt" secondAttribute="bottom" id="OFb-e0-Pvh"/>
-                            <constraint firstAttribute="trailing" secondItem="qgd-41-9qt" secondAttribute="trailing" id="prS-u5-QqN"/>
-                        </constraints>
                     </stackView>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="Vdq-4y-wtS" secondAttribute="bottom" id="6QW-1p-CEU"/>
-                    <constraint firstItem="Vdq-4y-wtS" firstAttribute="top" secondItem="2SS-CF-kBl" secondAttribute="top" id="FsP-rj-QQD"/>
-                    <constraint firstAttribute="trailing" secondItem="Vdq-4y-wtS" secondAttribute="trailing" constant="10" id="pYQ-oa-VVe"/>
-                    <constraint firstItem="Vdq-4y-wtS" firstAttribute="leading" secondItem="2SS-CF-kBl" secondAttribute="leading" constant="10" id="upk-Ht-cAY"/>
+                    <constraint firstAttribute="bottom" secondItem="Vdq-4y-wtS" secondAttribute="bottom" id="4ml-Ce-VUl"/>
+                    <constraint firstItem="Vdq-4y-wtS" firstAttribute="top" secondItem="2SS-CF-kBl" secondAttribute="top" id="mX9-H7-YST"/>
+                    <constraint firstItem="Vdq-4y-wtS" firstAttribute="leading" secondItem="2SS-CF-kBl" secondAttribute="leading" constant="10" id="rhp-Ol-MHe"/>
+                    <constraint firstAttribute="trailing" secondItem="Vdq-4y-wtS" secondAttribute="trailing" constant="10" id="x6s-yk-D2o"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

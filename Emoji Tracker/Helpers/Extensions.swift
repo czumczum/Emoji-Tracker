@@ -23,8 +23,8 @@ extension Calendar {
     
     func getTomorrowDate(with date : Date = currentDateObj.now) -> Date {
         guard let tomorrow = Calendar.current.date(
-            byAdding: .hour,
-            value: 24,
+            byAdding: .second,
+            value: 86399,
             to: date) else {
                 fatalError("Cannot get tomorrow's date")
         }
@@ -97,8 +97,8 @@ extension Date {
     
     func endOfTheDay() -> Date? {
         let dateFormatter = DateFormatter().getFormattedDate()
-        dateFormatter.timeStyle = .none
-        dateFormatter.dateStyle = .short
+        dateFormatter.timeStyle = .full
+        dateFormatter.dateStyle = .full
         let calendar = Calendar.init(identifier: .gregorian)
         let endDaydate = calendar.getTomorrowDate(with: self)
         let stringDate = dateFormatter.string(from: endDaydate)
